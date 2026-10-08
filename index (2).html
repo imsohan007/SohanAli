@@ -73,7 +73,7 @@ section:last-of-type{padding-bottom:90px}
 .stat:nth-child(3){background:#E2EFF8;color:var(--navy)}
 .stat:nth-child(4){background:var(--cyan);color:#04202E}
 .stat b{display:block;font-family:var(--head);font-size:1.7rem;line-height:1.1}
-.stat span{font-size:.95rem;opacity:.85}
+.stat>span{font-size:.95rem;opacity:.85}
 
 .jobs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .job h3{font-size:1.4rem;color:var(--navy)}
@@ -124,9 +124,91 @@ footer{padding:26px 0 34px;color:var(--muted);text-align:center;font-size:.95rem
   .link{gap:12px;padding-right:12px}
   .link b{font-size:.92rem}
 }
+
+/* ---------- motion ---------- */
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+body{overflow-x:hidden}
+.progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:30;background:linear-gradient(90deg,var(--blue),var(--cyan),#3DDC84)}
+.nav a.on{background:rgba(255,255,255,.16);color:#fff}
+.nav a.cta.on{background:var(--cyan);color:#04202E}
+
+.hero{padding-bottom:150px}
+.hero .wrap{position:relative;z-index:2}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
+.b1{width:420px;height:420px;background:#0A6AA1;left:-120px;top:60px;animation:drift 14s ease-in-out infinite alternate}
+.b2{width:360px;height:360px;background:#22C1FF;right:-80px;top:-60px;animation:drift 11s ease-in-out infinite alternate-reverse}
+.b3{width:280px;height:280px;background:#3DDC84;right:30%;bottom:-140px;opacity:.28;animation:drift 17s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.2)}}
+
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em}
+.hero h1 .w>span{display:inline-block;transform:translateY(115%);animation:rise 1s cubic-bezier(.2,.85,.2,1) forwards}
+.hero h1 .w:nth-child(1)>span{animation-delay:.15s}
+.hero h1 .w:nth-child(2)>span{animation-delay:.3s}
+.hero h1 .w:nth-child(3)>span{animation-delay:.45s}
+@keyframes rise{to{transform:none}}
+.pill,.hero .role,.hero .sum,.actions,.social{opacity:0;animation:up .8s cubic-bezier(.2,.85,.2,1) forwards}
+.pill{animation-delay:.05s}.hero .role{animation-delay:.6s}.hero .sum{animation-delay:.75s}.actions{animation-delay:.9s}.social{animation-delay:1.05s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.pill i{animation:ping 2s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(61,220,132,.6)}100%{box-shadow:0 0 0 12px rgba(61,220,132,0)}}
+.caret{display:inline-block;width:3px;height:1.1em;margin-left:4px;background:var(--cyan);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .role{min-height:1.6em}
+
+.photo{opacity:0;animation:pop 1.1s .35s cubic-bezier(.2,.85,.2,1) forwards;transition:transform .2s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(40px) scale(.92)}to{opacity:1;transform:none}}
+.photo::before{content:"";position:absolute;inset:-18px;border-radius:70px;background:conic-gradient(from var(--a),#22C1FF,transparent 28%,#3DDC84 52%,transparent 74%,#22C1FF);filter:blur(22px);opacity:.75;animation:spin 7s linear infinite}
+@keyframes spin{to{--a:360deg}}
+.photo .frame{position:relative;z-index:1}
+.chip{z-index:2;animation:float 5s ease-in-out infinite}
+.chip.b{animation-delay:-2.5s}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 4.5s 2s infinite}
+@keyframes shine{0%,60%{left:-70%}100%{left:130%}}
+.logo{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+a:hover>.logo{transform:translateY(-6px) rotate(-6deg) scale(1.08)}
+
+.marquee{position:relative;z-index:3;overflow:hidden;background:var(--cyan);color:#04202E;padding:17px 0;transform:rotate(-1.4deg);margin:-52px -24px 0;box-shadow:0 18px 40px rgba(6,20,31,.18)}
+.track{display:flex;width:max-content;animation:scroll 32s linear infinite}
+.track span{font-family:var(--head);font-weight:700;font-size:1.15rem;white-space:nowrap;padding-right:34px}
+.track span::after{content:"\2726";margin-left:34px;color:var(--navy)}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* scroll reveal (only when JS is running) */
+.js .rv{opacity:0;transform:translateY(34px) scale(.98);transition:opacity .8s cubic-bezier(.2,.85,.2,1),transform .8s cubic-bezier(.2,.85,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.sh h2::after{content:"";display:block;height:5px;width:72px;border-radius:4px;background:linear-gradient(90deg,var(--blue),var(--cyan));margin-top:14px;transition:width .9s .25s cubic-bezier(.2,.85,.2,1)}
+.js .sh:not(.in) h2::after{width:0}
+.js .chips span{opacity:0;transform:scale(.8);transition:opacity .4s,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.js .card.in .chips span{opacity:1;transform:none}
+.job li{transition:background .2s,padding-left .2s}
+.job li:hover{padding-left:32px;color:var(--navy)}
+.job li:hover::before{transform:scale(1.4)}
+.job li::before{transition:transform .2s}
+.card{transition:opacity .8s cubic-bezier(.2,.85,.2,1),transform .25s ease-out,box-shadow .25s,border-color .25s}
+.js .card.in:hover{box-shadow:0 24px 50px rgba(11,37,54,.14);border-color:#B7CBDA}
+.chips span{transition:background .2s,color .2s,transform .2s}
+.chips span:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+.contact{position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,80%) var(--my,10%),rgba(34,193,255,.22),transparent 60%);pointer-events:none;transition:background .1s}
+.contact>*{position:relative}
+.link .ico{transition:background .2s,transform .3s}
+.link:hover .ico{background:var(--cyan);color:#04202E;transform:rotate(-8deg)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 .w>span,.pill,.hero .role,.hero .sum,.actions,.social,.photo{opacity:1!important;transform:none!important}
+  .js .rv,.js .chips span{opacity:1!important;transform:none!important}
+  .js .sh:not(.in) h2::after{width:72px}
+}
+@media (max-width:860px){.marquee{margin-top:-40px}.hero{padding-bottom:110px}}
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
@@ -148,11 +230,12 @@ footer{padding:26px 0 34px;color:var(--muted);text-align:center;font-size:.95rem
 
 <main>
 <header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="wrap">
     <div>
       <span class="pill"><i></i>Open to inventory and operations roles</span>
-      <h1>Sohan Ali Sikder</h1>
-      <p class="role">Inventory and operations executive</p>
+      <h1 aria-label="Sohan Ali Sikder"><span class="w"><span>Sohan</span></span> <span class="w"><span>Ali</span></span> <span class="w"><span>Sikder</span></span></h1>
+      <p class="role"><span id="type">Inventory and operations executive</span><span class="caret" aria-hidden="true"></span></p>
       <p class="sum">Two years of shop, stock and team work at Apon Tech Ltd. I am looking for an inventory or operations role in a garments factory in Bangladesh.</p>
       <div class="actions">
         <a class="btn wa" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer"><svg><use href="#i-phone"/></svg>Message on WhatsApp</a>
@@ -173,14 +256,19 @@ footer{padding:26px 0 34px;color:var(--muted);text-align:center;font-size:.95rem
   </div>
 </header>
 
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Inventory management</span><span>Stock management</span><span>Store operations</span><span>Team coordination</span><span>POS / ERP</span><span>Sales reporting</span><span>Time management</span><span>Customer service</span>
+  <span>Inventory management</span><span>Stock management</span><span>Store operations</span><span>Team coordination</span><span>POS / ERP</span><span>Sales reporting</span><span>Time management</span><span>Customer service</span>
+</div></div>
+
 <section id="about">
   <div class="wrap">
     <div class="sh"><h2>About me</h2></div>
     <div class="about">
       <div class="card"><p class="big">I am a dedicated professional with hands-on experience in inventory handling, stock management, team coordination and daily operations. I want to apply these skills in a reputable garments factory, support smooth operations and grow with the organization.</p></div>
       <div class="stats">
-        <div class="stat"><b>2 years</b><span>Retail and store work</span></div>
-        <div class="stat"><b>2 roles</b><span>Same company</span></div>
+        <div class="stat"><b><span data-count="2">2</span> years</b><span>Retail and store work</span></div>
+        <div class="stat"><b><span data-count="2">2</span> roles</b><span>Same company</span></div>
         <div class="stat"><b>POS / ERP</b><span>Used in daily work</span></div>
         <div class="stat"><b>Bangla, English</b><span>Languages</span></div>
       </div>
@@ -261,5 +349,90 @@ footer{padding:26px 0 34px;color:var(--muted);text-align:center;font-size:.95rem
 </main>
 
 <footer>&copy; 2026 Sohan Ali Sikder</footer>
+<script>
+(function(){
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  document.documentElement.classList.add("js");
+
+  /* scroll progress */
+  var bar=document.querySelector(".progress");
+  function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+"%"}
+  addEventListener("scroll",prog,{passive:true});prog();
+
+  /* reveal with stagger */
+  var items=document.querySelectorAll(".sh,.card,.stat,.link");
+  items.forEach(function(el){
+    el.classList.add("rv");
+    var sib=Array.prototype.indexOf.call(el.parentNode.children,el);
+    el.style.transitionDelay=(Math.min(sib,5)*90)+"ms";
+  });
+  var chipDelay=function(card){card.querySelectorAll(".chips span").forEach(function(c,i){c.style.transitionDelay=(250+i*70)+"ms"})};
+  document.querySelectorAll(".card").forEach(chipDelay);
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);
+      e.target.querySelectorAll("[data-count]").forEach(count);
+      if(e.target.hasAttribute("data-count"))count(e.target);}
+  })},{threshold:.15,rootMargin:"0px 0px -40px 0px"});
+  items.forEach(function(el){io.observe(el)});
+
+  /* counters */
+  function count(el){
+    var to=+el.getAttribute("data-count");if(reduce){el.textContent=to;return}
+    var t0=performance.now(),d=1300;
+    (function step(t){var p=Math.min((t-t0)/d,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})(t0);
+  }
+  document.querySelectorAll("[data-count]").forEach(function(el){if(!reduce)el.textContent="0"});
+
+  /* typing role */
+  var out=document.getElementById("type");
+  var words=["Inventory and operations executive","Stock and store management","Team coordination","POS / ERP in daily work"];
+  if(out&&!reduce){
+    var w=0,c=words[0].length,del=true;
+    setTimeout(function tick(){
+      var word=words[w];
+      if(del){c--;if(c<=0){del=false;w=(w+1)%words.length}}else{c++;if(c>=words[w].length)del=true}
+      out.textContent=words[w].slice(0,Math.max(c,0));
+      var wait=del&&c===words[w].length-0?1800:(del?35:70);
+      if(!del&&c>=words[w].length)wait=2000;
+      setTimeout(tick,wait);
+    },2400);
+    setTimeout(function(){},0);
+  }
+
+  /* nav highlight */
+  var links=[].slice.call(document.querySelectorAll(".nav a"));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})}
+  })},{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){if(s)so.observe(s)});
+
+  if(reduce||!fine)return;
+
+  /* tilt on cards */
+  document.querySelectorAll(".edu .card,.skills .card,.jobs .card").forEach(function(card){
+    card.addEventListener("mousemove",function(e){
+      var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform="perspective(900px) rotateY("+(x*6)+"deg) rotateX("+(-y*6)+"deg) translateY(-4px)";
+    });
+    card.addEventListener("mouseleave",function(){card.style.transform=""});
+  });
+  /* photo parallax */
+  var ph=document.querySelector(".photo");
+  document.querySelector(".hero").addEventListener("mousemove",function(e){
+    var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+    ph.style.transform="translate("+(x*18)+"px,"+(y*14)+"px) rotate("+(x*2)+"deg)";
+  });
+  /* magnetic buttons */
+  document.querySelectorAll(".btn").forEach(function(b){
+    b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-r.left-r.width/2)*.15)+"px,"+((e.clientY-r.top-r.height/2)*.25)+"px)"});
+    b.addEventListener("mouseleave",function(){b.style.transform=""});
+  });
+  /* contact spotlight */
+  var ct=document.querySelector(".contact");
+  ct.addEventListener("mousemove",function(e){var r=ct.getBoundingClientRect();ct.style.setProperty("--mx",(e.clientX-r.left)+"px");ct.style.setProperty("--my",(e.clientY-r.top)+"px")});
+})();
+</script>
 </body>
 </html>
