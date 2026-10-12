@@ -80,6 +80,7 @@ section{padding:70px 0 0}
 .ra button,.ra a{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:1.1rem;cursor:pointer;display:grid;place-items:center;text-decoration:none;position:relative}
 .ra button:hover,.ra a:hover{background:rgba(255,255,255,.36)}.ra .lk.on{color:#FF3B5C}.ra small{position:absolute;bottom:-14px;font-size:.65rem}
 .rl{height:100%;display:grid;place-items:center;color:#fff;text-align:center;padding:20px;font-weight:600}
+.tadd{display:flex;gap:8px;flex-wrap:wrap;max-width:560px;margin:0 auto 16px}.tadd textarea{flex:1 1 100%;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 .92rem var(--f);resize:vertical;min-height:52px}
 .pp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .pf{position:relative;margin:0;border-radius:22px;overflow:hidden;background:var(--line);aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.18)}
 .pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity .9s,transform 9s ease-out}.pf img.ok{opacity:1;transform:scale(1)}
@@ -100,7 +101,7 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="logo">Sohan Ali Sikder</span><a href="#today">Date</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#gallery">Gallery</a><a href="#videos">Videos</a><a href="#reels">Reels</a><a href="#photos">Photos</a><a class="k" href="#contact">Contact</a><button id="th" aria-label="Toggle theme">◐</button></div></header>
+<header class="top"><div class="wrap"><span class="logo">Sohan Ali Sikder</span><a href="#today">Date</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#gallery">Gallery</a><a href="#videos">Videos</a><a href="#reels">TikTok</a><a href="#photos">Photos</a><a class="k" href="#contact">Contact</a><button id="th" aria-label="Toggle theme">◐</button></div></header>
 <main>
 <div class="wrap hero">
   <span class="eb"><i></i>Open to inventory and operations roles</span>
@@ -169,10 +170,10 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
 </div></section>
 
 <section id="reels"><div class="wrap">
-  <div class="sh rv"><h2>Eye-catching videos</h2><p>Swipe up like TikTok. Meme, comedy, nature, wildlife, sports, superhero and more. New videos on every refresh.</p></div>
-  <div class="rc" id="rc"></div>
-  <div class="rw"><div class="rf" id="rf"><div class="rl">Loading videos...</div></div></div>
-  <p class="note" style="margin-top:14px;text-align:center">Videos come from Pexels and Pixabay (add your free API keys to the file for the best clips), Wikimedia Commons and the Blender open movies. All have free licenses. TikTok and YouTube videos belong to their creators, so they are not used. Tap a video to pause, use the buttons for like, sound, download and source.</p>
+  <div class="sh rv"><h2>TikTok videos</h2><p>Swipe up like TikTok. Videos play in TikTok's official player. The order changes on every refresh.</p></div>
+  <div class="tadd"><textarea id="tin" rows="2" placeholder="Paste TikTok video links here, for example https://www.tiktok.com/@name/video/1234567890" aria-label="TikTok video links"></textarea><button class="dlb" id="tadd">Add videos</button><button class="dlb" id="tclr">Clear all</button></div>
+  <div class="rw"><div class="rf" id="rf"></div></div>
+  <p class="note" style="margin-top:14px;text-align:center">TikTok shows its videos in its own player, so TikTok chooses the quality (HD when your connection and device allow). TikTok has no public way to pick random videos and its rules do not allow downloading its video files, so you choose the links. Use the full link (tiktok.com/@name/video/...). Your links are saved in this browser only.</p>
 </div></section>
 
 <section id="photos"><div class="wrap">
@@ -278,33 +279,24 @@ vq('filetype:video deepcat:"Featured videos"',Math.floor(Math.random()*60)).then
 $("#sdl").onclick=function(){var it=SL_[si];dl(it.src,it.name+" "+(si+1),this)};
 $("#vdl").onclick=function(){var it=VL[vi];if(it)dl(it.src,it.name,this)};
 $$(".dlf").forEach(function(b){b.onclick=function(){var f=b.closest("figure");if(f.dataset.src)dl(f.dataset.src,f.querySelector("b").textContent||"photo",b)}});
-/* ---------- reels feed (TikTok style) ---------- */
-var PK="",XK="";/* optional free API keys. PK = Pexels key (pexels.com/api), XK = Pixabay key (pixabay.com/api/docs) */
-var CATS=[{k:"Meme",pe:"funny meme",pi:"funny",cm:"meme OR funny"},{k:"Comedy",pe:"comedy funny people",pi:"comedy",cm:"comedy OR humor"},{k:"Nature",pe:"nature",pi:"nature",cm:"nature OR waterfall OR forest"},{k:"Wildlife",pe:"wildlife animals",pi:"wildlife",cm:"wildlife OR animals OR birds"},{k:"Sports",pe:"sports action",pi:"sports",cm:"football OR cricket OR sport"},{k:"Superhero",pe:"superhero",pi:"superhero",cm:"superhero OR superman OR comics"},{k:"Beauty & style",pe:"beautiful woman fashion",pi:"fashion girl",cm:"fashion OR dance OR portrait"},{k:"Animation",pe:"animation cartoon",pi:"cartoon animation",cm:"animation OR cartoon"},{k:"Travel",pe:"travel city",pi:"travel",cm:"city OR travel OR beach"},{k:"Space",pe:"space galaxy",pi:"space",cm:"space OR NASA OR astronaut"},{k:"Food",pe:"food cooking",pi:"food",cm:"cooking OR food"},{k:"Cars",pe:"cars racing",pi:"cars",cm:"car OR racing"}];
-var rf=$("#rf"),cur=null,muted=true,rstarted=false;
-var reelIO=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector("video");if(!v)return;
- if(e.isIntersecting){cur=v;if(!v.src)v.src=e.target.dataset.src;v.muted=muted;var p=v.play();if(p&&p.catch)p.catch(function(){});var n=e.target.nextElementSibling;if(n&&n.dataset.src){var nv=n.querySelector("video");if(nv&&!nv.src){nv.preload="auto";nv.src=n.dataset.src}}}
- else v.pause()})},{root:rf,threshold:.6});
-function pexels(c){if(!PK)return Promise.resolve([]);return fetch("https://api.pexels.com/videos/search?query="+encodeURIComponent(c.pe)+"&orientation=portrait&per_page=15&page="+(1+Math.floor(Math.random()*4)),{headers:{Authorization:PK}}).then(function(r){return r.json()}).then(function(j){return (j.videos||[]).map(function(v){var f=(v.video_files||[]).filter(function(x){return x.file_type==="video/mp4"&&x.width<=1080}).sort(function(a,b){return Math.abs(a.width-720)-Math.abs(b.width-720)})[0];return f&&{src:f.link,poster:v.image,title:c.k+" video",credit:"Pexels: "+(v.user&&v.user.name),link:v.url,cat:c.k}}).filter(Boolean)}).catch(function(){return[]})}
-function pixabay(c){if(!XK)return Promise.resolve([]);return fetch("https://pixabay.com/api/videos/?key="+XK+"&safesearch=true&per_page=15&page="+(1+Math.floor(Math.random()*4))+"&q="+encodeURIComponent(c.pi)).then(function(r){return r.json()}).then(function(j){return (j.hits||[]).map(function(h){var v=h.videos&&(h.videos.medium||h.videos.small);return v&&v.url&&{src:v.url,poster:"",title:c.k+": "+(h.tags||"").split(",")[0],credit:"Pixabay: "+h.user,link:h.pageURL,cat:c.k}}).filter(Boolean)}).catch(function(){return[]})}
-function commons(c){return vq("filetype:video ("+c.cm+")",Math.floor(Math.random()*25)).then(function(o){return o.map(function(x){return{src:x.src,poster:"",title:x.name.replace("Wikimedia Commons: ",""),credit:"Wikimedia Commons",link:x.link,cat:c.k}})}).catch(function(){return[]})}
-function srcs(c){return Promise.all([pexels(c),pixabay(c),commons(c)]).then(function(a){return [].concat.apply([],a)})}
-function reel(it){var d=document.createElement("div");d.className="reel";d.dataset.src=it.src;
- d.innerHTML='<video playsinline loop muted preload="none"></video><div class="rg"></div><div class="rt"><b></b><span></span></div><div class="ra"><button class="lk" aria-label="Like">♥<small>0</small></button><button class="mt" aria-label="Sound on or off">🔇</button><button class="dw" aria-label="Download video">⬇</button><a class="so" target="_blank" rel="noopener noreferrer" aria-label="Open source page">↗</a></div>';
- var v=d.querySelector("video");if(it.poster)v.poster=it.poster;d.querySelector("b").textContent=it.title;d.querySelector("span").textContent=it.cat+" | "+it.credit;d.querySelector(".so").href=it.link;
- v.onclick=function(){if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()};
- v.onerror=function(){if(d.parentNode){d.remove();if(!rf.children.length)rf.innerHTML='<div class="rl">Videos could not load. Check your internet connection.</div>'}};
- var lk=d.querySelector(".lk");lk.onclick=function(){lk.querySelector("small").textContent=lk.classList.toggle("on")?1:0};
- d.querySelector(".mt").onclick=function(){muted=!muted;$$(".reel video").forEach(function(x){x.muted=muted});$$(".mt").forEach(function(b){b.textContent=muted?"🔇":"🔊"})};
- d.querySelector(".dw").onclick=function(){var b=this;b.textContent="…";dl(it.src,it.title,{textContent:""});setTimeout(function(){b.textContent="⬇"},2500)};
- reelIO.observe(d);return d}
-function build(k){rf.innerHTML='<div class="rl">Loading videos...</div>';
- var cs=k==="All"?shuf(CATS.slice()).slice(0,4):CATS.filter(function(c){return c.k===k});
- Promise.all(cs.map(srcs)).then(function(a){var seen={},it=[];[].concat.apply([],a).forEach(function(x){if(!seen[x.src]){seen[x.src]=1;it.push(x)}});it=shuf(it);
-  if(!it.length)it=shuf(FBK.map(function(f){return{src:f.src,poster:"",title:f.name,credit:"Blender Foundation",link:f.link,cat:"Open movie"}}));
-  rf.innerHTML="";it.slice(0,16).forEach(function(x){rf.appendChild(reel(x))});rf.scrollTop=0})}
-["All"].concat(CATS.map(function(c){return c.k})).forEach(function(k,i){var b=document.createElement("button");b.textContent=k==="All"?"🔥 All":k;if(!i)b.className="on";b.onclick=function(){$$("#rc button").forEach(function(x){x.classList.toggle("on",x===b)});build(k)};$("#rc").appendChild(b)});
-new IntersectionObserver(function(es){var e=es[0];if(e.isIntersecting){if(!rstarted){rstarted=true;build("All")}else if(cur){var p=cur.play();if(p&&p.catch)p.catch(function(){})}}else $$(".reel video").forEach(function(v){v.pause()})},{threshold:.15}).observe($(".rw"));
+/* ---------- TikTok feed (official embed player) ---------- */
+var TT=[];/* optional: add TikTok video links here, or paste them on the page */
+var rf=$("#rf"),tkey="tt_links";
+function tget(){try{return JSON.parse(localStorage.getItem(tkey)||"[]")}catch(e){return[]}}
+function tset(a){try{localStorage.setItem(tkey,JSON.stringify(a))}catch(e){}}
+function tids(t){var o=[],re=/tiktok\.com\/@([\w.\-]+)\/video\/(\d+)/g,m;while((m=re.exec(t))){o.push({id:m[2],user:m[1]})}return o}
+function tall(){var seen={},o=[];tids(TT.join(" ")).concat(tget()).forEach(function(x){if(!seen[x.id]){seen[x.id]=1;o.push(x)}});return o}
+var tio=new IntersectionObserver(function(es){es.forEach(function(e){var f=e.target.querySelector("iframe");if(e.isIntersecting){if(!f.getAttribute("src"))f.setAttribute("src","https://www.tiktok.com/player/v1/"+e.target.dataset.id+"?autoplay=1&loop=1&rel=0&music_info=1&description=1")}else f.removeAttribute("src")})},{root:rf,threshold:.6});
+function treel(x){var d=document.createElement("div");d.className="reel";d.dataset.id=x.id;
+ d.innerHTML='<iframe title="TikTok video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen style="width:100%;height:100%;border:0;background:#000"></iframe><div class="ra" style="top:12px;bottom:auto;grid-auto-flow:column"><a class="so" target="_blank" rel="noopener noreferrer" aria-label="Open on TikTok">↗</a><button class="rm" aria-label="Remove video">✕</button></div>';
+ d.querySelector(".so").href="https://www.tiktok.com/@"+x.user+"/video/"+x.id;
+ d.querySelector(".rm").onclick=function(){tset(tget().filter(function(y){return y.id!==x.id}));d.remove();if(!rf.children.length)tshow()};
+ tio.observe(d);return d}
+function tshow(){var a=shuf(tall());rf.innerHTML="";if(!a.length){rf.innerHTML='<div class="rl">No TikTok videos yet.<br>Paste TikTok video links above and tap Add videos.</div>';return}a.forEach(function(x){rf.appendChild(treel(x))});rf.scrollTop=0}
+$("#tadd").onclick=function(){var t=$("#tin"),n=tids(t.value);if(!n.length){t.value="";t.placeholder="No valid link found. Use the full link: tiktok.com/@name/video/123...";return}var cur=tget(),ids={};cur.forEach(function(y){ids[y.id]=1});n.forEach(function(x){if(!ids[x.id]){cur.push(x);ids[x.id]=1}});tset(cur);t.value="";tshow()};
+$("#tclr").onclick=function(){tset([]);tshow()};
+tshow();
+new IntersectionObserver(function(es){if(es[0].isIntersecting){$$(".reel").forEach(function(r){tio.unobserve(r);tio.observe(r)})}else $$(".reel iframe").forEach(function(f){f.removeAttribute("src")})},{threshold:.15}).observe($(".rw"));
 })();
 </script>
 </body>
