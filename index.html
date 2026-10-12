@@ -630,10 +630,10 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   </div>
 </section>
 
-<!-- ===== VIDEO SECTION ===== -->
+<!-- ===== VIDEO SECTION (AUTOPLAY) ===== -->
 <section id="video" class="video-section">
   <div class="wrap">
-    <div class="sh"><h2>Video showcase</h2><p>Open-source videos — use the arrows to browse. Nothing changes until you click.</p></div>
+    <div class="sh"><h2>Video showcase</h2><p>Auto-playing open-source videos — use the arrows to browse.</p></div>
     <div class="video-card">
       <div class="video-header">
         <span class="badge">Video</span>
@@ -641,7 +641,7 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
         <p id="videoDesc">—</p>
       </div>
       <div class="video-wrap">
-        <video id="introVideo" playsinline preload="metadata" controls></video>
+        <video id="introVideo" playsinline autoplay muted loop preload="auto"></video>
         <div class="video-controls" id="videoControls">
           <button id="videoPrev" type="button" aria-label="Previous video"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><use href="#i-prev"/></svg></button>
           <span class="vindex" id="videoIndex">1 / 10</span>
@@ -651,7 +651,7 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
       <div class="video-meta">
         <span><span class="dot"></span>Open source</span>
         <span><span class="dot"></span>High quality</span>
-        <span><span class="dot"></span>Manual navigation</span>
+        <span><span class="dot"></span>Auto-playing</span>
       </div>
       <div class="video-source" id="videoSource">Source: loading…</div>
     </div>
@@ -730,10 +730,8 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   var EN_MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var BN_DAYS=["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
 
-  // Bangla (Bongabdo) month names
   var BONGABDO_MONTHS=["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
 
-  // Hijri month names in Bangla
   var HIJRI_MONTHS_BN=["মুহাররম","সফর","রবিউল আউয়াল","রবিউস সানি","জমাদিউল আউয়াল","জমাদিউস সানি","রজব","শাবান","রমজান","শাওয়াল","জিলকদ","জিলহজ"];
 
   var BONG_MONTHS_REG=[31,31,31,31,31,31,30,30,30,30,29,30];
@@ -1041,7 +1039,7 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   };
 })();
 
-/* ================= VIDEO CAROUSEL — reliable Pexels CDN ================= */
+/* ================= VIDEO CAROUSEL — AUTOPLAY ================= */
 (function(){
   var VIDEOS = [
     {src:"https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_30fps.mp4", title:"Warehouse logistics", desc:"Logistics and warehouse operations footage.", source:"Pexels"},
@@ -1078,7 +1076,26 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     indexEl.textContent = (current + 1) + " / " + VIDEOS.length;
   }
 
-  function loadVideo(i){
+  function tryPlay(){
+    video.muted = true;
+    var p = video.play();
+    if(p && p.catch){
+      p.catch(function(){
+        // If autoplay is blocked, retry once on user interaction
+        var once = function(){
+          video.play().catch(function(){});
+          document.removeEventListener("click", once);
+          document.removeEventListener("touchstart", once);
+          document.removeEventListener("scroll", once);
+        };
+        document.addEventListener("click", once, {once:true});
+        document.addEventListener("touchstart", once, {once:true});
+        document.addEventListener("scroll", once, {once:true, passive:true});
+      });
+    }
+  }
+
+  function loadVideo(i, autoplay){
     current = ((i % VIDEOS.length) + VIDEOS.length) % VIDEOS.length;
     var v = VIDEOS[current];
     video.pause();
@@ -1090,11 +1107,11 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     descEl.textContent = v.desc;
     sourceEl.innerHTML = 'Source: <a href="' + v.src + '" target="_blank" rel="noopener noreferrer">' + v.source + '</a> · ' + v.title;
     updateIndexLabel();
-    video.currentTime = 0.1;
+    if(autoplay !== false) tryPlay();
   }
 
-  function nextVideo(){ loadVideo(current + 1); }
-  function prevVideo(){ loadVideo(current - 1); }
+  function nextVideo(){ loadVideo(current + 1, true); }
+  function prevVideo(){ loadVideo(current - 1, true); }
 
   if(prevBtn) prevBtn.addEventListener("click", function(e){ e.stopPropagation(); prevVideo(); });
   if(nextBtn) nextBtn.addEventListener("click", function(e){ e.stopPropagation(); nextVideo(); });
@@ -1109,11 +1126,13 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     if(e.key === "ArrowRight") nextVideo();
   });
 
-  video.addEventListener("error", function(){
-    sourceEl.innerHTML = 'This video could not load. Click the next arrow → to try another.';
+  // When tab regains visibility, try to resume playback
+  document.addEventListener("visibilitychange", function(){
+    if(!document.hidden && video.paused) tryPlay();
   });
 
-  loadVideo(pickRandom());
+  // Kick off with a random video, autoplaying
+  loadVideo(pickRandom(), true);
 })();
 
 /* ================= RANDOM PHOTO GALLERY ================= */
