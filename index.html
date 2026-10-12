@@ -65,6 +65,9 @@ section{padding:70px 0 0}
 .vm{position:absolute;inset:0;display:grid;place-items:center;color:#fff;text-align:center;padding:20px;background:rgba(0,0,0,.6)}.vm[hidden]{display:none}
 .vi{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}.vi a{font-weight:600;font-size:.9rem;color:var(--mut);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;flex:1;min-width:160px}.vi a:hover{color:var(--ink)}
 .vi button{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 .85rem var(--f);cursor:pointer}.vi button:hover{background:var(--line)}.vi span{color:var(--mut);font-size:.85rem;font-weight:600}
+.sr{display:flex;gap:12px;align-items:center;justify-content:space-between}.sr .scap{flex:1;min-width:0}
+.dlb{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 .85rem var(--f);cursor:pointer;white-space:nowrap}.dlb:hover{background:var(--line)}
+.dlf{justify-self:start;margin-top:6px;padding:4px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:rgba(0,0,0,.3);color:#fff;font:600 .8rem var(--f);cursor:pointer}.dlf:hover{background:rgba(0,0,0,.55)}.pf.er .dlf{display:none}
 .pp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .pf{position:relative;margin:0;border-radius:22px;overflow:hidden;background:var(--line);aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.18)}
 .pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity .9s,transform 9s ease-out}.pf img.ok{opacity:1;transform:scale(1)}
@@ -142,22 +145,22 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
   <div class="sh rv"><h2>Beautiful photos</h2><p>A new set of free photos every time you refresh, playing one by one.</p></div>
   <div class="ss rv" id="ss"><div class="sl a" id="sa"></div><div class="sl" id="sb"></div><div class="sm" id="smsg" hidden>Photos could not load. Check your internet connection.</div>
     <div class="sc"><button id="sprev" aria-label="Previous photo">‹</button><button id="splay" aria-label="Pause">❚❚</button><button id="snext" aria-label="Next photo">›</button><span id="sct">1 / 16</span></div></div>
-  <div class="sinfo"><a class="scap" id="scap" href="https://picsum.photos" target="_blank" rel="noopener noreferrer">Loading photo...</a><div class="pbar"><i id="spg"></i></div></div>
+  <div class="sinfo"><div class="sr"><a class="scap" id="scap" href="https://picsum.photos" target="_blank" rel="noopener noreferrer">Loading photo...</a><button class="dlb" id="sdl">Download photo</button></div><div class="pbar"><i id="spg"></i></div></div>
   <p class="note" style="margin-top:12px">Every refresh picks new random photos from <a href="https://picsum.photos" target="_blank" rel="noopener noreferrer">Picsum</a> (free Unsplash photos) and the featured pictures of <a href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a> (free licenses, tap the photo name for its page). Pinterest images are not used because they belong to their owners.</p>
 </div></section>
 
 <section id="videos"><div class="wrap">
   <div class="sh rv"><h2>Random videos</h2><p>Free open-license videos. A new one plays every time you refresh.</p></div>
   <div class="vs rv"><video id="vv" playsinline muted autoplay controls></video><div class="vm" id="vmsg" hidden>Videos could not load. Check your internet connection.</div></div>
-  <div class="vi"><a id="vcap" href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Loading video...</a><span id="vct"></span><button id="vprev">‹ Previous</button><button id="vnext">Next video ›</button></div>
+  <div class="vi"><a id="vcap" href="https://commons.wikimedia.org" target="_blank" rel="noopener noreferrer">Loading video...</a><span id="vct"></span><button id="vdl" class="dlb">Download video</button><button id="vprev">‹ Previous</button><button id="vnext">Next video ›</button></div>
   <p class="note" style="margin-top:12px">Videos come from the featured videos of Wikimedia Commons and the open Blender Foundation movies (free licenses). Muted at first, use the video controls for sound. If a video cannot play, the next one starts.</p>
 </div></section>
 
 <section id="photos"><div class="wrap">
   <div class="sh rv"><h2>Today's best photos</h2><p id="pd">From Bing and Wikipedia, new every day.</p></div>
   <div class="pp rv">
-    <figure class="pf sk" id="pb"><img alt=""><figcaption><span>Bing image of the day</span><b></b><a href="https://www.bing.com" target="_blank" rel="noopener noreferrer">Bing</a></figcaption></figure>
-    <figure class="pf sk" id="pw"><img alt=""><figcaption><span>Wikipedia picture of the day</span><b></b><a href="https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day" target="_blank" rel="noopener noreferrer">Wikipedia</a></figcaption></figure>
+    <figure class="pf sk" id="pb"><img alt=""><figcaption><span>Bing image of the day</span><b></b><a href="https://www.bing.com" target="_blank" rel="noopener noreferrer">Bing</a><button class="dlf">Download</button></figcaption></figure>
+    <figure class="pf sk" id="pw"><img alt=""><figcaption><span>Wikipedia picture of the day</span><b></b><a href="https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day" target="_blank" rel="noopener noreferrer">Wikipedia</a><button class="dlf">Download</button></figcaption></figure>
   </div>
   <p class="note rv" style="margin-top:14px">Photos load live from Bing (via the Peapix feed) and the Wikipedia API, so you need an internet connection. Bing images are for personal wallpaper use. Wikipedia images have their own licenses, see the link on each photo.</p>
 </div></section>
@@ -192,10 +195,12 @@ function fail(id,url,name){var f=$(id);f.classList.remove("sk");f.classList.add(
 function show(id,o){var f=$(id),im=f.querySelector("img"),tried=0;f.classList.remove("sk");
  im.onload=function(){im.classList.add("ok")};
  im.onerror=function(){if(!tried&&o.fb){tried=1;im.src=o.fb}else fail(id,o.link,o.name)};
- im.alt=o.title;im.src=o.src;f.querySelector("b").textContent=o.title;var a=f.querySelector("a");a.href=o.link;a.textContent=o.linkText}
+ im.alt=o.title;f.dataset.src=o.src;im.src=o.src;f.querySelector("b").textContent=o.title;var a=f.querySelector("a");a.href=o.link;a.textContent=o.linkText}
 fetch("https://peapix.com/bing/feed?country=us&n=1").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){var x=a[0];show("#pb",{src:x.fullUrl,fb:x.imageUrl,title:x.title,link:x.pageUrl,linkText:"View on Peapix",name:"Bing"})}).catch(function(){fail("#pb","https://www.bing.com","Bing")});
 function wk(off){var d=new Date(Date.now()-off*864e5);return fetch("https://en.wikipedia.org/api/rest_v1/feed/featured/"+d.getUTCFullYear()+"/"+d2(d.getUTCMonth()+1)+"/"+d2(d.getUTCDate())).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j.image)throw 0;return j.image})}
 wk(0).catch(function(){return wk(1)}).then(function(i){var t=i.thumbnail.source;show("#pw",{src:t.replace(/\/\d+px-/,"/1280px-"),fb:t,title:(i.description&&i.description.text)||i.title.replace(/^File:/,"").replace(/_/g," "),link:i.file_page||"https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day",linkText:"View on Wikipedia",name:"Wikipedia"})}).catch(function(){fail("#pw","https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day","Wikipedia")});
+function dl(url,name,btn){var t=btn.textContent;btn.textContent="Downloading...";
+ fetch(url).then(function(r){if(!r.ok)throw 0;return r.blob()}).then(function(b){var ext=(b.type.split("/")[1]||"bin").replace("jpeg","jpg").split("+")[0],a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=(name||"file").replace(/[^\w\-]+/g,"_").slice(0,50)+"."+ext;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);btn.textContent="Saved"}).catch(function(){window.open(url,"_blank","noopener");btn.textContent="Opened in new tab"}).then(function(){setTimeout(function(){btn.textContent=t},2500)})}
 /* ---------- date and time ---------- */
 var TZ="Asia/Dhaka",BD="০১২৩৪৫৬৭৮৯",BM=["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"],BE=["Boishakh","Joishtho","Asharh","Srabon","Bhadro","Ashwin","Kartik","Agrahayan","Poush","Magh","Falgun","Choitro"];
 function bd(n){return String(n).replace(/\d/g,function(c){return BD[c]})}
@@ -251,6 +256,9 @@ var vt=setTimeout(function(){vstart(shuf(FBK.slice()))},5000);
 function vq(q,off){return cq(q,off,"&prop=videoinfo&viprop=url|mime|size|derivatives").then(function(ps){var out=[];ps.forEach(function(p){var i=p.videoinfo&&p.videoinfo[0];if(!i)return;var src="",ds=(i.derivatives||[]).filter(function(d){return d.type&&d.height&&vv.canPlayType(d.type)}).sort(function(a,b){return Math.abs(a.height-480)-Math.abs(b.height-480)});
  if(ds.length)src=ds[0].src;else if(i.size&&i.size<40e6&&vv.canPlayType(i.mime))src=i.url;if(!src)return;if(src.indexOf("//")===0)src="https:"+src;out.push({src:src,name:"Wikimedia Commons: "+nm(p.title),link:i.descriptionurl})});return out})}
 vq('filetype:video deepcat:"Featured videos"',Math.floor(Math.random()*60)).then(function(o){return o.length?o:vq('filetype:video deepcat:"Quality videos"',0)}).then(function(o){clearTimeout(vt);vstart(shuf(o).slice(0,12).concat(shuf(FBK.slice())))}).catch(function(){clearTimeout(vt);vstart(shuf(FBK.slice()))});
+$("#sdl").onclick=function(){var it=SL_[si];dl(it.src,it.name+" "+(si+1),this)};
+$("#vdl").onclick=function(){var it=VL[vi];if(it)dl(it.src,it.name,this)};
+$$(".dlf").forEach(function(b){b.onclick=function(){var f=b.closest("figure");if(f.dataset.src)dl(f.dataset.src,f.querySelector("b").textContent||"photo",b)}});
 })();
 </script>
 </body>
