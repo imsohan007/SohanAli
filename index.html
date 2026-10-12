@@ -39,50 +39,27 @@ section{padding:70px 0 0}
 .job ul{list-style:none}.job li{padding:7px 0 7px 20px;border-top:1px solid var(--line);position:relative}.job li::before{content:"";position:absolute;left:2px;top:17px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{padding:6px 13px;border-radius:999px;border:1px solid var(--line);font-size:.93rem;font-weight:600}
 .edu p{color:var(--mut)}.edu .w{color:var(--acc);font-weight:600;margin-top:6px}
-/* camera */
-.camwrap{display:grid;grid-template-columns:minmax(0,430px) 1fr;gap:24px;align-items:start}
-.vf{position:relative;background:#000;border-radius:24px;overflow:hidden;aspect-ratio:3/4;display:grid;place-items:center;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.vf canvas{max-width:100%;max-height:100%;display:block}
-.vf video{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.gridl{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 33%,rgba(255,255,255,.35) 33%,rgba(255,255,255,.35) calc(33% + 1px),transparent calc(33% + 1px),transparent 66%,rgba(255,255,255,.35) 66%,rgba(255,255,255,.35) calc(66% + 1px),transparent calc(66% + 1px)),linear-gradient(transparent 33%,rgba(255,255,255,.35) 33%,rgba(255,255,255,.35) calc(33% + 1px),transparent calc(33% + 1px),transparent 66%,rgba(255,255,255,.35) 66%,rgba(255,255,255,.35) calc(66% + 1px),transparent calc(66% + 1px))}
-.msg{position:absolute;inset:0;display:grid;place-content:center;gap:14px;text-align:center;padding:24px;font-weight:600;background:radial-gradient(circle at 50% 40%,#222,#000)}
-.msg button{justify-self:center}
-.rec{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:999px;background:rgba(0,0,0,.6);font-weight:600;font-size:.9rem}.rec b{color:#F43F5E;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
-.cnt{position:absolute;inset:0;display:grid;place-items:center;font-size:7rem;font-weight:800;text-shadow:0 4px 30px #000;pointer-events:none}
-.tag{position:absolute;top:14px;right:14px;padding:5px 12px;border-radius:999px;background:rgba(0,0,0,.6);font-weight:600;font-size:.8rem}
-.fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}.fl.go{animation:fh .3s}@keyframes fh{from{opacity:.9}}
-.panel{display:grid;gap:18px}
-.modes{display:flex;gap:6px;padding:5px;border-radius:999px;background:var(--line)}
-.modes button{flex:1;padding:9px 6px;border:0;border-radius:999px;background:none;color:var(--ink);font:600 .9rem var(--f);cursor:pointer}.modes button.on{background:var(--ink);color:var(--bg)}
-.lbl{font-weight:600;font-size:.85rem;color:var(--mut);margin-bottom:8px}
-.fls{display:flex;flex-wrap:wrap;gap:7px}.fls button,.opt button,.opt select{padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:600 .86rem var(--f);cursor:pointer}
-.fls button.on,.opt button.on{background:var(--acc);border-color:var(--acc);color:#fff}
-.opt{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.zm{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.86rem}.zm input{flex:1;accent-color:var(--acc)}
-.ctl{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 10px}
-.th{width:56px;height:56px;border-radius:14px;border:2px solid var(--line);background:var(--line) center/cover;cursor:pointer;overflow:hidden;padding:0}.th img,.th video{width:100%;height:100%;object-fit:cover;display:block}
-.sh2{width:78px;height:78px;border-radius:50%;border:5px solid var(--ink);background:var(--bg);padding:5px;cursor:pointer}
-.sh2 i{display:block;width:100%;height:100%;border-radius:50%;background:var(--ink);transition:border-radius .2s,background .2s,transform .2s}
-.sh2.v i{background:#F43F5E}.sh2.r i{border-radius:10px;transform:scale(.6)}
-.rnd{width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.3rem;cursor:pointer}
+.pp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pf{position:relative;margin:0;border-radius:22px;overflow:hidden;background:var(--line);aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity .9s,transform 9s ease-out}.pf img.ok{opacity:1;transform:scale(1)}
+.pf figcaption{position:absolute;left:0;right:0;bottom:0;padding:52px 18px 16px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78));display:grid;gap:2px}
+.pf figcaption span{font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;opacity:.85}
+.pf figcaption b{font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pf figcaption a{font-size:.85rem;font-weight:600;color:#fff;opacity:.85}
+.pf.sk{background:linear-gradient(100deg,var(--line) 30%,color-mix(in srgb,var(--line) 55%,#fff) 50%,var(--line) 70%) 0 0/200% 100%;animation:shm 1.4s linear infinite}
+@keyframes shm{to{background-position:-200% 0}}
+.pf.er figcaption{background:none;color:var(--ink);align-content:center;height:100%;text-align:center;padding:20px}.pf.er figcaption a{color:var(--acc);opacity:1}
 .note{color:var(--mut);font-size:.88rem}
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:22px}
-.gal button{aspect-ratio:1;border:0;border-radius:14px;overflow:hidden;background:var(--line);padding:0;cursor:pointer;position:relative}.gal img,.gal video{width:100%;height:100%;object-fit:cover;display:block}
-.gal span{position:absolute;left:6px;bottom:6px;padding:1px 8px;border-radius:999px;background:rgba(0,0,0,.65);color:#fff;font-size:.72rem;font-weight:600}
-.vw{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.92);display:grid;grid-template-rows:1fr auto;padding:16px;gap:12px}
-.vw[hidden]{display:none}
-#vb{display:grid;place-items:center;min-height:0}#vb img,#vb video{max-width:100%;max-height:100%;border-radius:12px}
-.vc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.vc button,.vc a{padding:9px 16px;border-radius:999px;border:1px solid #444;background:#1c1c22;color:#fff;font:600 .9rem var(--f);text-decoration:none;cursor:pointer}.vc .on{background:var(--acc);border-color:var(--acc)}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:36px;border-radius:26px;background:var(--ink);color:var(--bg)}
 .contact h2{font-weight:800;font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:-.03em;line-height:1.1}.contact p{margin:12px 0 0;opacity:.75}.contact .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
 .links{display:grid;gap:10px}.link{display:block;padding:12px 16px;border-radius:14px;text-decoration:none;border:1px solid color-mix(in srgb,var(--bg) 25%,transparent)}a.link:hover{background:color-mix(in srgb,var(--bg) 12%,transparent)}.link small{display:block;opacity:.6;line-height:1.2}.link b{overflow-wrap:anywhere}
 footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
-@media (max-width:860px){.camwrap,.two,.edu,.skills,.contact{grid-template-columns:1fr}.vf{aspect-ratio:3/4;max-height:78vh}.contact{padding:24px 18px}}
+@media (max-width:860px){.pp,.two,.edu,.skills,.contact{grid-template-columns:1fr}.contact{padding:24px 18px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><span class="logo">Sohan Ali Sikder</span><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#camera">Camera</a><a class="k" href="#contact">Contact</a><button id="th" aria-label="Toggle theme">◐</button></div></header>
+<header class="top"><div class="wrap"><span class="logo">Sohan Ali Sikder</span><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#photos">Photos</a><a class="k" href="#contact">Contact</a><button id="th" aria-label="Toggle theme">◐</button></div></header>
 <main>
 <div class="wrap hero">
   <span class="eb"><i></i>Open to inventory and operations roles</span>
@@ -90,7 +67,7 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
   <p>Two years of shop, stock and team work at Apon Tech Ltd. I am looking for an inventory or operations role in a garments factory in Bangladesh.</p>
   <a class="btn" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
   <a class="btn o" href="https://drive.google.com/file/d/16CjDf6xMueUT4dmRH0moEQVmw54vzSJg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download CV</a>
-  <a class="btn a" href="#camera">Open camera</a>
+  <a class="btn a" href="#photos">Today's photos</a>
 </div>
 
 <section id="about"><div class="wrap">
@@ -124,30 +101,13 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
   </div>
 </div></section>
 
-<section id="camera"><div class="wrap">
-  <div class="sh rv"><h2>Camera</h2><p>18 filters, cinematic mode and slow-mo. Made to run best in Chrome on a Pixel 7. Photos and videos stay on your device.</p></div>
-  <div class="camwrap rv">
-    <div class="vf" id="vf">
-      <canvas id="cv" width="1080" height="1440"></canvas><video id="vd" playsinline muted></video>
-      <div class="gridl" id="gridl" hidden></div><div class="fl" id="fl"></div>
-      <div class="rec" id="rec" hidden><b>●</b> <span id="rt">0:00</span></div><div class="tag" id="info" hidden></div><div class="cnt" id="cnt"></div>
-      <div class="msg" id="msg"><span id="mt">Allow camera access to start</span><button class="btn a" id="start" style="margin:0">Start camera</button></div>
-    </div>
-    <div class="panel">
-      <div class="modes" id="modes"><button class="on" data-m="photo">Photo</button><button data-m="video">Video</button><button data-m="cine">Cinematic</button><button data-m="slow">Slow-mo</button></div>
-      <div><div class="lbl">Filters</div><div class="fls" id="fls"></div></div>
-      <div class="zm" id="zmw" hidden>Zoom <input type="range" id="zoom" aria-label="Zoom"></div>
-      <div class="opt">
-        <select id="res" aria-label="Resolution"><option value="720">720p</option><option value="1080" selected>1080p</option><option value="2160">4K</option></select>
-        <select id="fps" aria-label="Frame rate"><option value="24">24 fps</option><option value="30" selected>30 fps</option><option value="60">60 fps</option></select>
-        <button id="gr">Grid</button><button id="tm" data-v="0">Timer: off</button><button id="tor" hidden>Torch</button><button id="px">Pixel 7 preset</button>
-      </div>
-      <div class="ctl"><button class="th" id="last" aria-label="Open last capture"></button><button class="sh2" id="sh" aria-label="Shutter"><i></i></button><button class="rnd" id="flip" aria-label="Flip camera">⟲</button></div>
-      <div class="opt"><label class="btn o" style="margin:0;padding:9px 18px">Edit a photo<input type="file" id="up" accept="image/*" hidden></label></div>
-      <p class="note">Cinematic: 2.39:1 widescreen, teal and orange grade, vignette, film grain, 24 fps. Slow-mo: records at up to 60 fps and plays back at 0.5x, 0.25x or 0.1x. Pixel's 240 fps hardware slow-mo is only in the Pixel Camera app. Filters are saved into photos and videos in Chrome.</p>
-    </div>
+<section id="photos"><div class="wrap">
+  <div class="sh rv"><h2>Today's best photos</h2><p id="pd">From Bing and Wikipedia, new every day.</p></div>
+  <div class="pp rv">
+    <figure class="pf sk" id="pb"><img alt=""><figcaption><span>Bing image of the day</span><b></b><a href="https://www.bing.com" target="_blank" rel="noopener noreferrer">Bing</a></figcaption></figure>
+    <figure class="pf sk" id="pw"><img alt=""><figcaption><span>Wikipedia picture of the day</span><b></b><a href="https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day" target="_blank" rel="noopener noreferrer">Wikipedia</a></figcaption></figure>
   </div>
-  <div class="gal" id="gal"></div>
+  <p class="note rv" style="margin-top:14px">Photos load live from Bing (via the Peapix feed) and the Wikipedia API, so you need an internet connection. Bing images are for personal wallpaper use. Wikipedia images have their own licenses, see the link on each photo.</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -165,7 +125,6 @@ footer{text-align:center;color:var(--mut);padding:50px 0 40px;font-size:.92rem}
 </main>
 <footer>&copy; 2026 Sohan Ali Sikder</footer>
 
-<div class="vw" id="vw" hidden><div id="vb"></div><div class="vc" id="vc"></div></div>
 
 <script>
 (function(){
@@ -174,76 +133,17 @@ $("#th").onclick=function(){var r=document.documentElement,d=r.getAttribute("dat
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.08});
 $$(".rv").forEach(function(e){io.observe(e)});
 
-/* ---------- camera ---------- */
-var vd=$("#vd"),cv=$("#cv"),cx=cv.getContext("2d"),stream=null,track=null,face="environment",mode="photo",fi=0,rec=null,chunks=[],aud=null,rtm=0,t0=0,items=[],rate=1,curV=null;
-var F=[["Normal",""],["Vivid","saturate(1.5) contrast(1.1)"],["Noir","grayscale(1) contrast(1.25)"],["Sepia","sepia(.85) contrast(1.05)"],["Vintage","sepia(.4) saturate(1.3) contrast(.9) brightness(1.05) hue-rotate(-10deg)"],["Cool","saturate(1.1) hue-rotate(15deg) brightness(1.02)"],["Warm","sepia(.25) saturate(1.3) hue-rotate(-12deg)"],["Fade","contrast(.85) brightness(1.1) saturate(.8)"],["Drama","contrast(1.4) saturate(1.2) brightness(.92)"],["Teal-Orange","contrast(1.15) saturate(1.35) hue-rotate(-8deg) sepia(.15)"],["Cyber","contrast(1.2) saturate(1.8) hue-rotate(260deg)"],["Pastel","saturate(.7) brightness(1.15) contrast(.9)"],["Sunset","sepia(.5) saturate(1.8) hue-rotate(-20deg)"],["Matte","contrast(.8) brightness(1.08) saturate(.85) sepia(.1)"],["Neon","saturate(2.4) contrast(1.3) hue-rotate(310deg)"],["Dream","blur(.6px) brightness(1.12) saturate(1.3) contrast(.92)"],["Night","brightness(1.35) contrast(1.15) saturate(1.1)"],["B&W Hi","grayscale(1) contrast(1.6) brightness(1.05)"]];
-var RES={720:[1280,720],1080:[1920,1080],2160:[3840,2160]};
-F.forEach(function(f,i){var b=document.createElement("button");b.textContent=f[0];if(!i)b.className="on";b.onclick=function(){fi=i;$$("#fls button").forEach(function(x){x.classList.toggle("on",x===b)})};$("#fls").appendChild(b)});
-var grain=document.createElement("canvas");grain.width=grain.height=200;(function(){var g=grain.getContext("2d"),d=g.createImageData(200,200);for(var i=0;i<d.data.length;i+=4){var v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}g.putImageData(d,0,0)})();
-function filt(){var f=F[fi][1];if(mode==="cine")f+=" contrast(1.12) saturate(1.15) hue-rotate(-4deg)";return f.trim()||"none"}
-function geo(sw,sh,mx,m){var cw=sw,ch=sh,sx=0,sy=0;if(mode==="cine"){ch=Math.round(sw/2.39);if(ch>sh){ch=sh;cw=Math.round(sh*2.39);sx=(sw-cw)/2}else sy=(sh-ch)/2}var k=Math.min(1,mx/cw);return{sx:sx,sy:sy,sw:cw,sh:ch,w:Math.round(cw*k),h:Math.round(ch*k),m:m}}
-function post(g,w,h){g.globalCompositeOperation="soft-light";var l=g.createLinearGradient(0,0,0,h);l.addColorStop(0,"rgba(0,120,140,.5)");l.addColorStop(1,"rgba(255,140,40,.45)");g.fillStyle=l;g.fillRect(0,0,w,h);g.globalCompositeOperation="source-over";
- var r=g.createRadialGradient(w/2,h/2,Math.min(w,h)*.35,w/2,h/2,Math.max(w,h)*.75);r.addColorStop(0,"rgba(0,0,0,0)");r.addColorStop(1,"rgba(0,0,0,.55)");g.fillStyle=r;g.fillRect(0,0,w,h);
- g.save();g.globalAlpha=.08;g.translate(Math.random()*200,Math.random()*200);g.fillStyle=g.createPattern(grain,"repeat");g.fillRect(-200,-200,w+200,h+200);g.restore()}
-function paint(g,src,o){g.save();if(o.m){g.translate(o.w,0);g.scale(-1,1)}g.filter=filt();g.drawImage(src,o.sx,o.sy,o.sw,o.sh,0,0,o.w,o.h);g.restore();g.filter="none";if(mode==="cine")post(g,o.w,o.h)}
-(function loop(){if(stream&&vd.videoWidth&&vd.readyState>1){var o=geo(vd.videoWidth,vd.videoHeight,1920,face==="user");if(cv.width!==o.w||cv.height!==o.h){cv.width=o.w;cv.height=o.h}paint(cx,vd,o)}requestAnimationFrame(loop)})();
-
-function msg(t){$("#msg").hidden=!t;if(t)$("#mt").textContent=t}
-function stop(){if(stream)stream.getTracks().forEach(function(t){t.stop()});stream=null;track=null}
-async function start(){
- stop();var r=RES[$("#res").value],fps=+$("#fps").value;
- try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:face},width:{ideal:r[0]},height:{ideal:r[1]},frameRate:{ideal:fps}},audio:false})}
- catch(e){stream=null;msg("Camera is not available here. Download this page and open it in Chrome on your Pixel 7, or use Edit a photo.");$("#start").textContent="Try again";return}
- vd.srcObject=stream;try{await vd.play()}catch(e){}
- track=stream.getVideoTracks()[0];msg("");
- var c=track.getCapabilities?track.getCapabilities():{},s=track.getSettings(),z=$("#zoom");
- if(c.zoom){z.min=c.zoom.min;z.max=c.zoom.max;z.step=c.zoom.step||.1;z.value=s.zoom||c.zoom.min;$("#zmw").hidden=false}else $("#zmw").hidden=true;
- $("#tor").hidden=!c.torch;$("#info").hidden=false;$("#info").textContent=s.width+"x"+s.height+" @ "+Math.round(s.frameRate||0)+" fps";
-}
-$("#start").onclick=start;
-$("#zoom").oninput=function(){if(track)track.applyConstraints({advanced:[{zoom:+this.value}]}).catch(function(){})};
-var tor=false;$("#tor").onclick=function(){tor=!tor;this.classList.toggle("on",tor);if(track)track.applyConstraints({advanced:[{torch:tor}]}).catch(function(){})};
-$("#res").onchange=$("#fps").onchange=function(){if(stream)start()};
-$("#flip").onclick=function(){face=face==="user"?"environment":"user";start()};
-$("#gr").onclick=function(){var h=$("#gridl");h.hidden=!h.hidden;this.classList.toggle("on",!h.hidden)};
-$("#px").onclick=function(){face="environment";$("#res").value="1080";$("#fps").value="60";start()};
-$("#tm").onclick=function(){var v=+this.dataset.v,n=v===0?3:v===3?10:0;this.dataset.v=n;this.textContent="Timer: "+(n?n+"s":"off")};
-$$("#modes button").forEach(function(b){b.onclick=function(){if(rec&&rec.state==="recording")return;mode=b.dataset.m;$$("#modes button").forEach(function(x){x.classList.toggle("on",x===b)});
- var s=$("#sh");s.className="sh2"+(mode==="photo"?"":" v");$("#fps").value=mode==="slow"?"60":mode==="cine"?"24":"30";if(stream)start()}});
-function count(n,cb){var c=$("#cnt");c.textContent=n;var iv=setInterval(function(){n--;if(n<=0){clearInterval(iv);c.textContent="";cb()}else c.textContent=n},1000)}
-$("#sh").onclick=function(){
- if(!stream){start();return}
- if(rec&&rec.state==="recording"){rec.stop();return}
- var d=+$("#tm").dataset.v;var go=mode==="photo"?photo:record;if(d)count(d,go);else go()};
-async function photo(){
- var f=$("#fl");f.classList.remove("go");void f.offsetWidth;f.classList.add("go");
- var src=vd,sw=vd.videoWidth,sh=vd.videoHeight,mx=2560;
- if(window.ImageCapture&&track&&mode==="photo"){try{var bm=await createImageBitmap(await new ImageCapture(track).takePhoto());src=bm;sw=bm.width;sh=bm.height;mx=4096}catch(e){}}
- var o=geo(sw,sh,mx,face==="user"),c=document.createElement("canvas");c.width=o.w;c.height=o.h;paint(c.getContext("2d"),src,o);
- c.toBlob(function(b){add({type:"img",url:URL.createObjectURL(b),ext:"jpg"})},"image/jpeg",.95)}
-async function record(){
- var cs=cv.captureStream(mode==="cine"?24:mode==="slow"?60:30);aud=null;
- if(mode!=="slow"){try{aud=await navigator.mediaDevices.getUserMedia({audio:true});aud.getAudioTracks().forEach(function(t){cs.addTrack(t)})}catch(e){}}
- var mt=["video/webm;codecs=vp9,opus","video/webm;codecs=vp8,opus","video/webm","video/mp4"].filter(function(t){return window.MediaRecorder&&MediaRecorder.isTypeSupported(t)})[0];
- if(!mt){msg("Video recording is not supported in this browser. Use Chrome.");return}
- chunks=[];rec=new MediaRecorder(cs,{mimeType:mt,videoBitsPerSecond:mode==="slow"?16e6:12e6});var slow=mode==="slow";
- rec.ondataavailable=function(e){if(e.data.size)chunks.push(e.data)};
- rec.onstop=function(){clearInterval(rtm);$("#rec").hidden=true;$("#sh").classList.remove("r");if(aud)aud.getTracks().forEach(function(t){t.stop()});
-  var b=new Blob(chunks,{type:mt});add({type:"vid",url:URL.createObjectURL(b),ext:mt.indexOf("mp4")>-1?"mp4":"webm",slow:slow})};
- rec.start();t0=Date.now();$("#rec").hidden=false;$("#sh").classList.add("r");
- rtm=setInterval(function(){var s=Math.floor((Date.now()-t0)/1000);$("#rt").textContent=Math.floor(s/60)+":"+("0"+s%60).slice(-2)},500)}
-/* gallery + viewer */
-function thumb(it){return it.type==="img"?'<img alt="Photo" src="'+it.url+'">':'<video muted playsinline preload="metadata" src="'+it.url+'#t=0.1"></video>'}
-function add(it){items.unshift(it);$("#last").innerHTML=thumb(it);var g=$("#gal");g.innerHTML="";items.forEach(function(x){var b=document.createElement("button");b.setAttribute("aria-label","Open capture");b.innerHTML=thumb(x)+(x.slow?"<span>Slow-mo</span>":"");b.onclick=function(){view(x)};g.appendChild(b)})}
-$("#last").onclick=function(){if(items[0])view(items[0])};
-function view(it){var v=$("#vw"),b=$("#vb"),c=$("#vc");v.hidden=false;b.innerHTML="";c.innerHTML="";curV=null;rate=it.slow?.25:1;
- if(it.type==="img"){var i=new Image();i.src=it.url;b.appendChild(i)}
- else{var e=document.createElement("video");e.src=it.url;e.controls=true;e.loop=true;e.playsInline=true;e.autoplay=true;e.onplay=function(){e.playbackRate=rate};b.appendChild(e);curV=e;
-  [[1,"1x"],[.5,"0.5x"],[.25,"0.25x"],[.1,"0.1x"]].forEach(function(s){var k=document.createElement("button");k.textContent=s[1];if(s[0]===rate)k.className="on";k.onclick=function(){rate=s[0];e.playbackRate=rate;$$("#vc button[data-s]").forEach(function(x){x.classList.toggle("on",x===k)})};k.dataset.s=s[0];c.appendChild(k)})}
- var a=document.createElement("a");a.textContent="Save";a.href=it.url;a.download="sohan-cam-"+Date.now()+"."+it.ext;c.appendChild(a);
- var x=document.createElement("button");x.textContent="Close";x.onclick=function(){v.hidden=true;b.innerHTML=""};c.appendChild(x)}
-/* edit an existing photo */
-$("#up").onchange=async function(){var f=this.files[0];if(!f)return;try{var bm=await createImageBitmap(f),o=geo(bm.width,bm.height,4096,false),c=document.createElement("canvas");c.width=o.w;c.height=o.h;paint(c.getContext("2d"),bm,o);c.toBlob(function(b){add({type:"img",url:URL.createObjectURL(b),ext:"jpg"})},"image/jpeg",.95)}catch(e){}this.value=""};
+/* ---------- today's photos ---------- */
+var d2=function(n){return ("0"+n).slice(-2)};
+$("#pd").textContent=new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"})+" | from Bing and Wikipedia";
+function fail(id,url,name){var f=$(id);f.classList.remove("sk");f.classList.add("er");f.querySelector("b").textContent="Could not load today's photo here. Open it on "+name+".";var a=f.querySelector("a");a.href=url;a.textContent="Open "+name}
+function show(id,o){var f=$(id),im=f.querySelector("img"),tried=0;f.classList.remove("sk");
+ im.onload=function(){im.classList.add("ok")};
+ im.onerror=function(){if(!tried&&o.fb){tried=1;im.src=o.fb}else fail(id,o.link,o.name)};
+ im.alt=o.title;im.src=o.src;f.querySelector("b").textContent=o.title;var a=f.querySelector("a");a.href=o.link;a.textContent=o.linkText}
+fetch("https://peapix.com/bing/feed?country=us&n=1").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){var x=a[0];show("#pb",{src:x.fullUrl,fb:x.imageUrl,title:x.title,link:x.pageUrl,linkText:"View on Peapix",name:"Bing"})}).catch(function(){fail("#pb","https://www.bing.com","Bing")});
+function wk(off){var d=new Date(Date.now()-off*864e5);return fetch("https://en.wikipedia.org/api/rest_v1/feed/featured/"+d.getUTCFullYear()+"/"+d2(d.getUTCMonth()+1)+"/"+d2(d.getUTCDate())).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j.image)throw 0;return j.image})}
+wk(0).catch(function(){return wk(1)}).then(function(i){var t=i.thumbnail.source;show("#pw",{src:t.replace(/\/\d+px-/,"/1280px-"),fb:t,title:(i.description&&i.description.text)||i.title.replace(/^File:/,"").replace(/_/g," "),link:i.file_page||"https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day",linkText:"View on Wikipedia",name:"Wikipedia"})}).catch(function(){fail("#pw","https://en.wikipedia.org/wiki/Wikipedia:Picture_of_the_day","Wikipedia")});
 })();
 </script>
 </body>
