@@ -276,11 +276,6 @@ section:last-of-type{padding-bottom:80px}
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   min-width:70px;text-align:center;
 }
-.video-wrap .play-overlay{position:absolute;inset:0;display:grid;place-items:center;cursor:pointer;background:linear-gradient(135deg,rgba(6,20,31,.5),rgba(6,20,31,.2));transition:opacity .3s;z-index:3}
-.video-wrap .play-overlay.hidden{opacity:0;pointer-events:none}
-.video-wrap .play-btn{width:72px;height:72px;border-radius:50%;background:rgba(34,193,255,.95);display:grid;place-items:center;box-shadow:0 8px 30px rgba(34,193,255,.45);transition:transform .2s}
-.video-wrap .play-overlay:hover .play-btn{transform:scale(1.08)}
-.video-wrap .play-btn svg{width:28px;height:28px;fill:#04202E;margin-left:3px}
 .video-meta{padding:14px 22px 18px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;color:#52636F;font-size:.88rem}
 .video-meta span{display:inline-flex;align-items:center;gap:6px}
 .video-meta .dot{width:6px;height:6px;border-radius:50%;background:#22C1FF}
@@ -415,8 +410,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   .nav a{font-size:.78rem;padding:6px 10px}
   .sphere-card #sphere{height:280px}
   .video-header h3,.gallery-header h3{font-size:1.05rem}
-  .video-wrap .play-btn{width:60px;height:60px}
-  .video-wrap .play-btn svg{width:24px;height:24px}
   .video-controls button{width:38px;height:38px;font-size:1rem}
   .video-controls .vindex{font-size:.72rem;padding:5px 10px;min-width:58px}
   .contact h2{font-size:1.5rem}
@@ -444,13 +437,12 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   .js .rv,.js .chips span{opacity:1!important;transform:none!important}
   .js .sh:not(.in) h2::after{width:72px}
   .js .loader,.cur-ring,.cur-dot,#trail{display:none!important}
-  .video-wrap .play-overlay{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== LIVE TIME & DATE BAR (English + Bangla/Bongabdo + Hijri-in-Bangla) ===== -->
+<!-- ===== LIVE TIME & DATE BAR ===== -->
 <div class="timebar" id="timebar" aria-live="polite">
   <div class="date-group">
     <span class="date-en" id="liveDateEn">—</span>
@@ -478,7 +470,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   <symbol id="l-wa" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#25D366"/><path d="M24 9.5a14.5 14.5 0 0 0-12.4 22L9.5 38.5l7.200-2A14.500 14.500 0 1 0 24 9.500z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M18.200 17c-.7.700-1.200 1.700-.6 3.100 1.200 3 4.200 6 7.200 7.200 1.500.6 2.600 0 3.200-.8.500-.7.500-1.400.2-1.700l-2.600-1.300c-.4-.2-.8 0-1.100.3l-.8 1c-1.700-.8-3.200-2.300-4-4l1-.8c.3-.3.500-.7.300-1.100l-1.300-2.600c-.4-.4-1.100-.3-1.500.1z" fill="#fff"/></symbol>
   <symbol id="l-fb" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1877F2"/><path d="M26.500 40V26h4.700l.8-5.500h-5.500v-3.400c0-1.600.7-2.800 2.900-2.800H32V9.500c-.5-.1-2.300-.3-4.200-.3-4.400 0-7.300 2.700-7.300 7.500v3.800H16V26h4.500v14z" fill="#fff"/></symbol>
   <symbol id="l-in" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#0A66C2"/><rect x="11" y="19" width="5.500" height="17" fill="#fff"/><circle cx="13.750" cy="13.500" r="3.300" fill="#fff"/><path d="M21 19h5.200v2.400c.8-1.500 2.700-2.800 5.400-2.800 5.300 0 6.400 3.500 6.400 8V36h-5.500v-8.200c0-2-.1-4.400-2.800-4.400s-3.200 2.100-3.200 4.300V36H21z" fill="#fff"/></symbol>
-  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></symbol>
   <symbol id="i-prev" viewBox="0 0 24 24"><path d="M6 6h2v12H6zM20 6l-9 6 9 6z"/></symbol>
   <symbol id="i-next" viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM4 6l9 6-9 6z"/></symbol>
 </svg>
@@ -639,10 +630,10 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   </div>
 </section>
 
-<!-- ===== VIDEO SECTION (manual prev/next only, full video shown) ===== -->
+<!-- ===== VIDEO SECTION ===== -->
 <section id="video" class="video-section">
   <div class="wrap">
-    <div class="sh"><h2>Video showcase</h2><p>Full-width open-source videos — use the arrows to browse. Nothing changes until you click.</p></div>
+    <div class="sh"><h2>Video showcase</h2><p>Open-source videos — use the arrows to browse. Nothing changes until you click.</p></div>
     <div class="video-card">
       <div class="video-header">
         <span class="badge">Video</span>
@@ -737,89 +728,43 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
 
   var EN_DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   var EN_MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-
   var BN_DAYS=["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
 
-  // Bangla (Bongabdo / Bengali calendar) month names for the 6 seasons
-  var BONGABDO_MONTHS=[
-    "বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন",
-    "কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"
-  ];
+  // Bangla (Bongabdo) month names
+  var BONGABDO_MONTHS=["বৈশাখ","জ্যৈষ্ঠ","আষাঢ়","শ্রাবণ","ভাদ্র","আশ্বিন","কার্তিক","অগ্রহায়ণ","পৌষ","মাঘ","ফাল্গুন","চৈত্র"];
 
-  // Hijri month names written in Bangla
-  var HIJRI_MONTHS_BN=[
-    "মুহাররম","সফর","রবিউল আউয়াল","রবিউস সানি",
-    "জমাদিউল আউয়াল","জমাদিউস সানি","রজব","শাবান",
-    "রমজান","শাওয়াল","জিলকদ","জিলহজ"
-  ];
+  // Hijri month names in Bangla
+  var HIJRI_MONTHS_BN=["মুহাররম","সফর","রবিউল আউয়াল","রবিউস সানি","জমাদিউল আউয়াল","জমাদিউস সানি","রজব","শাবান","রমজান","শাওয়াল","জিলকদ","জিলহজ"];
 
-  /* --- Convert Gregorian to Bengali (Bongabdo) date ---
-     Modern Bangladesh rule (since 2019):
-       - Boishakh 1 = April 14 every year
-       - Falgun is 29 days in regular years, 30 days only when Gregorian year is a leap year
-       - Chaitra is 30 days in regular years, 31 days in leap years
-     Month lengths (regular year): 31,31,31,31,31,31,30,30,30,30,29,30
-     Month lengths (leap year):    31,31,31,31,31,31,30,30,30,30,30,30  (Falgun→30, Chaitra→31... actually)
-     Simplified correct lengths:
-       Regular: [31,31,31,31,31,31,30,30,30,30,29,30]  → sums 355
-       Leap:    [31,31,31,31,31,31,30,30,30,30,30,31]  → sums 356  (Falgun 30, Chaitra 31)
-  */
   var BONG_MONTHS_REG=[31,31,31,31,31,31,30,30,30,30,29,30];
   var BONG_MONTHS_LEAP=[31,31,31,31,31,31,30,30,30,30,30,31];
-
   function isLeapYear(y){return (y%4===0 && y%100!==0) || (y%400===0)}
 
   function gregorianToBongabdo(gy, gm, gd){
-    // Bongabdo year shifts with the Gregorian year around Pohela Boishakh (Apr 14)
-    // Days from April 14 (start of Boishakh) to the given date, within the same Bengali year.
-    // We compute: bengaliYear, month index (0..11), day-of-month (1..31)
-    var bengaliYear;
-    // Determine the Bengali year start (April 14 of either gy or gy-1)
-    // If the date is on/after April 14, Bengali year = gy - 593
-    // Else Bengali year = gy - 594
-    var startYear;
-    if(gm > 4 || (gm === 4 && gd >= 14)){
-      bengaliYear = gy - 593;
-      startYear = gy;
-    } else {
-      bengaliYear = gy - 594;
-      startYear = gy - 1;
-    }
-
-    // Compute the ordinal day within the Bengali year (1-based), starting from April 14 of startYear
-    var startDate = new Date(startYear, 3, 14); // April 14
+    var bengaliYear, startYear;
+    if(gm > 4 || (gm === 4 && gd >= 14)){ bengaliYear = gy - 593; startYear = gy; }
+    else { bengaliYear = gy - 594; startYear = gy - 1; }
+    var startDate = new Date(startYear, 3, 14);
     var curDate = new Date(gy, gm - 1, gd);
-    var diffDays = Math.floor((curDate - startDate) / 86400000); // 0-based
-    var dayInYear = diffDays + 1; // 1-based
-
-    // Choose month lengths based on leap-ness of the Gregorian year we're in
+    var diffDays = Math.floor((curDate - startDate) / 86400000);
+    var dayInYear = diffDays + 1;
     var lengths = isLeapYear(startYear) ? BONG_MONTHS_LEAP : BONG_MONTHS_REG;
-
-    // Walk through months
-    var m = 0;
-    var remaining = dayInYear;
-    while(m < 12 && remaining > lengths[m]){
-      remaining -= lengths[m];
-      m++;
-    }
+    var m = 0, remaining = dayInYear;
+    while(m < 12 && remaining > lengths[m]){ remaining -= lengths[m]; m++; }
     if(m >= 12) m = 11;
     return { year: bengaliYear, month: m, day: remaining };
   }
 
-  /* --- Convert Gregorian to Hijri --- */
   function gregorianToHijri(gy, gm, gd){
     var a = Math.floor((14 - gm) / 12);
     var y = gy + 4800 - a;
     var m = gm + 12 * a - 3;
-    var jdn = gd + Math.floor((153 * m + 2) / 5) + 365 * y
-            + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+    var jdn = gd + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
     var l = jdn - 1948440 + 10632;
     var n = Math.floor((l - 1) / 10631);
     l = l - 10631 * n + 354;
-    var j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719)
-          + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
-    l = l - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50)
-          - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
+    var j = Math.floor((10985 - l) / 5316) * Math.floor((50 * l) / 17719) + Math.floor(l / 5670) * Math.floor((43 * l) / 15238);
+    l = l - Math.floor((30 - j) / 15) * Math.floor((17719 * j) / 50) - Math.floor(j / 16) * Math.floor((15238 * j) / 43) + 29;
     var hm = Math.floor((24 * l) / 709);
     var hd = l - Math.floor((709 * hm) / 24);
     var hy = 30 * n + j - 30;
@@ -831,28 +776,18 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     var h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
     var ampm=h>=12?"PM":"AM";h=h%12;if(h===0)h=12;
     clockEl.textContent=h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s+" "+ampm;
-
-    // English (Gregorian) date
     dateEn.textContent=EN_DAYS[now.getDay()]+", "+now.getDate()+" "+EN_MONTHS[now.getMonth()]+" "+now.getFullYear();
-
-    // Bangla (Bongabdo) date — real Bengali calendar
     var b = gregorianToBongabdo(now.getFullYear(), now.getMonth()+1, now.getDate());
-    dateBn.textContent = BN_DAYS[now.getDay()] + ", "
-                       + toBn(b.day) + " " + BONGABDO_MONTHS[b.month] + " " + toBn(b.year) + " বঙ্গাব্দ";
-
-    // Hijri (Islamic) date written in Bangla
+    dateBn.textContent = BN_DAYS[now.getDay()] + ", " + toBn(b.day) + " " + BONGABDO_MONTHS[b.month] + " " + toBn(b.year) + " বঙ্গাব্দ";
     var hij = gregorianToHijri(now.getFullYear(), now.getMonth()+1, now.getDate());
-    dateHijriBn.textContent = BN_DAYS[now.getDay()] + ", "
-                            + toBn(hij.d) + " " + HIJRI_MONTHS_BN[hij.m-1] + " " + toBn(hij.y) + " হিজরি";
+    dateHijriBn.textContent = BN_DAYS[now.getDay()] + ", " + toBn(hij.d) + " " + HIJRI_MONTHS_BN[hij.m-1] + " " + toBn(hij.y) + " হিজরি";
   }
   updateTime();setInterval(updateTime,1000);
 
-  /* ===== SCROLL PROGRESS ===== */
   var bar=document.querySelector(".progress");
   function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+"%"}
   addEventListener("scroll",prog,{passive:true});prog();
 
-  /* ===== REVEAL ===== */
   var items=document.querySelectorAll(".sh,.card,.stat,.link");
   items.forEach(function(el){
     el.classList.add("rv");
@@ -875,13 +810,11 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   }
   document.querySelectorAll("[data-count]").forEach(function(el){if(!reduce)el.textContent="0"});
 
-  /* ===== TYPE ===== */
   var out=document.getElementById("type");
   var words=["Inventory and operations executive","Stock and store management","Team coordination","POS / ERP in daily work"];
   if(out&&!reduce){
     var w=0,c=words[0].length,del=true;
     setTimeout(function tick(){
-      var word=words[w];
       if(del){c--;if(c<=0){del=false;w=(w+1)%words.length}}else{c++;if(c>=words[w].length)del=true}
       out.textContent=words[w].slice(0,Math.max(c,0));
       var wait=del&&c===words[w].length-0?1800:(del?35:70);
@@ -890,7 +823,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     },2400);
   }
 
-  /* ===== NAV HIGHLIGHT ===== */
   var links=[].slice.call(document.querySelectorAll(".nav a"));
   var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"))});
   var so=new IntersectionObserver(function(es){es.forEach(function(e){
@@ -899,12 +831,10 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   secs.forEach(function(s){if(s)so.observe(s)});
 
   if(reduce||!fine)return;
-
-  /* ===== TILT ===== */
   document.querySelectorAll(".edu .card,.skills .card,.jobs .card,.video-card,.gallery-card").forEach(function(card){
     card.addEventListener("mousemove",function(e){
       var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      card.style.setProperty("--gx",(x+.5)*100+"%");card.style.setProperty("--gy",(y+.5)*100+"%");card.style.transform="perspective(900px) rotateY("+(x*6)+"deg) rotateX("+(-y*6)+"deg) translateY(-4px)";
+      card.style.transform="perspective(900px) rotateY("+(x*6)+"deg) rotateX("+(-y*6)+"deg) translateY(-4px)";
     });
     card.addEventListener("mouseleave",function(){card.style.transform=""});
   });
@@ -927,8 +857,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
   var root=document.documentElement;
-
-  /* ===== LOADER ===== */
   var loader=document.querySelector(".loader"),started=false;
   function start(){
     if(started)return;started=true;
@@ -939,7 +867,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
 
   if(reduce)return;
 
-  /* ===== PARTICLE NET ===== */
   var cv=document.getElementById("net"),hero=document.querySelector(".hero");
   if(cv&&cv.getContext){
     var cx=cv.getContext("2d"),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),pts=[],mouse={x:-999,y:-999},run=true;
@@ -970,7 +897,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     frame();
   }
 
-  /* ===== SCRAMBLE ===== */
   var chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   function scramble(el){
     var txt=el.getAttribute("data-t")||el.textContent;el.setAttribute("data-t",txt);
@@ -985,7 +911,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){scramble(e.target);so.unobserve(e.target)}})},{threshold:.9});
   heads.forEach(function(h){so.observe(h)});
 
-  /* ===== SCROLL SKEW ===== */
   var mq=document.querySelector(".marquee"),last=scrollY,skew=0,py=0;
   (function loop(){
     var y=scrollY,v=y-last;last=y;
@@ -995,7 +920,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     requestAnimationFrame(loop);
   })();
 
-  /* ===== CURSOR ===== */
   if(fine){
     root.classList.add("has-cursor");
     var ring=document.querySelector(".cur-ring"),dot=document.querySelector(".cur-dot"),mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
@@ -1047,8 +971,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
 (function(){
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine=matchMedia("(hover:hover) and (pointer:fine)").matches;
-
-  /* ===== CAREER PATH ===== */
   var sec=document.getElementById("path"),road=document.getElementById("rp"),truck=document.getElementById("truck"),stn=document.getElementById("stn");
   if(sec&&road){
     var L=road.getTotalLength(),fr=[0,.5,1],dots=[],stops=sec.querySelectorAll(".stops>div"),NS="http://www.w3.org/2000/svg";
@@ -1071,7 +993,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
 
   if(reduce)return;
 
-  /* ===== CLICK BURST ===== */
   document.addEventListener("click",function(e){
     var b=e.target.closest(".btn,.link,.logo");if(!b)return;
     for(var i=0;i<12;i++){
@@ -1083,7 +1004,6 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     }
   });
 
-  /* ===== SPARKLE TRAIL ===== */
   if(!fine)return;
   var cv=document.getElementById("trail"),cx=cv.getContext("2d"),ps=[],W,H;
   function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener("resize",rs);
@@ -1121,19 +1041,19 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
   };
 })();
 
-/* ================= VIDEO CAROUSEL — manual only, full video ================= */
+/* ================= VIDEO CAROUSEL — reliable Pexels CDN ================= */
 (function(){
   var VIDEOS = [
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-warehouse-worker-checking-inventory-4277-large.mp4", title:"Warehouse inventory check", desc:"Real warehouse flow — scanning and organizing stock.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-man-working-in-a-warehouse-4275-large.mp4", title:"Warehouse operations", desc:"Daily warehouse work: receiving, sorting and storing.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-people-working-in-a-warehouse-4273-large.mp4", title:"Team in the warehouse", desc:"Coordination and teamwork in a busy warehouse.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-business-team-in-a-meeting-4620-large.mp4", title:"Business team meeting", desc:"Team coordination and planning in a modern office.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-city-traffic-at-night-11-large.mp4", title:"City at night", desc:"City lights and motion — the energy of Dhaka.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-city-at-sunset-4472-large.mp4", title:"City at sunset", desc:"A calm aerial view of the city at golden hour.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4", title:"Forest stream", desc:"Peaceful nature moment to reset and focus.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4", title:"Ocean waves", desc:"Calm ocean waves for a clear mind.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-going-up-a-curved-road-in-the-mountains-4185-large.mp4", title:"Mountain road", desc:"A journey upward — like a career path.", source:"Mixkit"},
-    {src:"https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-man-typing-on-a-laptop-4811-large.mp4", title:"Working on laptop", desc:"Daily work — reporting and operations tracking.", source:"Mixkit"}
+    {src:"https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_30fps.mp4", title:"Warehouse logistics", desc:"Logistics and warehouse operations footage.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4", title:"Business meeting", desc:"Team coordination and planning in a modern office.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/2795405/2795405-hd_1920_1080_25fps.mp4", title:"City traffic", desc:"City lights and motion at night.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/2098989/2098989-hd_1920_1080_30fps.mp4", title:"Aerial city view", desc:"A calm aerial view of the city at golden hour.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4", title:"Forest stream", desc:"Peaceful nature moment to reset and focus.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/857251/857251-hd_1280_720_25fps.mp4", title:"Ocean waves", desc:"Calm ocean waves for a clear mind.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/3015510/3015510-hd_1920_1080_24fps.mp4", title:"Mountain road", desc:"A journey upward — like a career path.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/4065924/4065924-uhd_2560_1440_25fps.mp4", title:"Working on laptop", desc:"Daily work — reporting and operations tracking.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/3118031/3118031-uhd_2560_1440_25fps.mp4", title:"Retail shopping", desc:"Customers and retail energy in a shopping mall.", source:"Pexels"},
+    {src:"https://videos.pexels.com/video-files/4496268/4496268-uhd_2560_1440_24fps.mp4", title:"Stock organization", desc:"Organizing products and managing inventory.", source:"Pexels"}
   ];
 
   var video = document.getElementById("introVideo");
@@ -1170,19 +1090,15 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     descEl.textContent = v.desc;
     sourceEl.innerHTML = 'Source: <a href="' + v.src + '" target="_blank" rel="noopener noreferrer">' + v.source + '</a> · ' + v.title;
     updateIndexLabel();
-    // Show first frame automatically, no autoplay.
     video.currentTime = 0.1;
-    // Do NOT auto-play and do NOT set a timer — video changes only when user clicks.
   }
 
   function nextVideo(){ loadVideo(current + 1); }
   function prevVideo(){ loadVideo(current - 1); }
 
-  // Manual navigation only
   if(prevBtn) prevBtn.addEventListener("click", function(e){ e.stopPropagation(); prevVideo(); });
   if(nextBtn) nextBtn.addEventListener("click", function(e){ e.stopPropagation(); nextVideo(); });
 
-  // Keyboard arrows (only when the video section is on screen)
   document.addEventListener("keydown", function(e){
     var sec = document.getElementById("video");
     if(!sec) return;
@@ -1193,12 +1109,10 @@ footer{padding:20px 0 calc(30px + var(--safe-bottom));color:#52636F;text-align:c
     if(e.key === "ArrowRight") nextVideo();
   });
 
-  // If a video fails to load, we do nothing automatic — user must click next.
   video.addEventListener("error", function(){
     sourceEl.innerHTML = 'This video could not load. Click the next arrow → to try another.';
   });
 
-  // Initial: pick a random one to start with
   loadVideo(pickRandom());
 })();
 
