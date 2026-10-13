@@ -6,7 +6,7 @@ COMMENT + MESSAGE BOX SETUP (one time):
 2. Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy. Allow the new permissions (Google Drive is needed to save photos).
    (First time? Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.)
 3. The Web app URL stays the same if you edit the old deployment. Otherwise paste the new URL into COMMENT_URL near the bottom of this file.
-Comments go to the "Comments" sheet. Private messages go to the "Messages" sheet. Photos are saved in your Google Drive folder "Portfolio Message Photos" and the link + preview appear in the sheet.
+Comments (name + comment only) go to the "Comments" sheet. Private messages go to the "Messages" sheet. Photos are saved in your Google Drive folder "Portfolio Message Photos" and the link + preview appear in the sheet.
 -->
 <head>
 <meta charset="utf-8">
@@ -170,7 +170,7 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 </svg>
 
 <div class="top"><div class="strip"><span id="dEn">—</span><span class="b" id="dBn"></span><span class="h" id="dHj"></span><span class="c" id="clk">--:--:--</span></div>
-<nav class="nav" aria-label="Main"><a href="#about" data-bn="আমার সম্পর্কে">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#video" data-bn="ভিডিও">Video</a><a href="#gallery" data-bn="গ্যালারি">Photos</a><a href="#comments" data-bn="মন্তব্য">Comments</a><a href="#message" data-bn="মেসেজ">Message</a><a href="#contact" data-bn="যোগাযোগ">Contact</a>
+<nav class="nav" aria-label="Main"><a href="#about" data-bn="আমার সম্পর্কে">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#video" data-bn="ভিডিও">Video</a><a href="#gallery" data-bn="গ্যালারি">Photos</a><a href="#message" data-bn="মেসেজ">Message</a><a href="#contact" data-bn="যোগাযোগ">Contact</a><a href="#comments" data-bn="মন্তব্য">Comments</a>
 <button class="tg" id="lg" type="button" aria-label="Language">বাং</button><button class="tg" id="th" type="button" aria-label="Theme">☀</button></nav></div>
 
 <main>
@@ -231,17 +231,9 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 <div class="mf"><div class="dots" id="gd"></div><div class="nv"><button id="gp" type="button" aria-label="Previous photo">‹</button><button id="gx" type="button" aria-label="Next photo">›</button></div></div>
 <div class="src">Free open photos via <a href="https://picsum.photos" target="_blank" rel="noopener noreferrer">Lorem Picsum</a> (Unsplash). New set on every refresh.</div></div></div></section>
 
-<section id="comments"><div class="wrap"><div class="sh rv"><h2 data-bn="মন্তব্য">Comments</h2><p data-bn="আমার সম্পর্কে কিছু লিখুন। আপনার নাম ও মন্তব্য এখানে সবার জন্য দেখা যাবে।">Leave a note about me. Your name and comment will show here for everyone.</p></div>
-<div class="cm"><div class="bx rv"><form id="cf" autocomplete="off">
-<div class="row"><div><label for="cn" data-bn="নাম">Name</label><input id="cn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div><div><label for="ct" data-bn="যোগাযোগ (ঐচ্ছিক, গোপন)">Contact (optional, private)</label><input id="ct" maxlength="60" placeholder="Phone or email" data-phbn="ফোন বা ইমেইল"></div></div>
-<div><label for="cc" data-bn="মন্তব্য">Comment</label><textarea id="cc" rows="4" maxlength="300" required placeholder="Write something nice…" data-phbn="কিছু লিখুন…"></textarea><div class="cc"><span id="cnt">0</span>/300</div></div>
-<input class="hp" id="hp" tabindex="-1" aria-hidden="true" placeholder="website">
-<button class="btn p" id="sb" type="submit"><span data-bn="পাঠান">Submit</span></button><div class="msg" id="msg" role="status"></div></form></div>
-<div class="bx rv" style="padding:16px"><div class="list" id="list"><div class="empty">Loading comments…</div></div></div></div></div></section>
-
 <section id="message"><div class="wrap"><div class="sh rv"><h2 data-bn="মেসেজ করুন">Message us</h2><p data-bn="আমাকে সরাসরি মেসেজ পাঠান, চাইলে একটি ছবিও যুক্ত করুন। এটি শুধু আমি দেখতে পাব, অন্য কেউ নয়।">Send me a private message and attach a photo if you like. Only I can see it.</p></div>
 <div class="cm"><div class="bx rv"><form id="mf2" autocomplete="off">
-<div class="row"><div><label for="mn" data-bn="নাম">Name</label><input id="mn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div><div><label for="mc" data-bn="ফোন বা ইমেইল (উত্তর দেওয়ার জন্য)">Phone or email (so I can reply)</label><input id="mc" maxlength="60" placeholder="01XXXXXXXXX" data-phbn="ফোন বা ইমেইল"></div></div>
+<div class="row"><div><label for="mn" data-bn="নাম">Name</label><input id="mn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div><div><label for="mc" data-bn="ফোন নম্বর বা ইমেইল">Phone number or email</label><input id="mc" maxlength="60" required placeholder="01XXXXXXXXX or name@email.com" data-phbn="ফোন নম্বর বা ইমেইল"></div></div>
 <div><label for="mm" data-bn="মেসেজ">Message</label><textarea id="mm" rows="5" maxlength="1000" required placeholder="Write your message…" data-phbn="আপনার মেসেজ লিখুন…"></textarea><div class="cc"><span id="mcnt">0</span>/1000</div></div>
 <div><div class="pk"><label class="btn" for="mph"><svg><use href="#i-im"/></svg><span data-bn="ছবি যুক্ত করুন">Attach a photo</span><input class="sr" type="file" id="mph" accept="image/*"></label><span class="fn" id="mpn"></span></div>
 <div class="pv" id="mpv" hidden><img id="mpimg" alt="Selected photo preview"><button type="button" id="mrm" aria-label="Remove photo">✕</button></div></div>
@@ -260,6 +252,14 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 <a class="lk" href="https://www.facebook.com/TheSohanSaga/" target="_blank" rel="noopener noreferrer"><svg class="lg"><use href="#l-fb"/></svg><span><small>Social</small><b>Facebook</b></span></a>
 <a class="lk" href="https://www.linkedin.com/in/suhan-ali-bb3a14324" target="_blank" rel="noopener noreferrer"><svg class="lg"><use href="#l-in"/></svg><span><small>Professional</small><b>LinkedIn</b></span></a>
 <div class="lk"><span class="ic"><svg><use href="#i-pn"/></svg></span><span><small>Location</small><b>Gazipur, Bangladesh</b></span></div></div></div></div></section>
+
+<section id="comments"><div class="wrap"><div class="sh rv"><h2 data-bn="মন্তব্য">Comments</h2><p data-bn="আমার সম্পর্কে কিছু লিখুন। আপনার নাম ও মন্তব্য এখানে সবার জন্য দেখা যাবে।">Leave a note about me. Your name and comment will show here for everyone.</p></div>
+<div class="cm"><div class="bx rv"><form id="cf" autocomplete="off">
+<div><label for="cn" data-bn="নাম">Name</label><input id="cn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div>
+<div><label for="cc" data-bn="মন্তব্য">Comment</label><textarea id="cc" rows="4" maxlength="300" required placeholder="Write something nice…" data-phbn="কিছু লিখুন…"></textarea><div class="cc"><span id="cnt">0</span>/300</div></div>
+<input class="hp" id="hp" tabindex="-1" aria-hidden="true" placeholder="website">
+<button class="btn p" id="sb" type="submit"><span data-bn="পাঠান">Submit</span></button><div class="msg" id="msg" role="status"></div></form></div>
+<div class="bx rv" style="padding:16px"><div class="list" id="list"><div class="empty">Loading comments…</div></div></div></div></div></section>
 </main>
 <footer>&copy; 2026 Sohan Ali Sikder</footer>
 <div class="fab"><button class="t" id="up" type="button" aria-label="Back to top">↑</button><a href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg><use href="#l-wa"/></svg></a></div>
@@ -356,7 +356,7 @@ var n=$("cn").value.trim(),c=$("cc").value.trim();msg.className="msg";
 if(!ready){msg.className="msg er";msg.textContent="Setup not finished: paste the Web App URL into COMMENT_URL in index.html.";return}
 if(!n||!c)return;var last=+store.get("sas-last")||0;if(Date.now()-last<30000){msg.className="msg er";msg.textContent="Please wait a few seconds before posting again.";return}
 $("sb").disabled=true;msg.textContent="Sending…";
-fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,contact:$("ct").value.trim().slice(0,60),website:$("hp").value})}).then(function(){
+fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,website:$("hp").value})}).then(function(){
 store.set("sas-last",String(Date.now()));msg.className="msg ok";msg.textContent="Thank you! Your comment is added.";
 $("cf").reset();$("cnt").textContent="0";
 list.querySelectorAll(".empty").forEach(function(x){x.remove()});
@@ -383,9 +383,9 @@ $("mm").addEventListener("input",function(){$("mcnt").textContent=this.value.len
 $("mf2").addEventListener("submit",function(e){e.preventDefault();
 var n=$("mn").value.trim(),m=$("mm").value.trim();mmsg.className="msg";
 if(!ready){mErr("Setup not finished: paste the Web App URL into COMMENT_URL in index.html.");return}
-if(!n||!m)return;var last=+store.get("sas-lastmsg")||0;if(Date.now()-last<30000){mErr("Please wait a few seconds before sending again.");return}
+var ct=$("mc").value.trim();if(!n||!m||!ct)return;var last=+store.get("sas-lastmsg")||0;if(Date.now()-last<30000){mErr("Please wait a few seconds before sending again.");return}
 $("msb").disabled=true;mmsg.textContent=photo?"Uploading photo and message…":"Sending…";
-fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"message",name:n,contact:$("mc").value.trim().slice(0,60),message:m,photo:photo,website:$("mhp").value})}).then(function(){
+fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"message",name:n,contact:ct.slice(0,60),message:m,photo:photo,website:$("mhp").value})}).then(function(){
 store.set("sas-lastmsg",String(Date.now()));mmsg.className="msg ok";mmsg.textContent="Thank you! Your message has been sent.";
 $("mf2").reset();clearPhoto();$("mcnt").textContent="0"}).catch(function(){mErr("Could not send. Please try again.")}).then(function(){$("msb").disabled=false})});
 })();
