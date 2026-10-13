@@ -1,49 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <!--
-COMMENT BOX SETUP (one time):
-1. Open your Google Sheet > Extensions > Apps Script. Delete old code, paste the code below, Save.
-2. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone. Deploy and allow permission.
-3. Copy the Web app URL and paste it into COMMENT_URL near the bottom of this file. Upload again.
-(If you deployed before: Deploy > Manage deployments > Edit > New version.)
-
----------- APPS SCRIPT CODE ----------
-// Google Apps Script: paste in Extensions > Apps Script of your Google Sheet
-var SHEET_ID = '1xHyBaOsTO8b3k5Cz10axg4OwrQM2IkgD1uq1kZ-EcEI';
-
-function sheet_() {
-  var ss = SpreadsheetApp.openById(SHEET_ID);
-  var sh = ss.getSheetByName('Comments') || ss.insertSheet('Comments');
-  if (sh.getLastRow() === 0) sh.appendRow(['Time', 'Name', 'Comment', 'Contact (private)']);
-  return sh;
-}
-
-function clean_(v, max) {
-  v = String(v || '').replace(/[\u0000-\u001F]+/g, ' ').trim().slice(0, max);
-  if (/^[=+\-@]/.test(v)) v = "'" + v; // stop spreadsheet formula injection
-  return v;
-}
-
-function doGet() {
-  var rows = sheet_().getDataRange().getValues().slice(1).reverse().slice(0, 50);
-  var out = rows.map(function (r) { return { time: r[0], name: r[1], comment: r[2] }; });
-  return ContentService.createTextOutput(JSON.stringify(out)).setMimeType(ContentService.MimeType.JSON);
-}
-
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.waitLock(10000);
-  try {
-    var d = JSON.parse(e.postData.contents);
-    var name = clean_(d.name, 40), comment = clean_(d.comment, 300), contact = clean_(d.contact, 60);
-    if (d.website || !name || !comment) return ContentService.createTextOutput('ignored');
-    sheet_().appendRow([new Date(), name, comment, contact]);
-    return ContentService.createTextOutput('ok');
-  } finally {
-    lock.releaseLock();
-  }
-}
-
+COMMENT + MESSAGE BOX SETUP (one time):
+1. Open your Google Sheet > Extensions > Apps Script. Delete old code, paste the code from the file apps-script.gs, Save.
+2. Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy. Allow the new permissions (Google Drive is needed to save photos).
+   (First time? Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.)
+3. The Web app URL stays the same if you edit the old deployment. Otherwise paste the new URL into COMMENT_URL near the bottom of this file.
+Comments go to the "Comments" sheet. Private messages go to the "Messages" sheet. Photos are saved in your Google Drive folder "Portfolio Message Photos" and the link + preview appear in the sheet.
 -->
 <head>
 <meta charset="utf-8">
@@ -164,6 +127,20 @@ input:focus,textarea:focus{outline:2px solid var(--acc);border-color:transparent
 .cmt b{font-size:.95rem}.cmt small{color:var(--mut);margin-left:8px;font-size:.76rem}
 .cmt p{margin-top:2px;font-size:.94rem;overflow-wrap:anywhere;white-space:pre-wrap}
 .empty{color:var(--mut);text-align:center;padding:30px 10px}
+/* message + photo */
+.pk{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pk label.btn{margin:0;cursor:pointer;min-height:44px;padding:9px 18px}
+.pk label.btn:focus-within{outline:3px solid var(--acc);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;margin:0;padding:0;border:0}
+.pk .fn{font-size:.82rem;color:var(--mut);overflow-wrap:anywhere}
+.pv{position:relative;margin-top:10px;border:1px solid var(--bd);border-radius:16px;overflow:hidden;background:#000;max-width:320px}
+.pv[hidden]{display:none}
+.pv img{display:block;width:100%;max-height:240px;object-fit:cover}
+.pv button{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;font-size:1.05rem;line-height:1}
+.pv button:hover{background:#c0392b}
+.note{font-size:.84rem;color:var(--mut)}
+.how{display:grid;gap:12px;margin-top:6px}.how li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:.94rem}
+.how li b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:var(--btn);font:700 .85rem var(--sora);flex:none}
 .links{display:grid;gap:10px}
 .lk{display:flex;align-items:center;gap:14px;padding:10px 14px 10px 10px;border-radius:16px;border:1px solid var(--bd);background:var(--card);text-decoration:none;transition:.15s}
 a.lk:hover{transform:translateX(4px);border-color:var(--acc)}
@@ -175,7 +152,7 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 .fab a,.fab button{width:52px;height:52px;border-radius:50%;border:0;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.3);text-decoration:none}
 .fab svg{width:30px;height:30px}.fab .t{background:#0B2536;color:#fff;font-size:1.2rem;opacity:0;pointer-events:none;transition:.3s}.fab .t.s{opacity:1;pointer-events:auto}
 @media(max-width:860px){.bento>*{grid-column:1/-1!important;grid-row:auto!important}.cm,.flow{grid-template-columns:1fr 1fr}.cm{grid-template-columns:1fr}.hero{padding-top:140px}.ph{min-height:300px}section{padding-top:52px}}
-@media(max-width:520px){.row{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.btn{width:100%}.acts{flex-direction:column}.strip{font-size:.64rem}.nav a{font-size:.78rem;padding:6px 9px}.sg{aspect-ratio:4/3}}
+@media(max-width:520px){.row{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.btn{width:100%}.acts{flex-direction:column}.strip{font-size:.64rem}.nav a{font-size:.78rem;padding:6px 9px}.sg{aspect-ratio:4/3}.pv{max-width:100%}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar i::after{width:var(--w)}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -186,13 +163,14 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 <symbol id="i-ml" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 8 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 <symbol id="i-pn" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
 <symbol id="i-dn" viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-im" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 18 5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="l-wa" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#25D366"/><path d="M24 9.5a14.5 14.5 0 0 0-12.4 22L9.5 38.5l7.2-2A14.5 14.5 0 1 0 24 9.5z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M18.2 17c-.7.7-1.2 1.700-.6 3.100 1.200 3 4.200 6 7.200 7.200 1.500.6 2.600 0 3.200-.8.500-.7.500-1.400.2-1.700l-2.600-1.300c-.4-.2-.8 0-1.100.3l-.8 1c-1.700-.8-3.200-2.300-4-4l1-.8c.3-.3.500-.7.300-1.100l-1.300-2.600c-.4-.4-1.100-.3-1.500.1z" fill="#fff"/></symbol>
 <symbol id="l-fb" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#1877F2"/><path d="M26.5 40V26h4.700l.8-5.500h-5.500v-3.400c0-1.600.7-2.800 2.900-2.800H32V9.500c-.5-.1-2.300-.3-4.200-.3-4.400 0-7.300 2.700-7.300 7.500v3.800H16V26h4.500v14z" fill="#fff"/></symbol>
 <symbol id="l-in" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#0A66C2"/><rect x="11" y="19" width="5.500" height="17" fill="#fff"/><circle cx="13.750" cy="13.500" r="3.300" fill="#fff"/><path d="M21 19h5.200v2.400c.8-1.500 2.700-2.800 5.400-2.800 5.300 0 6.400 3.500 6.400 8V36h-5.500v-8.200c0-2-.1-4.400-2.800-4.400s-3.200 2.100-3.200 4.300V36H21z" fill="#fff"/></symbol>
 </svg>
 
 <div class="top"><div class="strip"><span id="dEn">—</span><span class="b" id="dBn"></span><span class="h" id="dHj"></span><span class="c" id="clk">--:--:--</span></div>
-<nav class="nav" aria-label="Main"><a href="#about" data-bn="আমার সম্পর্কে">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#video" data-bn="ভিডিও">Video</a><a href="#gallery" data-bn="গ্যালারি">Photos</a><a href="#comments" data-bn="মন্তব্য">Comments</a><a href="#contact" data-bn="যোগাযোগ">Contact</a>
+<nav class="nav" aria-label="Main"><a href="#about" data-bn="আমার সম্পর্কে">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#video" data-bn="ভিডিও">Video</a><a href="#gallery" data-bn="গ্যালারি">Photos</a><a href="#comments" data-bn="মন্তব্য">Comments</a><a href="#message" data-bn="মেসেজ">Message</a><a href="#contact" data-bn="যোগাযোগ">Contact</a>
 <button class="tg" id="lg" type="button" aria-label="Language">বাং</button><button class="tg" id="th" type="button" aria-label="Theme">☀</button></nav></div>
 
 <main>
@@ -260,6 +238,18 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 <input class="hp" id="hp" tabindex="-1" aria-hidden="true" placeholder="website">
 <button class="btn p" id="sb" type="submit"><span data-bn="পাঠান">Submit</span></button><div class="msg" id="msg" role="status"></div></form></div>
 <div class="bx rv" style="padding:16px"><div class="list" id="list"><div class="empty">Loading comments…</div></div></div></div></div></section>
+
+<section id="message"><div class="wrap"><div class="sh rv"><h2 data-bn="মেসেজ করুন">Message us</h2><p data-bn="আমাকে সরাসরি মেসেজ পাঠান, চাইলে একটি ছবিও যুক্ত করুন। এটি শুধু আমি দেখতে পাব, অন্য কেউ নয়।">Send me a private message and attach a photo if you like. Only I can see it.</p></div>
+<div class="cm"><div class="bx rv"><form id="mf2" autocomplete="off">
+<div class="row"><div><label for="mn" data-bn="নাম">Name</label><input id="mn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div><div><label for="mc" data-bn="ফোন বা ইমেইল (উত্তর দেওয়ার জন্য)">Phone or email (so I can reply)</label><input id="mc" maxlength="60" placeholder="01XXXXXXXXX" data-phbn="ফোন বা ইমেইল"></div></div>
+<div><label for="mm" data-bn="মেসেজ">Message</label><textarea id="mm" rows="5" maxlength="1000" required placeholder="Write your message…" data-phbn="আপনার মেসেজ লিখুন…"></textarea><div class="cc"><span id="mcnt">0</span>/1000</div></div>
+<div><div class="pk"><label class="btn" for="mph"><svg><use href="#i-im"/></svg><span data-bn="ছবি যুক্ত করুন">Attach a photo</span><input class="sr" type="file" id="mph" accept="image/*"></label><span class="fn" id="mpn"></span></div>
+<div class="pv" id="mpv" hidden><img id="mpimg" alt="Selected photo preview"><button type="button" id="mrm" aria-label="Remove photo">✕</button></div></div>
+<input class="hp" id="mhp" tabindex="-1" aria-hidden="true" placeholder="website">
+<button class="btn p" id="msb" type="submit"><span data-bn="মেসেজ পাঠান">Send message</span></button><div class="msg" id="mmsg" role="status"></div></form></div>
+<div class="bx rv"><h3 class="t" data-bn="কীভাবে কাজ করে">How it works</h3>
+<ul class="how"><li><b>1</b><span data-bn="আপনার নাম ও মেসেজ লিখুন।">Write your name and message.</span></li><li><b>2</b><span data-bn="চাইলে একটি ছবি যুক্ত করুন (JPG, PNG)। ছবি আপনার ফোন থেকেই ছোট করে পাঠানো হয়।">Attach a photo if you want (JPG or PNG). It is resized on your device before sending.</span></li><li><b>3</b><span data-bn="পাঠালে মেসেজ ও ছবি সরাসরি আমার কাছে পৌঁছে যায়। দ্রুত উত্তর চাইলে WhatsApp করুন।">Your message and photo reach me directly. For a faster reply, use WhatsApp.</span></li></ul>
+<div class="acts"><a class="btn" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer"><svg><use href="#i-ph"/></svg>WhatsApp</a></div></div></div></div></section>
 
 <section id="contact"><div class="wrap"><div class="bento"><div class="bx s3 rv"><h2 style="font-size:clamp(1.5rem,4vw,2.2rem)" data-bn="আপনার পরবর্তী নিয়োগের জন্য কথা বলুন">Let's talk about your next opening</h2>
 <p class="sum" data-bn="আপনার ফ্যাক্টরি বা কোম্পানিতে ইনভেন্টরি, স্টোর বা অপারেশনের লোক দরকার হলে কল বা মেসেজ করুন। আমি বাংলা ও ইংরেজিতে উত্তর দিই।">If your factory or company needs someone for inventory, store or operations work, call or write to me. I reply in Bangla or English.</p>
@@ -368,11 +358,36 @@ if(!n||!c)return;var last=+store.get("sas-last")||0;if(Date.now()-last<30000){ms
 $("sb").disabled=true;msg.textContent="Sending…";
 fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,contact:$("ct").value.trim().slice(0,60),website:$("hp").value})}).then(function(){
 store.set("sas-last",String(Date.now()));msg.className="msg ok";msg.textContent="Thank you! Your comment is added.";
-var cur=[].slice.call(list.querySelectorAll(".cmt")).length?null:null;$("cf").reset();$("cnt").textContent="0";
-var tmp=document.createElement("div");list.querySelectorAll(".empty").forEach(function(x){x.remove()});
+$("cf").reset();$("cnt").textContent="0";
+list.querySelectorAll(".empty").forEach(function(x){x.remove()});
 var wrap=document.createElement("div");wrap.className="cmt";wrap.innerHTML='<div class="av"></div><div><b></b><small>just now</small><p></p></div>';
 wrap.querySelector(".av").textContent=(n[0]||"?").toUpperCase();wrap.querySelector("b").textContent=n;wrap.querySelector("p").textContent=c;list.insertBefore(wrap,list.firstChild);
 setTimeout(fetchC,2500)}).catch(function(){msg.className="msg er";msg.textContent="Could not send. Please try again."}).then(function(){$("sb").disabled=false})});
+
+/* ===== private message + photo (Google Sheet + Drive via Apps Script) ===== */
+var mmsg=$("mmsg"),photo="",pv=$("mpv");
+function mErr(t){mmsg.className="msg er";mmsg.textContent=t}
+function clearPhoto(){photo="";$("mph").value="";pv.hidden=true;$("mpimg").removeAttribute("src");$("mpn").textContent=""}
+$("mph").addEventListener("change",function(){var f=this.files&&this.files[0];mmsg.className="msg";mmsg.textContent="";if(!f)return;
+if(!/^image\//.test(f.type)){clearPhoto();mErr("Please choose an image file (JPG or PNG).");return}
+if(f.size>20e6){clearPhoto();mErr("This photo is too large. Please choose one under 20 MB.");return}
+var url=URL.createObjectURL(f),img=new Image();
+img.onload=function(){var s=Math.min(1,1280/Math.max(img.naturalWidth,img.naturalHeight)),w=Math.max(1,Math.round(img.naturalWidth*s)),h=Math.max(1,Math.round(img.naturalHeight*s)),cv=document.createElement("canvas");
+cv.width=w;cv.height=h;var cx=cv.getContext("2d");cx.fillStyle="#fff";cx.fillRect(0,0,w,h);cx.drawImage(img,0,0,w,h);
+var q=.8,d=cv.toDataURL("image/jpeg",q);while(d.length>2.6e6&&q>.35){q-=.15;d=cv.toDataURL("image/jpeg",q)}
+URL.revokeObjectURL(url);photo=d;$("mpimg").src=d;pv.hidden=false;$("mpn").textContent=f.name};
+img.onerror=function(){URL.revokeObjectURL(url);clearPhoto();mErr("Could not read this photo. Please try a JPG or PNG.")};
+img.src=url});
+$("mrm").onclick=function(){clearPhoto();mmsg.textContent=""};
+$("mm").addEventListener("input",function(){$("mcnt").textContent=this.value.length});
+$("mf2").addEventListener("submit",function(e){e.preventDefault();
+var n=$("mn").value.trim(),m=$("mm").value.trim();mmsg.className="msg";
+if(!ready){mErr("Setup not finished: paste the Web App URL into COMMENT_URL in index.html.");return}
+if(!n||!m)return;var last=+store.get("sas-lastmsg")||0;if(Date.now()-last<30000){mErr("Please wait a few seconds before sending again.");return}
+$("msb").disabled=true;mmsg.textContent=photo?"Uploading photo and message…":"Sending…";
+fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({type:"message",name:n,contact:$("mc").value.trim().slice(0,60),message:m,photo:photo,website:$("mhp").value})}).then(function(){
+store.set("sas-lastmsg",String(Date.now()));mmsg.className="msg ok";mmsg.textContent="Thank you! Your message has been sent.";
+$("mf2").reset();clearPhoto();$("mcnt").textContent="0"}).catch(function(){mErr("Could not send. Please try again.")}).then(function(){$("msb").disabled=false})});
 })();
 </script>
 </body>
