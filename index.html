@@ -1,5 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+<!--
+COMMENT BOX SETUP (one time):
+1. Open your Google Sheet > Extensions > Apps Script. Delete old code, paste the code below, Save.
+2. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone. Deploy and allow permission.
+3. Copy the Web app URL and paste it into COMMENT_URL near the bottom of this file. Upload again.
+(If you deployed before: Deploy > Manage deployments > Edit > New version.)
+
+---------- APPS SCRIPT CODE ----------
+// Google Apps Script: paste in Extensions > Apps Script of your Google Sheet
+var SHEET_ID = '1xHyBaOsTO8b3k5Cz10axg4OwrQM2IkgD1uq1kZ-EcEI';
+
+function sheet_() {
+  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var sh = ss.getSheetByName('Comments') || ss.insertSheet('Comments');
+  if (sh.getLastRow() === 0) sh.appendRow(['Time', 'Name', 'Comment', 'Contact (private)']);
+  return sh;
+}
+
+function clean_(v, max) {
+  v = String(v || '').replace(/[\u0000-\u001F]+/g, ' ').trim().slice(0, max);
+  if (/^[=+\-@]/.test(v)) v = "'" + v; // stop spreadsheet formula injection
+  return v;
+}
+
+function doGet() {
+  var rows = sheet_().getDataRange().getValues().slice(1).reverse().slice(0, 50);
+  var out = rows.map(function (r) { return { time: r[0], name: r[1], comment: r[2] }; });
+  return ContentService.createTextOutput(JSON.stringify(out)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    var d = JSON.parse(e.postData.contents);
+    var name = clean_(d.name, 40), comment = clean_(d.comment, 300), contact = clean_(d.contact, 60);
+    if (d.website || !name || !comment) return ContentService.createTextOutput('ignored');
+    sheet_().appendRow([new Date(), name, comment, contact]);
+    return ContentService.createTextOutput('ok');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -105,7 +150,7 @@ section{padding:70px 0 0}
 .dots{display:flex;gap:6px}.dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:var(--bd)}.dots .on{background:var(--acc);transform:scale(1.3)}
 .src{padding:0 22px 14px;font-size:.74rem;color:var(--mut)}.src a{color:var(--acc)}
 .cm{display:grid;grid-template-columns:1fr 1.3fr;gap:14px;align-items:start}
-form{display:grid;gap:12px}
+form{display:grid;gap:12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 label{font-size:.86rem;color:var(--mut);font-weight:500}
 input,textarea{width:100%;margin-top:4px;padding:12px 14px;border-radius:14px;border:1px solid var(--bd);background:var(--bg);color:var(--ink);font:inherit;resize:vertical}
 input:focus,textarea:focus{outline:2px solid var(--acc);border-color:transparent}
@@ -130,7 +175,7 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 .fab a,.fab button{width:52px;height:52px;border-radius:50%;border:0;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.3);text-decoration:none}
 .fab svg{width:30px;height:30px}.fab .t{background:#0B2536;color:#fff;font-size:1.2rem;opacity:0;pointer-events:none;transition:.3s}.fab .t.s{opacity:1;pointer-events:auto}
 @media(max-width:860px){.bento>*{grid-column:1/-1!important;grid-row:auto!important}.cm,.flow{grid-template-columns:1fr 1fr}.cm{grid-template-columns:1fr}.hero{padding-top:140px}.ph{min-height:300px}section{padding-top:52px}}
-@media(max-width:520px){.flow{grid-template-columns:1fr}.btn{width:100%}.acts{flex-direction:column}.strip{font-size:.64rem}.nav a{font-size:.78rem;padding:6px 9px}.sg{aspect-ratio:4/3}}
+@media(max-width:520px){.row{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.btn{width:100%}.acts{flex-direction:column}.strip{font-size:.64rem}.nav a{font-size:.78rem;padding:6px 9px}.sg{aspect-ratio:4/3}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar i::after{width:var(--w)}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -210,7 +255,7 @@ footer{text-align:center;color:var(--mut);font-size:.88rem;padding:40px 0 calc(9
 
 <section id="comments"><div class="wrap"><div class="sh rv"><h2 data-bn="মন্তব্য">Comments</h2><p data-bn="আমার সম্পর্কে কিছু লিখুন। আপনার নাম ও মন্তব্য এখানে সবার জন্য দেখা যাবে।">Leave a note about me. Your name and comment will show here for everyone.</p></div>
 <div class="cm"><div class="bx rv"><form id="cf" autocomplete="off">
-<div><label for="cn" data-bn="নাম">Name</label><input id="cn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div>
+<div class="row"><div><label for="cn" data-bn="নাম">Name</label><input id="cn" maxlength="40" required placeholder="Your name" data-phbn="আপনার নাম"></div><div><label for="ct" data-bn="যোগাযোগ (ঐচ্ছিক, গোপন)">Contact (optional, private)</label><input id="ct" maxlength="60" placeholder="Phone or email" data-phbn="ফোন বা ইমেইল"></div></div>
 <div><label for="cc" data-bn="মন্তব্য">Comment</label><textarea id="cc" rows="4" maxlength="300" required placeholder="Write something nice…" data-phbn="কিছু লিখুন…"></textarea><div class="cc"><span id="cnt">0</span>/300</div></div>
 <input class="hp" id="hp" tabindex="-1" aria-hidden="true" placeholder="website">
 <button class="btn p" id="sb" type="submit"><span data-bn="পাঠান">Submit</span></button><div class="msg" id="msg" role="status"></div></form></div>
@@ -318,10 +363,10 @@ fetchC();setInterval(function(){if(!document.hidden)fetchC()},30000);
 $("cc").addEventListener("input",function(){$("cnt").textContent=this.value.length});
 $("cf").addEventListener("submit",function(e){e.preventDefault();
 var n=$("cn").value.trim(),c=$("cc").value.trim();msg.className="msg";
-if(!ready){msg.className="msg er";msg.textContent="Comment box is not connected yet.";return}
+if(!ready){msg.className="msg er";msg.textContent="Setup not finished: paste the Web App URL into COMMENT_URL in index.html.";return}
 if(!n||!c)return;var last=+store.get("sas-last")||0;if(Date.now()-last<30000){msg.className="msg er";msg.textContent="Please wait a few seconds before posting again.";return}
 $("sb").disabled=true;msg.textContent="Sending…";
-fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,website:$("hp").value})}).then(function(){
+fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,contact:$("ct").value.trim().slice(0,60),website:$("hp").value})}).then(function(){
 store.set("sas-last",String(Date.now()));msg.className="msg ok";msg.textContent="Thank you! Your comment is added.";
 var cur=[].slice.call(list.querySelectorAll(".cmt")).length?null:null;$("cf").reset();$("cnt").textContent="0";
 var tmp=document.createElement("div");list.querySelectorAll(".empty").forEach(function(x){x.remove()});
