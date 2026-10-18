@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Setup: same Apps Script as before. Paste your Web App URL into COMMENT_URL at the bottom. Photo upload removed: messages go to the "Messages" sheet, comments to "Comments". -->
+<!-- Setup: same Apps Script as before. Paste your Web App URL into COMMENT_URL at the bottom. Photo upload removed: messages go to the "Messages" sheet, comments to "Comments". News: uses rss2json (free) to read Bangla RSS feeds. -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -130,14 +130,25 @@ footer{text-align:center;padding:50px 0 100px;font-size:.88rem;color:var(--mut)}
 .fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:1.5rem;text-decoration:none;box-shadow:0 10px 26px rgba(37,211,102,.5);animation:bob 2.4s ease-in-out infinite alternate}
 .rv{opacity:0;transform:translateY(36px);filter:blur(6px);transition:opacity .8s,transform .8s,filter .8s}.rv.in{opacity:1;transform:none;filter:none}
 .prog{position:fixed;bottom:0;left:0;height:3px;width:0;z-index:80;background:linear-gradient(90deg,var(--a),var(--b))}
-@media(max-width:860px){.hero .wrap,.about,.two,.ct{grid-template-columns:1fr}.sk,.ed{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.dbar{font-size:.7rem;gap:0 10px}.hero{padding-top:120px;border-radius:0 0 32px 32px}.pt{width:min(78%,300px)}.dark{border-radius:32px}}
+/* news */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{border:1.5px solid var(--ln);background:var(--card);border-radius:99px;padding:8px 18px;font:700 .88rem "Hind Siliguri","Plus Jakarta Sans",sans-serif;transition:.2s}
+.tabs button.on{background:linear-gradient(100deg,var(--a),var(--b));color:#fff;border-color:transparent}
+.news{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;font-family:"Hind Siliguri",sans-serif}
+.nw{display:flex;gap:14px;padding:14px;background:var(--card);border:1px solid var(--ln);border-radius:20px;box-shadow:var(--sh);text-decoration:none;transition:transform .25s}
+.nw:hover{transform:translateY(-4px)}
+.nw img{width:96px;height:78px;object-fit:cover;border-radius:12px;flex:none;background:var(--bg)}
+.nw b{display:block;font-size:1rem;line-height:1.45;font-weight:600}
+.nw small{color:var(--mut);font-size:.76rem}
+.news .empty{grid-column:1/-1}
+@media(max-width:860px){.hero .wrap,.about,.two,.ct{grid-template-columns:1fr}.sk,.ed{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.dbar{font-size:.7rem;gap:0 10px}.hero{padding-top:120px;border-radius:0 0 32px 32px}.pt{width:min(78%,300px)}.dark{border-radius:32px}.news{grid-template-columns:1fr}}
 @media(max-width:520px){.row,.flow{grid-template-columns:1fr}.btn{width:100%}.ct{padding:26px}.fc{font-size:.74rem}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}.jobs:before{transform:none}.bar i:after{width:var(--w)}h1{color:#fff;-webkit-text-fill-color:#fff}}
 </style>
 </head>
 <body>
 <div class="dbar" id="dbar"><span id="dEn">—</span><span class="bd" id="dBn"></span><span class="hj" id="dHj"></span><span class="ck" id="clk">--:--:--</span></div>
-<div class="prog" id="prog"></div><div class="top"><nav class="nav" aria-label="Main"><a href="#about" data-bn="পরিচিতি">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#message" data-bn="মেসেজ">Message</a><a href="#contact" data-bn="যোগাযোগ">Contact</a><a href="#comments" data-bn="মন্তব্য">Comments</a></nav><button class="lg" id="lg" type="button" aria-label="Language">বাং</button></div>
+<div class="prog" id="prog"></div><div class="top"><nav class="nav" aria-label="Main"><a href="#about" data-bn="পরিচিতি">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#message" data-bn="মেসেজ">Message</a><a href="#contact" data-bn="যোগাযোগ">Contact</a><a href="#news" data-bn="খবর">News</a><a href="#comments" data-bn="মন্তব্য">Comments</a></nav><button class="lg" id="lg" type="button" aria-label="Language">বাং</button></div>
 
 <main>
 <header class="hero"><i class="bl"></i><i class="bl"></i><div class="wrap">
@@ -182,6 +193,11 @@ footer{text-align:center;padding:50px 0 100px;font-size:.88rem;color:var(--mut)}
 
 <section id="contact"><div class="wrap"><div class="ct rv"><div><h2 data-bn="আপনার পরবর্তী নিয়োগের জন্য কথা বলুন">Let's talk about your next opening</h2><p data-bn="আপনার ফ্যাক্টরি বা কোম্পানিতে ইনভেন্টরি, স্টোর বা অপারেশনের লোক দরকার হলে কল বা মেসেজ করুন। আমি বাংলা ও ইংরেজিতে উত্তর দিই।">If your factory or company needs someone for inventory, store or operations work, call or write to me. I reply in Bangla or English.</p></div>
 <div><a class="lk" href="tel:+8801729948649"><em>📞</em><span><small>Phone / WhatsApp</small><b>01729948649</b></span></a><a class="lk" href="mailto:sohanbdt.1@gmail.com"><em>✉️</em><span><small>Email</small><b>sohanbdt.1@gmail.com</b></span></a><a class="lk" href="https://www.facebook.com/TheSohanSaga/" target="_blank" rel="noopener noreferrer"><em>👍</em><span><small>Social</small><b>Facebook</b></span></a><a class="lk" href="https://www.linkedin.com/in/suhan-ali-bb3a14324" target="_blank" rel="noopener noreferrer"><em>💼</em><span><small>Professional</small><b>LinkedIn</b></span></a><div class="lk"><em>📍</em><span><small>Location</small><b>Gazipur, Bangladesh</b></span></div></div></div></div></section>
+
+<section id="news"><div class="wrap"><h2 class="rv" data-bn="আজকের খবর">Bangla news</h2>
+<div class="tabs rv" id="ntabs"></div>
+<div class="news rv" id="nlist"><div class="empty">খবর লোড হচ্ছে…</div></div>
+</div></section>
 
 <section id="comments"><div class="wrap"><h2 class="rv" data-bn="মন্তব্য">Comments</h2>
 <div class="two"><div class="panel rv"><form id="cf" autocomplete="off"><div><label for="cn" data-bn="নাম">Name</label><input id="cn" maxlength="40" required></div>
@@ -239,6 +255,29 @@ $("cf").addEventListener("submit",function(e){e.preventDefault();var n=$("cn").v
 send({name:n,comment:c,website:$("hp").value},"sas-last",$("sb"),msg,"Thank you! Your comment is added.",function(){$("cf").reset();$("cnt").textContent="0";var x=list.querySelector(".empty");if(x)x.remove();list.insertBefore(card(n,c,"just now"),list.firstChild);setTimeout(fetchC,2500)})});
 $("mf").addEventListener("submit",function(e){e.preventDefault();var n=$("mn").value.trim(),ct=$("mc").value.trim(),m=$("mm").value.trim();if(!n||!ct||!m)return;
 send({type:"message",name:n,contact:ct.slice(0,60),message:m,photo:"",website:$("mhp").value},"sas-lastmsg",$("msb"),mmsg,"Thank you! Your message has been sent.",function(){$("mf").reset();$("mcnt").textContent="0"})});
+/* Bangla news */
+var FEEDS=[
+{n:"বিবিসি বাংলা",u:"https://feeds.bbci.co.uk/bengali/rss.xml"},
+{n:"প্রথম আলো",u:"https://www.prothomalo.com/feed"},
+{n:"জাগো নিউজ",u:"https://www.jagonews24.com/rss/rss.xml"}
+],nl=$("nlist"),nt=$("ntabs");
+function nmsg(t){nl.textContent="";var e=document.createElement("div");e.className="empty";e.textContent=t;nl.appendChild(e)}
+function nshow(items){nl.textContent="";if(!items.length){nmsg("এই মুহূর্তে কোনো খবর পাওয়া যায়নি।");return}
+items.slice(0,10).forEach(function(it){var a=document.createElement("a"),d=document.createElement("div"),b=document.createElement("b"),s=document.createElement("small"),src=it.thumbnail||(it.enclosure&&it.enclosure.link)||"";
+a.className="nw";a.href=it.link;a.target="_blank";a.rel="noopener noreferrer";
+if(src&&/^https?:/.test(src)){var im=document.createElement("img");im.src=src;im.alt="";im.loading="lazy";im.referrerPolicy="no-referrer";im.onerror=function(){im.remove()};a.appendChild(im)}
+b.textContent=it.title;s.textContent=ago(String(it.pubDate||"").replace(" ","T")+"Z");d.appendChild(b);d.appendChild(s);a.appendChild(d);nl.appendChild(a)})}
+function nload(i){var f=FEEDS[i],key="sas-news"+i,c=null;
+[].forEach.call(nt.children,function(x,j){x.classList.toggle("on",j===i)});
+try{c=JSON.parse(sessionStorage.getItem(key)||"null")}catch(e){}
+if(c&&Date.now()-c.t<900000){nshow(c.d);return}
+nmsg("খবর লোড হচ্ছে…");
+fetch("https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(f.u)).then(function(r){return r.json()}).then(function(j){
+if(j.status!=="ok"||!j.items)throw 0;
+try{sessionStorage.setItem(key,JSON.stringify({t:Date.now(),d:j.items}))}catch(e){}
+nshow(j.items)}).catch(function(){nmsg("খবর লোড করা যায়নি। অনুগ্রহ করে অন্য ট্যাব চেষ্টা করুন বা পরে রিফ্রেশ করুন।")})}
+FEEDS.forEach(function(f,i){var b=document.createElement("button");b.type="button";b.textContent=f.n;b.onclick=function(){nload(i)};nt.appendChild(b)});
+nload(0);
 })();
 </script>
 </body>
