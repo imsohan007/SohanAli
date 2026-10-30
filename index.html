@@ -1,97 +1,198 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>আপন বাজার – প্রাইস ট্যাগ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sohan Ali Sikder | Inventory and Operations Executive</title>
+<meta name="description" content="Sohan Ali Sikder: inventory, store and team coordination in Gazipur, Bangladesh. Also free Bangla business calculators and a price tag generator.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#f4f4f4; --fg:#111; --card:#fff; --line:#d0d0d0; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#161616; --fg:#f0f0f0; --card:#242424; --line:#3a3a3a; }
-  }
-  * { box-sizing: border-box; }
-  body { margin:0; padding:24px 16px; background:var(--bg); color:var(--fg);
-         font-family:"Hind Siliguri","Nirmala UI","Noto Sans Bengali",sans-serif; }
-  main { max-width:680px; margin:0 auto; }
-  h1 { font-size:1.4rem; margin:0 0 16px; }
-
-  /* ---------- Price tag ---------- */
-  .tag { container-type:inline-size; width:100%; aspect-ratio:16/9; background:#000; color:#fff;
-         display:grid; grid-template-columns:73fr 22fr; grid-template-rows:24fr 24fr 40fr;
-         gap:3.5%; padding:3%; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  .row, .pct { background:#fff; color:#000; border-radius:2.8cqw; }
-  .row { display:flex; align-items:center; justify-content:space-between; padding:0 4cqw; }
-  .label { font-size:6.2cqw; font-weight:700; white-space:nowrap; }
-  .value { font-family:"Arial Black",Arial,sans-serif; font-style:italic; font-weight:900;
-           font-size:11cqw; flex:1; text-align:center; line-height:1; }
-  .pct { grid-column:2; grid-row:1 / 3; display:flex; flex-direction:column; align-items:center;
-         justify-content:center; text-align:center; padding:2cqw 1cqw; }
-  .pct .t { font-size:4.2cqw; font-weight:700; line-height:1.1; }
-  .pct .s { font-family:"Arial Black",Arial,sans-serif; font-size:7cqw; font-weight:900; line-height:1; }
-  .pct .n { font-family:"Arial Black",Arial,sans-serif; font-size:10cqw; font-weight:900; line-height:1.1; }
-  .foot { grid-column:1 / -1; display:flex; align-items:center; gap:3cqw; padding:0 1cqw; }
-  .foot img { height:100%; max-height:18cqw; width:auto; object-fit:contain; min-width:0; }
-  .foot p { margin:0; font-size:7.8cqw; font-weight:600; line-height:1.2; white-space:nowrap; }
-
-  /* ---------- Controls ---------- */
-  .panel { margin-top:20px; padding:16px; background:var(--card); border:1px solid var(--line);
-           border-radius:12px; display:grid; gap:12px; }
-  .fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  label { display:grid; gap:4px; font-size:.9rem; }
-  input[type=number] { font:inherit; padding:10px; border:1px solid var(--line); border-radius:8px;
-                       background:var(--bg); color:var(--fg); width:100%; }
-  button { font:inherit; font-weight:600; padding:10px 18px; border:0; border-radius:8px;
-           background:#000; color:#fff; cursor:pointer; justify-self:start; }
-  @media (prefers-color-scheme: dark) { button { background:#fff; color:#000; } }
-
-  /* ---------- Print: 88mm printer (Rongta) ---------- */
-  @page { size: 88mm 49.5mm; margin: 0; }
-  @media print {
-    html, body { width:88mm; height:49.5mm; margin:0; padding:0; background:#000; overflow:hidden; }
-    h1, .panel { display:none; }
-    main { max-width:none; margin:0; }
-    .tag { width:88mm; height:49.5mm; aspect-ratio:auto; }
-  }
+*{box-sizing:border-box;margin:0}
+:root{--ink:#14222E;--paper:#EEF1F3;--mut:#566774;--line:#D5DCE1;--y:#F2B705;--t:#0E7C7B;--tl:#E2F1F0;--d:"Bricolage Grotesque","Hind Siliguri",sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font:400 1.02rem/1.65 "Hind Siliguri",system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+h1,h2,h3{font-family:var(--d);line-height:1.12;letter-spacing:-.02em}
+a{color:inherit}:focus-visible{outline:3px solid var(--t);outline-offset:3px}
+.w{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:84px 0 0}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:10px}
+.lead{color:var(--mut);max-width:38em;margin-bottom:28px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar .w{display:flex;justify-content:space-between;align-items:center;gap:16px;height:62px}
+.brand{font:800 1.1rem var(--d);text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+nav a{padding:7px 12px;border-radius:8px;text-decoration:none;font-size:.93rem;color:var(--mut);white-space:nowrap}
+nav a:hover{background:var(--tl);color:var(--t)}
+.hero{background:var(--ink);color:#fff;padding:76px 0 88px}
+.hero .w{display:grid;grid-template-columns:1.25fr .75fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,7vw,4.9rem);font-weight:800;letter-spacing:-.04em;margin-bottom:14px}
+.role{font:600 1.35rem var(--d);color:var(--y);margin-bottom:16px}
+.hero p{color:#B9C6D0;max-width:32em;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;border-radius:10px;font:600 1rem "Hind Siliguri",sans-serif;text-decoration:none;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;margin:0 10px 10px 0}
+.btn:hover{filter:brightness(.94)}.btn[disabled]{opacity:.55}
+.btn.y{background:var(--y);border-color:var(--y)}.btn.g{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}.btn.t{background:var(--t);border-color:var(--t);color:#fff}
+.lbl{background:#fff;color:var(--ink);border-radius:16px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.4);animation:in .9s both}
+@keyframes in{from{opacity:0;transform:translateY(26px) rotate(2deg)}}
+.ph{position:relative;aspect-ratio:1;border-radius:10px;background:var(--t);display:grid;place-items:center;font:800 3.6rem var(--d);color:#fff;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.lbl dl{margin-top:16px;padding-top:14px;border-top:2px dashed var(--line);display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.93rem}
+.lbl dt{color:var(--mut)}.lbl dd{font-weight:600;text-align:right}
+.code{height:32px;margin-top:14px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,#fff 2px 5px,var(--ink) 5px 6px,#fff 6px 10px)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
+.big{font:500 1.28rem/1.6 "Hind Siliguri",sans-serif}
+.stats{display:grid;gap:12px}.stats .card{padding:16px 22px}
+.stats b{display:block;font:800 1.8rem/1.2 var(--d);color:var(--t)}.stats small{color:var(--mut)}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.job{border-top:4px solid var(--y)}.job h3{font-size:1.4rem}
+.tg{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}.tg span{background:var(--tl);color:var(--t);font-weight:600;font-size:.84rem;padding:2px 12px;border-radius:99px}
+.job ul{list-style:none;padding:0}.job li{padding:5px 0 5px 20px;position:relative;font-size:.97rem}
+.job li:before{content:"";position:absolute;left:0;top:16px;width:10px;height:2px;background:var(--y)}
+.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.sk h3{font-size:1.15rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{padding:4px 14px;border-radius:8px;background:var(--paper);border:1px solid var(--line);font-size:.93rem}
+.lv{margin-bottom:14px;font-size:.92rem}.lv div{display:flex;justify-content:space-between}.lv span+span{color:var(--mut)}
+.lv i{display:block;height:8px;border-radius:8px;background:var(--line);margin-top:5px;overflow:hidden}.lv i:after{content:"";display:block;height:100%;width:var(--w);background:var(--t);border-radius:8px}
+.ed{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.ed h3{font-size:1.15rem}.ed p{color:var(--mut);font-size:.95rem;margin:4px 0 10px}.ed b{color:var(--t)}
+.tools{background:var(--ink);color:#fff;margin-top:84px;padding:84px 0}.tools .lead{color:#B9C6D0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tools .card{color:var(--ink)}.card h3{font-size:1.2rem;margin-bottom:4px}.sub{color:var(--mut);font-size:.92rem;margin-bottom:16px}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-weight:600;font-size:.88rem;margin-bottom:5px}
+input,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);font:inherit;color:var(--ink);resize:vertical}
+input:focus,textarea:focus{outline:0;border-color:var(--t);background:#fff;box-shadow:0 0 0 3px rgba(14,124,123,.18)}
+.res{margin-top:14px;background:var(--tl);border-radius:10px;padding:12px 15px;min-height:50px}
+.res strong{color:var(--t);font-size:1.12rem}.res small{display:block;color:var(--mut)}
+.pv{margin:16px 0 4px;padding:18px;border:2px dashed var(--line);border-radius:12px;display:grid;place-items:center;min-height:170px;text-align:center}
+.tgp{width:100%;max-width:300px;padding:14px;border:2px solid #111;background:#fff;color:#111}
+.tn{font-weight:800;font-size:1.15rem}.old{text-decoration:line-through;color:#777}.pr{font:800 2.2rem/1.25 var(--d)}.off{display:inline-block;border:1px solid #111;padding:1px 8px;font-weight:700}
+.nt{font-size:.82rem;color:var(--mut);margin-top:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.ct{background:var(--ink);color:#fff;border-radius:16px;padding:32px}.ct h2{font-size:1.9rem}.ct p{color:#B9C6D0;margin-bottom:18px}
+.lk{display:block;padding:12px 16px;margin-bottom:10px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);text-decoration:none}
+a.lk:hover{background:rgba(255,255,255,.14)}.lk small{display:block;color:#9AA9B5;font-size:.78rem;line-height:1.3}.lk b{overflow-wrap:anywhere}
+form{display:grid;gap:14px}.cc{text-align:right;font-size:.78rem;color:var(--mut)}
+.hp{position:absolute;left:-9999px}.msg{min-height:1.4em;font-weight:600;font-size:.92rem}.msg.ok{color:#0B7A5A}.msg.er{color:#C0273D}
+.list{display:grid;gap:10px;max-height:440px;overflow-y:auto}
+.cmt{display:flex;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.av{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--t);color:#fff;font:800 1rem var(--d)}
+.cmt small{color:var(--mut);margin-left:8px;font-size:.78rem}.cmt p{overflow-wrap:anywhere;white-space:pre-wrap;font-size:.95rem}
+.empty{text-align:center;color:var(--mut);padding:26px 10px}
+footer{text-align:center;padding:56px 0 100px;color:var(--mut);font-size:.9rem}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:1.4rem;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+@media(max-width:860px){.hero .w,.about,.two,.grid,.jobs,.sk,.ed{grid-template-columns:1fr}.hero{padding:48px 0 64px}.lbl{max-width:340px}.bar .w{flex-direction:column;align-items:flex-start;height:auto;padding:10px 22px 6px;gap:2px}}
+@media(max-width:520px){.f{grid-template-columns:1fr}.btn{width:100%;margin-right:0}.ct{padding:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media print{body *{visibility:hidden}#tagPreview,#tagPreview *{visibility:visible}#tagPreview{position:absolute;left:0;top:0;width:100%;max-width:100%}}
 </style>
 </head>
 <body>
-<main>
-  <h1>আপন বাজার – প্রাইস ট্যাগ</h1>
+<header class="bar"><div class="w"><a class="brand" href="#top">Sohan Ali Sikder</a>
+<nav aria-label="Main"><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#tools">Business tools</a><a href="#contact">Contact</a><a href="#comments">Comments</a></nav></div></header>
+<main id="top">
+<div class="hero"><div class="w">
+<div><h1>Sohan Ali Sikder</h1><div class="role">Inventory and operations executive</div>
+<p>Two years of shop, stock and team work at Apon Tech Ltd. I am looking for an inventory or operations role in a garments factory in Bangladesh.</p>
+<a class="btn y" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a><a class="btn g" href="https://drive.google.com/file/d/16CjDf6xMueUT4dmRH0moEQVmw54vzSJg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download CV</a><a class="btn g" href="#tools">Free business tools</a></div>
+<div class="lbl" aria-label="Profile summary"><div class="ph"><span>SAS</span><img id="hero" alt="Portrait of Sohan Ali Sikder" referrerpolicy="no-referrer" hidden></div>
+<dl><dt>Role</dt><dd>Assistant Shop In-Charge</dd><dt>Experience</dt><dd>2 years</dd><dt>Systems</dt><dd>POS / ERP</dd><dt>Based in</dt><dd>Gazipur</dd><dt>Status</dt><dd>Open to work</dd></dl><div class="code" aria-hidden="true"></div></div>
+</div></div>
 
-  <div class="tag" id="tag">
-    <div class="row"><span class="label">বাজার মূল্যঃ</span><span class="value" id="vMarket">0</span></div>
-    <div class="pct"><span class="t">পার্সেন্টেজ</span><span class="s">%</span><span class="n" id="vPct">0</span></div>
-    <div class="row"><span class="label">আপন মূল্যঃ</span><span class="value" id="vApon">0</span></div>
-    <div class="foot">
-      <img alt="আপন বাজার" src="logo.svg">
-      <p>আপনে বাজার করুন<br>বাজার খরচ কমান ।</p>
-    </div>
-  </div>
+<section id="about"><div class="w"><h2>About me</h2>
+<div class="about"><p class="card big">I am a dedicated professional with hands-on experience in inventory handling, stock management, team coordination and daily operations. I want to apply these skills in a reputable garments factory, support smooth operations and grow with the organization.</p>
+<div class="stats"><div class="card"><b>2 years</b><small>at Apon Tech Ltd.</small></div><div class="card"><b>POS / ERP</b><small>Used in daily work</small></div><div class="card"><b>B.S.S.</b><small>Final year student · Bangla and English</small></div></div></div></div></section>
 
-  <section class="panel">
-    <div class="fields">
-      <label>বাজার মূল্য<input type="number" id="iMarket" min="0" step="any" inputmode="decimal" autofocus></label>
-      <label>আপন মূল্য<input type="number" id="iApon" min="0" step="any" inputmode="decimal"></label>
-    </div>
-    <button type="button" id="print">প্রিন্ট করুন</button>
-  </section>
+<section id="experience"><div class="w"><h2>Work experience</h2>
+<div class="jobs"><article class="card job"><h3>Assistant Shop In-Charge</h3><div class="tg"><span>Apon Tech Ltd.</span><span>1 year</span></div><ul><li>Supported day-to-day operations and coordinated with team members</li><li>Monitored inventory and stock levels to maintain availability</li><li>Used POS / ERP systems for daily work and sales reporting</li><li>Arranged and organized products and supported merchandising</li><li>Handled sales and delivered customer service</li></ul></article>
+<article class="card job"><h3>Shop Executive</h3><div class="tg"><span>Apon Tech Ltd.</span><span>1 year</span></div><ul><li>Carried out product stocking and inventory activities</li><li>Maintained organized product displays and storage areas</li><li>Supported day-to-day shop operations</li><li>Handled retail sales and provided customer service</li><li>Assisted customers in selecting suitable products</li></ul></article></div></div></section>
+
+<section id="skills"><div class="w"><h2>Skills</h2>
+<div class="sk"><div class="card"><h3>Inventory and store</h3><div class="chips"><span>Inventory management</span><span>Stock management</span><span>Store operations</span><span>Merchandising</span></div></div>
+<div class="card"><h3>People and sales</h3><div class="chips"><span>Team coordination</span><span>Time management</span><span>Communication</span><span>Customer service</span></div></div>
+<div class="card"><h3>Systems</h3><div class="lv"><div><span>POS / ERP</span><span>Daily use</span></div><i style="--w:85%"></i></div><div class="lv"><div><span>Microsoft Excel</span><span>Basic</span></div><i style="--w:45%"></i></div><div class="lv"><div><span>Microsoft Word</span><span>Basic</span></div><i style="--w:45%"></i></div></div></div></div></section>
+
+<section id="education"><div class="w"><h2>Education</h2>
+<div class="ed"><div class="card"><h3>B.S.S. (final year)</h3><p>Bhawal Badre Alam Government College</p><b>Session 2021 to 2022</b></div><div class="card"><h3>HSC, Humanities</h3><p>North Laskarcala High School and College</p><b>2021 · GPA 4.25</b></div><div class="card"><h3>SSC, Science</h3><p>Mazukhan High School</p><b>2019 · GPA 3.78</b></div></div></div></section>
+
+<div class="tools" id="tools"><div class="w"><h2>Free business tools</h2>
+<p class="lead">দোকান ও ছোট ব্যবসার দৈনন্দিন হিসাবের জন্য আমার তৈরি ফ্রি টুলস। সব হিসাব আপনার ব্রাউজারেই হয়, কোনো অ্যাকাউন্ট লাগে না।</p>
+<div class="grid">
+<section class="card" style="padding:26px"><h3>ডিসকাউন্ট ক্যালকুলেটর</h3><p class="sub">ছাড়ের পরিমাণ ও ছাড়ের পর দাম বের করুন।</p><div class="f"><div><label for="original">মূল দাম (৳)</label><input id="original" type="number" min="0" step="0.01" value="100"></div><div><label for="discount">ডিসকাউন্ট (%)</label><input id="discount" type="number" min="0" max="100" step="0.01" value="20"></div></div><div class="res" id="discountResult" aria-live="polite"></div></section>
+<section class="card" style="padding:26px"><h3>লাভ ক্যালকুলেটর</h3><p class="sub">ক্রয়মূল্য ও বিক্রয়মূল্য থেকে লাভ বা ক্ষতি বের করুন।</p><div class="f"><div><label for="cost">ক্রয়মূল্য (৳)</label><input id="cost" type="number" min="0" step="0.01" value="80"></div><div><label for="selling">বিক্রয়মূল্য (৳)</label><input id="selling" type="number" min="0" step="0.01" value="100"></div></div><div class="res" id="profitResult" aria-live="polite"></div></section>
+<section class="card" style="padding:26px"><h3>পার্সেন্টেজ ক্যালকুলেটর</h3><p class="sub">একটি সংখ্যার নির্দিষ্ট শতাংশ হিসাব করুন।</p><div class="f"><div><label for="base">মোট সংখ্যা / টাকা</label><input id="base" type="number" step="any" value="1000"></div><div><label for="percent">শতাংশ (%)</label><input id="percent" type="number" step="any" value="15"></div></div><div class="res" id="percentResult" aria-live="polite"></div></section>
+<section class="card" style="padding:26px"><h3>VAT ক্যালকুলেটর</h3><p class="sub">দাম ও VAT হার থেকে VAT এবং মোট দাম বের করুন।</p><div class="f"><div><label for="vatBase">দাম, VAT ছাড়া (৳)</label><input id="vatBase" type="number" min="0" step="0.01" value="1000"></div><div><label for="vatRate">VAT হার (%)</label><input id="vatRate" type="number" min="0" step="0.01" value="5"></div></div><div class="res" id="vatResult" aria-live="polite"></div><p class="nt">প্রযোজ্য VAT হার আপনার পণ্য বা সেবার নিয়ম অনুযায়ী যাচাই করুন।</p></section>
+</div>
+<section class="card" style="margin-top:20px;padding:26px"><h3>প্রাইস ট্যাগ জেনারেটর</h3><p class="sub">পণ্যের তথ্য লিখুন, নিচে লাইভ প্রিভিউ দেখুন, তারপর প্রিন্ট করুন।</p>
+<div class="f"><div><label for="pn">পণ্যের নাম</label><input id="pn" maxlength="60" value="Premium Rice"></div><div><label for="pc">পণ্যের কোড (ঐচ্ছিক)</label><input id="pc" maxlength="30" value="SKU-001"></div><div><label for="po">আগের দাম (৳)</label><input id="po" type="number" min="0" step="0.01" value="120"></div><div><label for="pw">অফার মূল্য (৳)</label><input id="pw" type="number" min="0" step="0.01" value="100"></div></div>
+<div class="pv"><div class="tgp" id="tagPreview"></div></div>
+<div style="margin-top:12px"><button class="btn t" type="button" id="prt">প্রাইস ট্যাগ প্রিন্ট করুন</button><button class="btn" type="button" id="dl">TXT হিসেবে সেভ করুন</button></div>
+<p class="nt">প্রিন্টের সময় ব্রাউজারের Print ডায়ালগে কাগজের সাইজ বেছে নিন।</p></section>
+</div></div>
+
+<section id="contact"><div class="w"><div class="two">
+<div class="ct"><h2>Let’s talk about your next opening</h2><p>If your factory or company needs someone for inventory, store or operations work, call or write to me. I reply in Bangla or English.</p>
+<a class="lk" href="tel:+8801729948649"><small>Phone / WhatsApp</small><b>01729948649</b></a><a class="lk" href="mailto:sohanbdt.1@gmail.com"><small>Email</small><b>sohanbdt.1@gmail.com</b></a><a class="lk" href="https://www.linkedin.com/in/suhan-ali-bb3a14324" target="_blank" rel="noopener noreferrer"><small>Professional</small><b>LinkedIn</b></a><a class="lk" href="https://www.facebook.com/TheSohanSaga/" target="_blank" rel="noopener noreferrer"><small>Social</small><b>Facebook</b></a><div class="lk"><small>Location</small><b>Gazipur, Bangladesh</b></div></div>
+<form class="card" id="mf" autocomplete="off"><h3>Send a message</h3>
+<div><label for="mn">Name</label><input id="mn" maxlength="40" required></div>
+<div><label for="mc">Phone number or email</label><input id="mc" maxlength="60" required placeholder="01XXXXXXXXX"></div>
+<div><label for="mm">Message</label><textarea id="mm" rows="5" maxlength="1000" required></textarea><div class="cc"><span id="mcnt">0</span>/1000</div></div>
+<input class="hp" id="mhp" tabindex="-1" aria-hidden="true">
+<div><button class="btn t" id="msb" type="submit" style="margin:0">Send message</button></div><div class="msg" id="mmsg" role="status"></div></form>
+</div></div></section>
+
+<section id="comments"><div class="w"><h2>Comments</h2><p class="lead">Used my tools or visited the site? Leave a short note.</p>
+<div class="two"><form class="card" id="cf" autocomplete="off"><div><label for="cn">Name</label><input id="cn" maxlength="40" required></div>
+<div><label for="cm">Comment</label><textarea id="cm" rows="4" maxlength="300" required></textarea><div class="cc"><span id="cnt">0</span>/300</div></div>
+<input class="hp" id="hp" tabindex="-1" aria-hidden="true"><div><button class="btn t" id="sb" type="submit" style="margin:0">Post comment</button></div><div class="msg" id="msg" role="status"></div></form>
+<div class="card"><div class="list" id="list"><div class="empty">Loading comments…</div></div></div></div></div></section>
 </main>
+<footer>© <span id="yr"></span> Sohan Ali Sikder · Gazipur, Bangladesh</footer>
+<a class="fab" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
 
 <script>
-  const $ = id => document.getElementById(id);
-  function update() {
-    const m = parseFloat($("iMarket").value) || 0;
-    const a = parseFloat($("iApon").value) || 0;
-    const pct = m > 0 ? Math.max(0, Math.round((m - a) / m * 100)) : 0;
-    $("vMarket").textContent = m;
-    $("vApon").textContent = a;
-    $("vPct").textContent = pct;
-  }
-  ["iMarket", "iApon"].forEach(id => $(id).addEventListener("input", update));
-  $("print").addEventListener("click", () => window.print());
-  update();
+(function(){
+var COMMENT_URL="https://script.google.com/macros/s/AKfycbyP1iD4mXwAV3CbmMdcvJzLHB1bKxQs0xSpRtYFCsGQfr9-q-Tc578V__iTTYBxJuPpXQ/exec";
+var $=function(i){return document.getElementById(i)},n=function(i){return parseFloat($(i).value)},ok=function(x){return isFinite(x)&&x>=0};
+var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var money=function(x){return "৳"+x.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})};
+$("yr").textContent=new Date().getFullYear();
+/* portrait */
+var im=$("hero");im.onload=function(){if(im.naturalWidth>50)im.hidden=false};im.src="https://drive.google.com/thumbnail?id=1_4RBqCFg6kaPgEC061rJEm5G8-FrkP91&sz=w1000";
+/* calculators */
+var C=[
+[["original","discount"],"discountResult",function(p,d){if(!ok(p)||!ok(d)||d>100)return "সঠিক দাম ও ০–১০০% ডিসকাউন্ট লিখুন।";var s=p*d/100;return "ছাড়: <strong>"+money(s)+"</strong><br>ছাড়ের পর দাম: <strong>"+money(p-s)+"</strong>"}],
+[["cost","selling"],"profitResult",function(c,s){if(!ok(c)||!ok(s)||!c||!s)return "ক্রয়মূল্য ও বিক্রয়মূল্য শূন্যের বেশি লিখুন।";var p=s-c;return (p>=0?"লাভ":"ক্ষতি")+": <strong>"+money(Math.abs(p))+"</strong><br>বিক্রয়ের ওপর হার: <strong>"+(p/s*100).toFixed(2)+"%</strong><small>ক্রয়মূল্যের ওপর: "+(p/c*100).toFixed(2)+"%</small>"}],
+[["base","percent"],"percentResult",function(b,p){if(!isFinite(b)||!isFinite(p))return "দুটি সঠিক সংখ্যা লিখুন।";return "ফলাফল: <strong>"+money(b*p/100)+"</strong><small>"+b.toLocaleString()+" এর "+p+"%</small>"}],
+[["vatBase","vatRate"],"vatResult",function(b,r){if(!ok(b)||!ok(r))return "সঠিক দাম ও VAT হার লিখুন।";var v=b*r/100;return "VAT: <strong>"+money(v)+"</strong><br>VAT-সহ মোট: <strong>"+money(b+v)+"</strong>"}]];
+C.forEach(function(c){var run=function(){$(c[1]).innerHTML=c[2](n(c[0][0]),n(c[0][1]))};c[0].forEach(function(i){$(i).addEventListener("input",run)});run()});
+/* price tag */
+function esc(s){return s.replace(/[&<>"']/g,function(c){return "&#"+c.charCodeAt(0)+";"})}
+function tag(){var nm=$("pn").value.trim()||"পণ্যের নাম",cd=$("pc").value.trim(),o=n("po"),w=n("pw"),t=$("tagPreview");
+if(!ok(o)||!ok(w)){t.innerHTML="<div>সঠিক দাম লিখুন</div>";return}
+var off=o>w?Math.round((o-w)/o*100):0;
+t.innerHTML='<div class="tn">'+esc(nm)+'</div><div>'+esc(cd)+'</div>'+(o>w?'<div class="old">'+money(o)+'</div>':'')+'<div class="pr">'+money(w)+'</div>'+(off?'<div class="off">'+off+'% OFF</div>':'')}
+["pn","pc","po","pw"].forEach(function(i){$(i).addEventListener("input",tag)});tag();
+$("prt").onclick=function(){window.print()};
+$("dl").onclick=function(){var b=new Blob(["Product: "+$("pn").value+"\nCode: "+$("pc").value+"\nOld price: "+$("po").value+"\nOffer price: "+$("pw").value+"\n"],{type:"text/plain;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="price-tag.txt";a.click();URL.revokeObjectURL(u)};
+/* comments + messages (Apps Script) */
+var ready=COMMENT_URL.indexOf("http")===0,list=$("list"),msg=$("msg"),mmsg=$("mmsg");
+function ago(t){var d=new Date(t);if(isNaN(d))return "";var s=(Date.now()-d)/1000;if(s<60)return "just now";if(s<3600)return Math.floor(s/60)+" min ago";if(s<86400)return Math.floor(s/3600)+" hr ago";return d.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+function card(nm,c,t){var w=el("div","cmt"),b=el("div"),s=el("small","",t),p=el("p","",c);b.appendChild(el("b","",nm));b.appendChild(s);b.appendChild(p);w.appendChild(el("div","av",(nm.trim()[0]||"?").toUpperCase()));w.appendChild(b);return w}
+function render(a){list.textContent="";if(!a.length){list.appendChild(el("div","empty","No comments yet. Be the first!"));return}a.forEach(function(c){list.appendChild(card(String(c.name||"").slice(0,40),String(c.comment||"").slice(0,300),ago(c.time)))})}
+function fetchC(){if(!ready){render([]);return}fetch(COMMENT_URL).then(function(r){return r.json()}).then(function(a){if(Array.isArray(a))render(a)}).catch(function(){if(list.querySelector(".empty")){list.textContent="";list.appendChild(el("div","empty","Could not load comments. Please refresh."))}})}
+fetchC();setInterval(function(){if(!document.hidden)fetchC()},30000);
+function send(body,key,btn,out,okText,done){
+if(!ready){out.className="msg er";out.textContent="Setup not finished: add the Web App URL to COMMENT_URL.";return}
+if(Date.now()-(+store.get(key)||0)<30000){out.className="msg er";out.textContent="Please wait a few seconds before sending again.";return}
+btn.disabled=true;out.className="msg";out.textContent="Sending…";
+fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(body)}).then(function(){store.set(key,String(Date.now()));out.className="msg ok";out.textContent=okText;done()}).catch(function(){out.className="msg er";out.textContent="Could not send. Please try again."}).then(function(){btn.disabled=false})}
+$("cm").addEventListener("input",function(){$("cnt").textContent=this.value.length});$("mm").addEventListener("input",function(){$("mcnt").textContent=this.value.length});
+$("cf").addEventListener("submit",function(e){e.preventDefault();var a=$("cn").value.trim(),c=$("cm").value.trim();if(!a||!c)return;
+send({name:a,comment:c,website:$("hp").value},"sas-last",$("sb"),msg,"Thank you! Your comment is added.",function(){$("cf").reset();$("cnt").textContent="0";var x=list.querySelector(".empty");if(x)x.remove();list.insertBefore(card(a,c,"just now"),list.firstChild);setTimeout(fetchC,2500)})});
+$("mf").addEventListener("submit",function(e){e.preventDefault();var a=$("mn").value.trim(),ct=$("mc").value.trim(),m=$("mm").value.trim();if(!a||!ct||!m)return;
+send({type:"message",name:a,contact:ct.slice(0,60),message:m,photo:"",website:$("mhp").value},"sas-lastmsg",$("msb"),mmsg,"Thank you! Your message has been sent.",function(){$("mf").reset();$("mcnt").textContent="0"})});
+})();
 </script>
 </body>
 </html>
