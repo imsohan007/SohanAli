@@ -1,238 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sohan Ali Sikder | Inventory and Operations Executive</title>
-<meta name="description" content="Sohan Ali Sikder: inventory, store and team coordination at Apon Tech Ltd, Gazipur. Includes free Bangla shop calculators and a price tag maker.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>আপন বাজার – প্রাইস ট্যাগ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#EDEFF1;--surf:#fff;--ink:#0F2A43;--mut:#556678;--ln:#D3DAE1;--soft:#E4E9EE;--amb:#F5B301;--hero:#0F2A43;--ok:#0E7A5A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--d:"Bricolage Grotesque","Hind Siliguri",system-ui,sans-serif;--b:"Hind Siliguri","Segoe UI",system-ui,sans-serif}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A141E;--surf:#112233;--ink:#E8EEF4;--mut:#9DB0C2;--ln:#243A50;--soft:#18304A;--hero:#07101A;--ok:#4ADBA8;color-scheme:dark}}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));height:auto}
-body{font:400 1.05rem/1.7 var(--b);background:var(--bg);color:var(--ink);overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surf);z-index:30}
-a{color:inherit}button,input,textarea{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--amb);outline-offset:3px}
-h1,h2,h3{font-family:var(--d);line-height:1.1;letter-spacing:-.02em}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-section{padding:84px 0 0}
-h2{font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:800;margin-bottom:10px}
-.lead{color:var(--mut);max-width:38em;margin-bottom:30px}
-/* header */
-header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--surf);border-bottom:1px solid var(--ln)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
-.logo{font:800 1.1rem var(--d);text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo i{width:30px;height:30px;border-radius:7px;background:var(--amb);color:#0F2A43;display:grid;place-items:center;font:800 .8rem var(--d);font-style:normal}
-nav{display:flex;gap:4px}nav a{text-decoration:none;font-size:.92rem;font-weight:500;color:var(--mut);padding:8px 12px;border-radius:8px}nav a:hover{background:var(--soft);color:var(--ink)}
-.lg{border:1.5px solid var(--ln);background:transparent;border-radius:8px;padding:6px 12px;font-weight:700;font-size:.85rem;cursor:pointer}.lg:hover{background:var(--soft)}
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:1.5px solid var(--ln);background:var(--surf);cursor:pointer;margin:0 10px 10px 0}
-.btn.p{background:var(--amb);border-color:var(--amb);color:#0F2A43}.btn.p:hover{filter:brightness(.95)}
-.hero .btn:not(.p){background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
-/* hero */
-.hero{background:var(--hero);color:#fff;padding:78px 0 84px}
-.hero .wrap{display:grid;grid-template-columns:1.25fr .85fr;gap:48px;align-items:center}
-.stat{display:inline-flex;align-items:center;gap:10px;font-size:.92rem;color:#C9D6E2;animation:in .7s both}
-.stat:before{content:"";width:10px;height:10px;border-radius:50%;background:#3DDC97;box-shadow:0 0 0 4px rgba(61,220,151,.2)}
-h1{font-size:clamp(2.7rem,8vw,5.2rem);font-weight:800;letter-spacing:-.04em;margin:18px 0 14px;animation:in .8s .1s both}
-.hero .sub{font:600 clamp(1.1rem,2.4vw,1.4rem) var(--d);color:var(--amb);margin-bottom:14px;animation:in .8s .2s both}
-.hero p.sum{color:#B9C8D6;max-width:33em;margin-bottom:26px;animation:in .8s .3s both}.hero .acts{animation:in .8s .4s both}
-@keyframes in{from{opacity:0;transform:translateY(22px)}}
-.tagcard{background:#F7F8FA;color:#0F2A43;border-radius:14px;padding:30px 26px 22px;position:relative;box-shadow:0 24px 50px rgba(0,0,0,.35);transform:rotate(1.6deg);animation:in 1s .35s both;max-width:370px;justify-self:center;width:100%}
-.tagcard:before{content:"";position:absolute;top:12px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--hero);box-shadow:inset 0 0 0 2px #C9D1DA}
-.tagcard h3{font-size:1.1rem;margin:10px 0 12px;padding-bottom:10px;border-bottom:2px dashed #AEB9C5}
-.tagcard dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:.92rem}.tagcard dt{color:#5A6B7B}.tagcard dd{font-weight:600;text-align:right}
-.code{height:46px;margin-top:18px;background:repeating-linear-gradient(90deg,#0F2A43 0 2px,transparent 2px 4px,#0F2A43 4px 5px,transparent 5px 8px,#0F2A43 8px 11px,transparent 11px 12px,#0F2A43 12px 13px,transparent 13px 15px)}
-.tagcard small{display:block;text-align:center;margin-top:6px;color:#5A6B7B;letter-spacing:.08em;font-size:.76rem}
-/* cards */
-.card{background:var(--surf);border:1px solid var(--ln);border-radius:14px;padding:26px}
-.about{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
-.big{font:500 clamp(1.12rem,2.2vw,1.4rem)/1.55 var(--d)}
-.nums{display:grid;gap:12px}.nums .card{padding:16px 22px}.nums b{font:800 1.7rem/1.1 var(--d);display:block}.nums small{color:var(--mut)}
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px;counter-reset:s}
-.flow div{padding:20px 20px 20px 22px;border:1px solid var(--ln);background:var(--surf);position:relative;counter-increment:s}
-.flow div+div{border-left:0}.flow div:first-child{border-radius:14px 0 0 14px}.flow div:last-child{border-radius:0 14px 14px 0}
-.flow div:before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--amb);color:#0F2A43;font:800 .9rem var(--d);margin-bottom:10px}
-.flow h3{font-size:1.02rem;margin-bottom:4px}.flow p{font-size:.9rem;color:var(--mut);line-height:1.5}
-/* experience */
-.jobs{display:grid;gap:18px;border-left:3px solid var(--amb);padding-left:26px;margin-left:6px}
-.job h3{font-size:1.3rem}.m{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 8px}.m span{background:var(--soft);font-weight:600;font-size:.82rem;padding:3px 12px;border-radius:99px}
-.job li{list-style:none;padding:5px 0 5px 20px;position:relative;font-size:.97rem}.job li:before{content:"";position:absolute;left:2px;top:15px;width:7px;height:7px;background:var(--amb);border-radius:2px}
-/* skills */
-.dark{background:var(--hero);color:#fff;margin-top:84px;padding:76px 0}.dark h2{color:#fff}
-.sk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.sk>div{padding:24px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
-.sk h3{font-size:1.1rem;margin-bottom:14px;color:var(--amb)}
-.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.28);font-size:.92rem}
-.bar2{margin-top:14px;font-size:.88rem;color:#C9D6E2}.bar2 div{display:flex;justify-content:space-between}.bar2 i{display:block;height:8px;border-radius:8px;background:rgba(255,255,255,.15);margin-top:5px}.bar2 i:after{content:"";display:block;height:100%;width:var(--w);border-radius:8px;background:var(--amb)}
-/* tools */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.tool h3{font-size:1.15rem;margin-bottom:4px}.tool .sub2{color:var(--mut);font-size:.92rem;margin-bottom:16px}
-.f{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-label{display:block;font-weight:600;font-size:.86rem;margin-bottom:5px}
-input,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--ln);border-radius:10px;background:var(--bg);resize:vertical}
-input:focus,textarea:focus{outline:0;border-color:var(--amb);box-shadow:0 0 0 3px rgba(245,179,1,.28)}
-.res{margin-top:14px;background:var(--soft);border-radius:10px;padding:12px 15px;min-height:54px;font-size:.95rem}.res strong{font:800 1.15rem var(--d)}.res small{display:block;color:var(--mut)}
-.tagwrap{grid-column:1/-1}.tagwrap .in2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
-.pv{border:2px dashed var(--ln);border-radius:12px;min-height:190px;display:grid;place-items:center;padding:16px}
-.ptag{container-type:inline-size;position:relative;width:100%;max-width:420px;aspect-ratio:72/40.6;background:#000;color:#000;font-family:var(--b);overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.ptag>div{position:absolute;background:#fff;border-radius:3.4cqw;display:flex;align-items:center}
-.ptag .b1,.ptag .b2{left:2.8%;width:72.2%;height:24%;padding:0 2.5cqw}.ptag .b1{top:7.3%}.ptag .b2{top:35.6%}
-.ptag .b1 span,.ptag .b2 span{flex:0 0 44%;font:700 6.2cqw/1.1 var(--b)}
-.ptag .b1 b,.ptag .b2 b{flex:1;text-align:center;font:800 italic 13cqw/1 var(--b);white-space:nowrap}
-.ptag b i{font:600 normal 3.8cqw var(--b);margin-left:.8cqw}
-.ptag .b3{left:76.5%;top:7.3%;width:20.6%;height:52.3%;flex-direction:column;justify-content:flex-start;padding-top:1.6cqw}
-.ptag .b3 span{font:700 4.4cqw/1.2 var(--b)}.ptag .b3 em{font:700 normal 8cqw/1 var(--b)}.ptag .b3 b{font:800 italic 13cqw/1.3 var(--b);margin-top:2cqw}
-.ptag .lg2{position:absolute;left:3.4%;top:64%;width:34%;height:auto}
-.ptag p{position:absolute;left:46%;top:66%;margin:0;color:#F2F2F2;font:500 4.5cqw/1.75 var(--b)}
-.ptag .tg-err{display:grid;place-items:center;inset:0;background:none;color:#fff}
-.note{font-size:.82rem;color:var(--mut);margin-top:10px}
-/* education */
-.ed{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.ed p{color:var(--mut);font-size:.95rem}.ed b{display:block;margin-top:10px;color:var(--ok)}
-/* contact */
-.ct{background:var(--hero);color:#fff;border-radius:18px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
-.ct h2{color:#fff;font-size:clamp(1.6rem,3.6vw,2.3rem)}.ct p{color:#B9C8D6}
-.ct form{display:grid;gap:12px;margin-top:20px}.ct label{color:#C9D6E2}.ct input,.ct textarea{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.22);color:#fff}
-.lk{display:flex;gap:14px;align-items:center;padding:12px 16px;margin-bottom:10px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);text-decoration:none}
-a.lk:hover{background:rgba(255,255,255,.14)}.lk small{display:block;color:#9DB0C2;font-size:.76rem;line-height:1.2}.lk b{overflow-wrap:anywhere;font-size:.95rem}.lk em{font-style:normal;font-size:1.25rem}
-footer{text-align:center;padding:44px 22px 90px;font-size:.88rem;color:var(--mut)}
-.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:35;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:1.4rem;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.3)}
-.card{border-radius:16px;box-shadow:0 1px 2px rgba(15,42,67,.05),0 10px 30px -14px rgba(15,42,67,.18);transition:box-shadow .25s,transform .25s}
-.card:hover{box-shadow:0 1px 2px rgba(15,42,67,.06),0 20px 40px -14px rgba(15,42,67,.3);transform:translateY(-3px)}
-.btn{transition:transform .2s,filter .2s}.btn:hover{transform:translateY(-2px)}
-header.bar{background:color-mix(in srgb,var(--surf) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px)}
-nav a{transition:background .2s,color .2s}nav a.on{background:var(--soft);color:var(--ink)}
-.hero{position:relative;overflow:hidden;background-color:var(--hero);background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;padding-bottom:110px}
-.hero:after{content:"";position:absolute;right:-120px;top:-150px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(245,179,1,.24),transparent 70%);pointer-events:none}
-.hero .wrap{position:relative;z-index:1}.tagcard{box-shadow:0 30px 60px -10px rgba(0,0,0,.55)}
-.facts{margin-top:-46px;position:relative;z-index:2;padding:0}
-.facts .wrap>div{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surf);border:1px solid var(--ln);border-radius:16px;box-shadow:0 24px 44px -22px rgba(15,42,67,.4);overflow:hidden}
-.facts p{padding:22px 24px;font-size:.92rem;line-height:1.5;color:var(--mut);border-left:1px solid var(--ln)}.facts p:first-child{border:0}
-.facts b{display:block;font:700 1.05rem var(--d);color:var(--ink);margin-bottom:3px}
-.jobs .job{position:relative}.jobs .job:before{content:"";position:absolute;left:-35px;top:32px;width:15px;height:15px;border-radius:50%;background:var(--amb);border:3px solid var(--bg)}
-#tools{background:var(--soft);margin-top:84px;padding:78px 0}
-#tools .card{background:var(--surf)}
-.ed .card h3{font-size:1.2rem}.ed .card b{padding-top:10px;border-top:1px solid var(--ln)}
-footer a{font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--amb)}footer p+p{margin-top:6px}
-@media(max-width:860px){.facts .wrap>div{grid-template-columns:1fr 1fr}.facts p:nth-child(3){border-left:0}.facts p:nth-child(n+3){border-top:1px solid var(--ln)}}
-@media(max-width:520px){.facts .wrap>div{grid-template-columns:1fr}.facts p{border-left:0!important}.facts p+p{border-top:1px solid var(--ln)}}
-@media(max-width:860px){.hero .wrap,.about,.ct,.tagwrap .in2{grid-template-columns:1fr}.sk,.ed{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.flow div{border-left:1px solid var(--ln)!important;border-radius:0!important}.tagcard{transform:none}}
-@media(max-width:700px){nav{display:none}.grid,.f{grid-template-columns:1fr}.ct{padding:28px 22px}.flow{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
-@page{size:72mm 40.6mm;margin:0}@media print{:root{padding:0}body::before{display:none}body *{visibility:hidden}#tagPreview,#tagPreview *{visibility:visible}#tagPreview{position:fixed;left:0;top:0;width:72mm;max-width:none;height:40.6mm}}
+  :root { --bg:#f4f4f4; --fg:#111; --card:#fff; --line:#d0d0d0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#161616; --fg:#f0f0f0; --card:#242424; --line:#3a3a3a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:24px 16px; background:var(--bg); color:var(--fg);
+         font-family:"Hind Siliguri","Nirmala UI","Noto Sans Bengali",sans-serif; }
+  main { max-width:680px; margin:0 auto; }
+  h1 { font-size:1.4rem; margin:0 0 16px; }
+
+  /* ---------- Price tag ---------- */
+  .tag { container-type:inline-size; width:100%; aspect-ratio:16/9; background:#000; color:#fff;
+         display:grid; grid-template-columns:73fr 22fr; grid-template-rows:24fr 24fr 40fr;
+         gap:3.5%; padding:3%; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .row, .pct { background:#fff; color:#000; border-radius:2.8cqw; }
+  .row { display:flex; align-items:center; justify-content:space-between; padding:0 4cqw; }
+  .label { font-size:6.2cqw; font-weight:700; white-space:nowrap; }
+  .value { font-family:"Arial Black",Arial,sans-serif; font-style:italic; font-weight:900;
+           font-size:11cqw; flex:1; text-align:center; line-height:1; }
+  .pct { grid-column:2; grid-row:1 / 3; display:flex; flex-direction:column; align-items:center;
+         justify-content:center; text-align:center; padding:2cqw 1cqw; }
+  .pct .t { font-size:4.2cqw; font-weight:700; line-height:1.1; }
+  .pct .s { font-family:"Arial Black",Arial,sans-serif; font-size:7cqw; font-weight:900; line-height:1; }
+  .pct .n { font-family:"Arial Black",Arial,sans-serif; font-size:10cqw; font-weight:900; line-height:1.1; }
+  .foot { grid-column:1 / -1; display:flex; align-items:center; gap:3cqw; padding:0 1cqw; }
+  .foot img { height:100%; max-height:18cqw; width:auto; object-fit:contain; min-width:0; }
+  .foot p { margin:0; font-size:7.8cqw; font-weight:600; line-height:1.2; white-space:nowrap; }
+
+  /* ---------- Controls ---------- */
+  .panel { margin-top:20px; padding:16px; background:var(--card); border:1px solid var(--line);
+           border-radius:12px; display:grid; gap:12px; }
+  .fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  label { display:grid; gap:4px; font-size:.9rem; }
+  input[type=number] { font:inherit; padding:10px; border:1px solid var(--line); border-radius:8px;
+                       background:var(--bg); color:var(--fg); width:100%; }
+  button { font:inherit; font-weight:600; padding:10px 18px; border:0; border-radius:8px;
+           background:#000; color:#fff; cursor:pointer; justify-self:start; }
+  @media (prefers-color-scheme: dark) { button { background:#fff; color:#000; } }
+
+  /* ---------- Print: 88mm printer (Rongta) ---------- */
+  @page { size: 88mm 49.5mm; margin: 0; }
+  @media print {
+    html, body { width:88mm; height:49.5mm; margin:0; padding:0; background:#000; overflow:hidden; }
+    h1, .panel { display:none; }
+    main { max-width:none; margin:0; }
+    .tag { width:88mm; height:49.5mm; aspect-ratio:auto; }
+  }
 </style>
 </head>
 <body>
-<header class="bar"><div class="wrap">
-<a class="logo" href="#top"><i>SAS</i><span>Sohan Ali Sikder</span></a>
-<nav aria-label="Main"><a href="#about" data-bn="পরিচিতি">About</a><a href="#experience" data-bn="অভিজ্ঞতা">Experience</a><a href="#skills" data-bn="দক্ষতা">Skills</a><a href="#tools" data-bn="টুলস">Tools</a><a href="#education" data-bn="শিক্ষা">Education</a><a href="#contact" data-bn="যোগাযোগ">Contact</a></nav>
-<button class="lg" id="lg" type="button" aria-label="Language">বাং</button>
-</div></header>
+<main>
+  <h1>আপন বাজার – প্রাইস ট্যাগ</h1>
 
-<main id="top">
-<div class="hero"><div class="wrap">
-<div>
-<span class="stat" data-bn="ইনভেন্টরি ও অপারেশন্স পদের জন্য প্রস্তুত">Open to inventory and operations roles</span>
-<h1>Sohan Ali Sikder</h1>
-<div class="sub" data-bn="ইনভেন্টরি ও অপারেশন্স এক্সিকিউটিভ">Inventory and operations executive</div>
-<p class="sum" data-bn="আপন টেক লিমিটেডে দুই বছর দোকান, স্টক ও টিম পরিচালনার অভিজ্ঞতা। বাংলাদেশের একটি গার্মেন্টস ফ্যাক্টরিতে ইনভেন্টরি বা অপারেশন্স পদে কাজ করতে চাই।">Two years of shop, stock and team work at Apon Tech Ltd. I am looking for an inventory or operations role in a garments factory in Bangladesh.</p>
-<div class="acts"><a class="btn p" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer" data-bn="WhatsApp-এ মেসেজ">Message on WhatsApp</a><a class="btn" href="https://drive.google.com/file/d/16CjDf6xMueUT4dmRH0moEQVmw54vzSJg/view?usp=drive_link" target="_blank" rel="noopener noreferrer" data-bn="সিভি ডাউনলোড">Download CV</a><a class="btn" href="#tools" data-bn="ফ্রি টুলস দেখুন">Try the free tools</a></div>
-</div>
-<aside class="tagcard" aria-label="Candidate record">
-<h3 data-bn="প্রার্থীর রেকর্ড">Candidate record</h3>
-<dl><dt data-bn="পদ">Role</dt><dd data-bn="ইনভেন্টরি ও অপারেশন্স">Inventory and operations</dd>
-<dt data-bn="অভিজ্ঞতা">Experience</dt><dd data-bn="২ বছর">2 years</dd>
-<dt data-bn="সিস্টেম">Systems</dt><dd>POS / ERP, Excel</dd>
-<dt data-bn="ভাষা">Languages</dt><dd data-bn="বাংলা, ইংরেজি">Bangla, English</dd>
-<dt data-bn="অবস্থান">Base</dt><dd data-bn="গাজীপুর">Gazipur</dd>
-<dt data-bn="অবস্থা">Status</dt><dd style="color:#0E7A5A" data-bn="এখনই যোগদানে প্রস্তুত">Available now</dd></dl>
-<div class="code" aria-hidden="true"></div><small aria-hidden="true">SAS-2026-INV</small>
-</aside>
-</div></div>
+  <div class="tag" id="tag">
+    <div class="row"><span class="label">বাজার মূল্যঃ</span><span class="value" id="vMarket">0</span></div>
+    <div class="pct"><span class="t">পার্সেন্টেজ</span><span class="s">%</span><span class="n" id="vPct">0</span></div>
+    <div class="row"><span class="label">আপন মূল্যঃ</span><span class="value" id="vApon">0</span></div>
+    <div class="foot">
+      <img alt="আপন বাজার" src="logo.svg">
+      <p>আপনে বাজার করুন<br>বাজার খরচ কমান ।</p>
+    </div>
+  </div>
 
-<div class="facts"><div class="wrap"><div>
-<p><b data-bn="ভরসাযোগ্য স্টক">Stock you can trust</b><span data-bn="স্টকের মাত্রা প্রতিদিন নজরে রাখি">Levels checked daily so products stay available</span></p>
-<p><b data-bn="POS / ERP-এ দক্ষ">Fluent in POS / ERP</b><span data-bn="আপন টেক লিমিটেডে দৈনিক বিক্রির রিপোর্ট">Daily sales reporting at Apon Tech Ltd.</span></p>
-<p><b data-bn="টিমের সাথে কাজ">Works well with people</b><span data-bn="টিম সমন্বয় ও গ্রাহকসেবা">Team coordination and customer service</span></p>
-<p><b data-bn="যোগদানে প্রস্তুত">Ready to join</b><span data-bn="গাজীপুর, বাংলা ও ইংরেজি">Based in Gazipur. Bangla and English.</span></p>
-</div></div></div>
-<section id="about"><div class="wrap"><h2 data-bn="আমার সম্পর্কে">About me</h2>
-<div class="about"><p class="big card" data-bn="আমি ইনভেন্টরি হ্যান্ডলিং, স্টক ম্যানেজমেন্ট, টিম সমন্বয় ও দৈনন্দিন অপারেশনে হাতেকলমে অভিজ্ঞ। একটি স্বনামধন্য গার্মেন্টস ফ্যাক্টরিতে এই দক্ষতা কাজে লাগিয়ে প্রতিষ্ঠানের সাথে এগিয়ে যেতে চাই।">I am a dedicated professional with hands-on experience in inventory handling, stock management, team coordination and daily operations. I want to apply these skills in a reputable garments factory, support smooth operations and grow with the organization.</p>
-<div class="nums"><div class="card"><b>2 yrs</b><small data-bn="আপন টেক লিমিটেড">at Apon Tech Ltd.</small></div><div class="card"><b>POS / ERP</b><small data-bn="প্রতিদিনের কাজে ব্যবহার">Used in daily work</small></div><div class="card"><b>B.S.S.</b><small data-bn="শেষ বর্ষের ছাত্র">Final year student</small></div></div></div>
-<div class="flow"><div><h3 data-bn="গ্রহণ ও মজুত">Receive and stock</h3><p data-bn="পণ্য গ্রহণ ও ইনভেন্টরির কাজ">Product stocking and inventory activities</p></div><div><h3 data-bn="সাজানো">Organize</h3><p data-bn="ডিসপ্লে ও স্টোরেজ গোছানো রাখা">Displays and storage areas kept in order</p></div><div><h3 data-bn="পর্যবেক্ষণ">Monitor</h3><p data-bn="স্টকের মাত্রা নজরে রাখা">Stock levels checked so products stay available</p></div><div><h3 data-bn="বিক্রি ও সেবা">Sell and serve</h3><p data-bn="বিক্রি, গ্রাহকসেবা ও POS / ERP রিপোর্ট">Sales, customer service and POS / ERP reporting</p></div></div>
-</div></section>
-
-<section id="experience"><div class="wrap"><h2 data-bn="কাজের অভিজ্ঞতা">Work experience</h2><p class="lead" data-bn="আপন টেক লিমিটেডে দুই ধাপে দুই বছর।">Two roles over two years at Apon Tech Ltd.</p>
-<div class="jobs">
-<article class="card job"><h3>Assistant Shop In-Charge</h3><div class="m"><span>Apon Tech Ltd.</span><span data-bn="১ বছর">1 year</span></div><ul><li>Supported day-to-day operations and coordinated with team members</li><li>Monitored inventory and stock levels to maintain availability</li><li>Used POS / ERP systems for daily work and sales reporting</li><li>Arranged and organized products and supported merchandising</li><li>Handled sales and delivered customer service</li></ul></article>
-<article class="card job"><h3>Shop Executive</h3><div class="m"><span>Apon Tech Ltd.</span><span data-bn="১ বছর">1 year</span></div><ul><li>Carried out product stocking and inventory activities</li><li>Maintained organized product displays and storage areas</li><li>Supported day-to-day shop operations</li><li>Handled retail sales and provided customer service</li><li>Assisted customers in selecting suitable products</li></ul></article>
-</div></div></section>
-
-<div class="dark" id="skills"><div class="wrap"><h2 data-bn="দক্ষতা">Skills</h2><br>
-<div class="sk">
-<div><h3 data-bn="ইনভেন্টরি ও স্টোর">Inventory and store</h3><div class="chips"><span>Inventory management</span><span>Stock management</span><span>Store operations</span><span>Merchandising</span></div></div>
-<div><h3 data-bn="মানুষ ও বিক্রি">People and sales</h3><div class="chips"><span>Team coordination</span><span>Time management</span><span>Communication</span><span>Customer service</span></div></div>
-<div><h3 data-bn="সিস্টেম">Systems</h3><div class="bar2"><div><span>POS / ERP</span><span data-bn="প্রতিদিন">Daily use</span></div><i style="--w:85%"></i></div><div class="bar2"><div><span>Microsoft Excel</span><span data-bn="প্রাথমিক">Basic</span></div><i style="--w:45%"></i></div><div class="bar2"><div><span>Microsoft Word</span><span data-bn="প্রাথমিক">Basic</span></div><i style="--w:45%"></i></div></div>
-</div></div></div>
-
-<section id="tools"><div class="wrap"><h2 data-bn="দোকানের জন্য ফ্রি টুলস">Free tools for shops</h2><p class="lead" data-bn="ডিসকাউন্ট, লাভ, শতাংশ, VAT ও প্রাইস ট্যাগ। সংখ্যা লিখলেই ফলাফল দেখুন। সব হিসাব আপনার ব্রাউজারেই হয়।">Discount, profit, percentage, VAT and price tags. Type a number and the result updates. Everything runs in your browser.</p>
-<div class="grid">
-<section class="card tool" style="padding:26px"><h3 data-bn="ডিসকাউন্ট ক্যালকুলেটর">Discount calculator</h3><p class="sub2" data-bn="ছাড়ের পর দাম ও ছাড়ের পরিমাণ।">Price after discount and the amount saved.</p><div class="f"><div><label for="original" data-bn="মূল দাম (৳)">Original price (৳)</label><input id="original" type="number" min="0" step="0.01" value="100"></div><div><label for="discount" data-bn="ডিসকাউন্ট (%)">Discount (%)</label><input id="discount" type="number" min="0" max="100" step="0.01" value="20"></div></div><div class="res" id="r1" aria-live="polite"></div></section>
-<section class="card tool" style="padding:26px"><h3 data-bn="লাভ ক্যালকুলেটর">Profit calculator</h3><p class="sub2" data-bn="ক্রয় ও বিক্রয়মূল্য থেকে লাভ বা ক্ষতি।">Profit or loss from cost and selling price.</p><div class="f"><div><label for="cost" data-bn="ক্রয়মূল্য (৳)">Cost price (৳)</label><input id="cost" type="number" min="0" step="0.01" value="80"></div><div><label for="selling" data-bn="বিক্রয়মূল্য (৳)">Selling price (৳)</label><input id="selling" type="number" min="0" step="0.01" value="100"></div></div><div class="res" id="r2" aria-live="polite"></div></section>
-<section class="card tool" style="padding:26px"><h3 data-bn="শতাংশ ক্যালকুলেটর">Percentage calculator</h3><p class="sub2" data-bn="একটি সংখ্যার নির্দিষ্ট শতাংশ।">A given percentage of any number.</p><div class="f"><div><label for="base" data-bn="মোট সংখ্যা / টাকা">Total number / amount</label><input id="base" type="number" step="any" value="1000"></div><div><label for="percent" data-bn="শতাংশ (%)">Percent (%)</label><input id="percent" type="number" step="any" value="15"></div></div><div class="res" id="r3" aria-live="polite"></div></section>
-<section class="card tool" style="padding:26px"><h3 data-bn="VAT ক্যালকুলেটর">VAT calculator</h3><p class="sub2" data-bn="VAT ও VAT-সহ মোট দাম।">VAT amount and total including VAT.</p><div class="f"><div><label for="vatBase" data-bn="দাম, VAT ছাড়া (৳)">Price before VAT (৳)</label><input id="vatBase" type="number" min="0" step="0.01" value="1000"></div><div><label for="vatRate" data-bn="VAT হার (%)">VAT rate (%)</label><input id="vatRate" type="number" min="0" step="0.01" value="5"></div></div><div class="res" id="r4" aria-live="polite"></div><p class="note" data-bn="প্রযোজ্য VAT হার আপনার পণ্য বা সেবার নিয়ম অনুযায়ী যাচাই করুন।">Check the VAT rate that applies to your product or service.</p></section>
-<section class="card tool tagwrap" style="padding:26px"><h3 data-bn="প্রাইস ট্যাগ জেনারেটর">Price tag maker</h3><p class="sub2" data-bn="দুটি দাম লিখুন, প্রিভিউ দেখুন, তারপর প্রিন্ট করুন।">Enter the two prices, check the preview, then print.</p>
-<div class="in2"><div><div class="f"><div><label for="po" data-bn="বাজার মূল্য (৳)">Market price (৳)</label><input id="po" type="number" min="0" step="0.01" value="240"></div><div><label for="pnw" data-bn="আপন মূল্য (৳)">Apon price (৳)</label><input id="pnw" type="number" min="0" step="0.01" value="235"></div></div><p class="note" data-bn="ছাড়ের শতাংশ নিজে থেকেই হিসাব হয়। প্রিন্ট সাইজ ৭২ × ৪০.৬ মিমি।">The discount percentage is worked out for you. Print size is 72 × 40.6 mm.</p><div style="margin-top:14px"><button class="btn p" type="button" onclick="window.print()" data-bn="ট্যাগ প্রিন্ট করুন">Print tag</button></div></div>
-<div class="pv"><div id="tagPreview" class="ptag"></div></div></div></section>
-</div></div></section>
-
-<section id="education"><div class="wrap"><h2 data-bn="শিক্ষা">Education</h2><br>
-<div class="ed"><div class="card"><h3>B.S.S. (final year)</h3><p>Bhawal Badre Alam Government College</p><b>Session 2021 to 2022</b></div><div class="card"><h3>HSC, Humanities</h3><p>North Laskarcala High School and College</p><b>2021 | GPA 4.25</b></div><div class="card"><h3>SSC, Science</h3><p>Mazukhan High School</p><b>2019 | GPA 3.78</b></div></div>
-</div></section>
-
-<section id="contact"><div class="wrap"><div class="ct">
-<div><h2 data-bn="আপনার পরবর্তী নিয়োগের জন্য কথা বলুন">Let’s talk about your next opening</h2><p data-bn="ইনভেন্টরি, স্টোর বা অপারেশনের লোক দরকার হলে কল বা মেসেজ করুন। আমি বাংলা ও ইংরেজিতে উত্তর দিই।">If your factory or company needs someone for inventory, store or operations work, call or write to me. I reply in Bangla or English.</p>
-<form id="mf"><div><label for="mn" data-bn="আপনার নাম">Your name</label><input id="mn" maxlength="40" required></div><div><label for="mm" data-bn="মেসেজ">Message</label><textarea id="mm" rows="4" maxlength="500" required></textarea></div><div><button class="btn p" type="submit" style="margin:0" data-bn="WhatsApp-এ পাঠান">Send on WhatsApp</button></div></form></div>
-<div><a class="lk" href="tel:+8801729948649"><em>📞</em><span><small>Phone / WhatsApp</small><b>01729948649</b></span></a><a class="lk" href="mailto:sohanbdt.1@gmail.com"><em>✉️</em><span><small>Email</small><b>sohanbdt.1@gmail.com</b></span></a><a class="lk" href="https://www.facebook.com/TheSohanSaga/" target="_blank" rel="noopener noreferrer"><em>👍</em><span><small>Social</small><b>Facebook</b></span></a><a class="lk" href="https://www.linkedin.com/in/suhan-ali-bb3a14324" target="_blank" rel="noopener noreferrer"><em>💼</em><span><small>Professional</small><b>LinkedIn</b></span></a><div class="lk"><em>📍</em><span><small>Location</small><b>Gazipur, Bangladesh</b></span></div></div>
-</div></div></section>
+  <section class="panel">
+    <div class="fields">
+      <label>বাজার মূল্য<input type="number" id="iMarket" min="0" step="any" inputmode="decimal" autofocus></label>
+      <label>আপন মূল্য<input type="number" id="iApon" min="0" step="any" inputmode="decimal"></label>
+    </div>
+    <button type="button" id="print">প্রিন্ট করুন</button>
+  </section>
 </main>
-<footer><p>© 2026 Sohan Ali Sikder. Gazipur, Bangladesh.</p><p><a href="#top" data-bn="উপরে যান">Back to top</a></p></footer>
-<a class="fab" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
 
 <script>
-(function(){
-var $=function(i){return document.getElementById(i)},R=document.documentElement,L="en";
-try{L=localStorage.getItem("sas-lang")||"en"}catch(e){}
-var els=[].slice.call(document.querySelectorAll("[data-bn]"));els.forEach(function(e){e.dataset.en=e.textContent});
-var T=function(a,b){return L==="bn"?b:a},N=function(i){return parseFloat($(i).value)},ok=function(n){return isFinite(n)&&n>=0};
-var M=function(n){return "৳"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})};
-var esc=function(s){return s.replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
-function calc(){
-var p=N("original"),d=N("discount"),s;
-$("r1").innerHTML=(!ok(p)||!isFinite(d)||d<0||d>100)?T("Enter a valid price and a discount from 0 to 100%.","সঠিক দাম ও ০–১০০% ডিসকাউন্ট লিখুন।"):(s=p*d/100,T("You save","ছাড়")+": <strong>"+M(s)+"</strong><br>"+T("Price after discount","ছাড়ের পর দাম")+": <strong>"+M(p-s)+"</strong>");
-var c=N("cost"),l=N("selling");
-$("r2").innerHTML=(!ok(c)||!ok(l)||c===0||l===0)?T("Enter a cost and selling price above zero.","শূন্যের বেশি ক্রয় ও বিক্রয়মূল্য লিখুন।"):(s=l-c,(s>=0?T("Profit","লাভ"):T("Loss","ক্ষতি"))+": <strong>"+M(Math.abs(s))+"</strong><br>"+T("Margin on sales","বিক্রয়ের ওপর লাভের হার")+": <strong>"+(s/l*100).toFixed(2)+"%</strong><small>"+T("Markup on cost","ক্রয়মূল্যের ওপর")+": "+(s/c*100).toFixed(2)+"%</small>");
-var b=N("base"),q=N("percent");
-$("r3").innerHTML=(!isFinite(b)||!isFinite(q))?T("Enter two valid numbers.","দুটি সঠিক সংখ্যা লিখুন।"):T("Result","ফলাফল")+": <strong>"+M(b*q/100)+"</strong><small>"+q+"% "+T("of","এর")+" "+b.toLocaleString()+"</small>";
-var vb=N("vatBase"),vr=N("vatRate");
-$("r4").innerHTML=(!ok(vb)||!ok(vr))?T("Enter a valid price and VAT rate.","সঠিক দাম ও VAT হার লিখুন।"):(s=vb*vr/100,"VAT: <strong>"+M(s)+"</strong><br>"+T("Total with VAT","VAT-সহ মোট")+": <strong>"+M(vb+s)+"</strong>");
-var po=N("po"),pw=N("pnw"),fx=function(n){return String(Number(n.toFixed(2)))};
-if(!ok(po)||!ok(pw)||po===0){$("tagPreview").innerHTML='<div class="tg-err">'+T("Enter valid prices","সঠিক দাম লিখুন")+"</div>";return}
-var pc=po>pw?(po-pw)/po*100:0;pc=pc>=1?Math.round(pc):Number(pc.toFixed(1));
-var sz=function(n){var l=fx(n).length;return l<=3?13:l<=5?10:7.5},LOGO="data:image/png;base64,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";
-$("tagPreview").innerHTML='<div class="b1"><span>বাজার মূল্যঃ</span><b style="font-size:'+sz(po)+'cqw">'+fx(po)+"<i>tk</i></b></div>"+'<div class="b2"><span>আপন মূল্যঃ</span><b style="font-size:'+sz(pw)+'cqw">'+fx(pw)+"<i>tk</i></b></div>"+'<div class="b3"><span>পার্সেন্টেজ</span><em>%</em><b>'+pc+"</b></div>"+'<img class="lg2" alt="আপন বাজার" src="'+LOGO+'"><p>আপনে বাজার করুন<br>বাজার খরচ কমান ।</p>';
-}
-function lang(l){L=l;var b=l==="bn";R.lang=b?"bn":"en";els.forEach(function(e){e.textContent=b?e.dataset.bn:e.dataset.en});$("lg").textContent=b?"EN":"বাং";try{localStorage.setItem("sas-lang",l)}catch(e){}calc()}
-$("lg").onclick=function(){lang(L==="bn"?"en":"bn")};
-["original","discount","cost","selling","base","percent","vatBase","vatRate","po","pnw"].forEach(function(i){$(i).addEventListener("input",calc)});
-$("mf").onsubmit=function(e){e.preventDefault();var t="Hello Sohan, I am "+$("mn").value.trim()+". "+$("mm").value.trim();window.open("https://wa.me/8801729948649?text="+encodeURIComponent(t),"_blank","noopener")};
-var links=[].slice.call(document.querySelectorAll("nav a")),so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})})},{rootMargin:"-40% 0px -55% 0px"});
-["about","experience","skills","tools","education","contact"].forEach(function(i){var el=$(i);if(el)so.observe(el)});
-if(L==="bn")lang("bn");else calc();
-})();
+  const $ = id => document.getElementById(id);
+  function update() {
+    const m = parseFloat($("iMarket").value) || 0;
+    const a = parseFloat($("iApon").value) || 0;
+    const pct = m > 0 ? Math.max(0, Math.round((m - a) / m * 100)) : 0;
+    $("vMarket").textContent = m;
+    $("vApon").textContent = a;
+    $("vPct").textContent = pct;
+  }
+  ["iMarket", "iApon"].forEach(id => $(id).addEventListener("input", update));
+  $("print").addEventListener("click", () => window.print());
+  update();
 </script>
 </body>
 </html>
