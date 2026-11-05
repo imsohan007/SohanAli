@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Sohan Ali Sikder | Inventory and Operations Executive</title>
-<meta name="description" content="Sohan Ali Sikder: two years of inventory, store and team coordination experience at Apon Tech Ltd. Based in Gazipur, Bangladesh.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -209,7 +208,9 @@ footer{margin-top:84px;background:var(--ink);color:#c9c9dc;text-align:center;fon
 
 <script>
 (function(){
-var COMMENT_URL="https://script.google.com/macros/s/AKfycbyP1iD4mXwAV3CbmMdcvJzLHB1bKxQs0xSpRtYFCsGQfr9-q-Tc578V__iTTYBxJuPpXQ/exec";
+// ⚠️ এখানে আপনার Apps Script এর Web App URL বসান (যেটা ধাপ ২ এ কপি করেছিলেন)
+var COMMENT_URL="আপনার_Web_App_URL_এখানে_বসান"; 
+
 var $=function(i){return document.getElementById(i)},store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 var im=$("hero");im.onload=function(){if(im.naturalWidth>50){im.hidden=false;$("mono").style.display="none"}};im.src="https://drive.google.com/thumbnail?id=1_4RBqCFg6kaPgEC061rJEm5G8-FrkP91&sz=w1000";
 
@@ -249,7 +250,7 @@ $("gp").addEventListener("click",function(){var q=Math.max(1,Math.min(60,parseIn
 for(var i=0;i<q;i++)b.appendChild(tag());document.body.classList.add("pr");
 var done=function(){document.body.classList.remove("pr");b.textContent="";removeEventListener("afterprint",done)};addEventListener("afterprint",done);setTimeout(function(){window.print()},60)});
 
-/* message + photo (Google Sheet + Drive via Apps Script) */
+/* message + photo */
 var ready=COMMENT_URL.indexOf("http")===0,mms=$("mms"),photo="",pv=$("mpv");
 function mErr(t){mms.className="ms er";mms.textContent=t}
 function clr(){photo="";$("mph").value="";pv.hidden=true;$("mpi").removeAttribute("src");$("mpn").textContent=""}
@@ -288,39 +289,6 @@ $("sb").disabled=true;cms.textContent="Sending…";
 fetch(COMMENT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({name:n,comment:c,website:$("hp").value})}).then(function(){
 store.set("sas-lc",String(Date.now()));cms.className="ms ok";cms.textContent="Thank you! Your comment is added.";$("cf").reset();$("ck").textContent="0";
 list.querySelectorAll(".em").forEach(function(x){x.remove()});list.insertBefore(item(n,"just now",c),list.firstChild);setTimeout(load,2500)}).catch(function(){cms.className="ms er";cms.textContent="Could not send. Please try again."}).then(function(){$("sb").disabled=false})});
-
-/* reveal on scroll */
-var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-if(!reduce&&window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add("in");io.unobserve(t);setTimeout(function(){t.classList.remove("rv")},1000)}})},{threshold:.12});
-[].forEach.call(document.querySelectorAll(".cd,.stat,.st,.lk,.pw"),function(e,i){e.classList.add("rv");e.style.transitionDelay=(i%3)*70+"ms";io.observe(e)})}
-else[].forEach.call(document.querySelectorAll(".bar"),function(b){b.classList.add("in")});
-
-/* photo wall: random open photos, auto-change, new set every refresh */
-var KW=["supermarket","grocery store","shopping mall","retail store","warehouse shelves","market stall","clothing store","shopping cart","bakery shop","fruit market","street market","shop window"];
-function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
-var P=[],gi=0,ia=$("ga"),ib=$("gb"),front=true,tm,bad=0;
-function seed(){var a=[];for(var i=0;i<8;i++)a.push({u:"https://picsum.photos/seed/"+Math.random().toString(36).slice(2,9)+"/1200/750",t:"Random photo "+(i+1),c:"Unsplash via Lorem Picsum",l:"https://picsum.photos/"});return a}
-function dots(){var d=$("dt");d.textContent="";P.forEach(function(_,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Photo "+(i+1));b.onclick=function(){go(i)};d.appendChild(b)})}
-function show(i){gi=(i+P.length)%P.length;var p=P[gi],n=front?ib:ia,o=front?ia:ib,m=new Image();
-m.onload=function(){bad=0;n.src=p.u;n.alt=p.t;n.classList.add("on");o.classList.remove("on");front=!front;$("cp").textContent=p.t;var c=$("cr");c.textContent="Source: ";var a=document.createElement("a");a.href=p.l;a.target="_blank";a.rel="noopener noreferrer";a.textContent=p.c;c.appendChild(a);[].forEach.call($("dt").children,function(d,k){d.classList.toggle("on",k===gi)})};
-m.onerror=function(){if(++bad<P.length)show(gi+1);else $("cp").textContent="Photos unavailable right now"};m.src=p.u}
-function rst(){clearInterval(tm);if(!reduce)tm=setInterval(function(){show(gi+1)},4500)}
-function go(i){show(i);rst()}
-$("gr").onclick=function(){go(gi+1)};$("gl").onclick=function(){go(gi-1)};
-P=seed();dots();show(0);rst();
-(function(){var q=KW[Math.floor(Math.random()*KW.length)];
-fetch("https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrlimit=50&gsrsearch="+encodeURIComponent(q+" filetype:bitmap")+"&prop=imageinfo&iiprop=url|mime|size|extmetadata&iiurlwidth=1200")
-.then(function(r){return r.json()}).then(function(d){var Q=d&&d.query&&d.query.pages;if(!Q)return;var a=[];
-Object.keys(Q).forEach(function(k){var ii=Q[k].imageinfo&&Q[k].imageinfo[0];if(!ii||ii.mime!=="image/jpeg"||!ii.thumburl||ii.width<1000||ii.width<ii.height)return;var m=ii.extmetadata||{},lic=m.LicenseShortName&&m.LicenseShortName.value||"open license",ar=m.Artist&&m.Artist.value?String(m.Artist.value).replace(/<[^>]*>/g,"").trim().slice(0,40):"";
-a.push({u:ii.thumburl,t:Q[k].title.replace(/^File:/,"").replace(/\.\w+$/,"").replace(/_/g," ").slice(0,90),c:"Wikimedia Commons \u00b7 "+lic+(ar?" \u00b7 "+ar:""),l:ii.descriptionshorturl||ii.descriptionurl||"https://commons.wikimedia.org/"})});
-if(a.length>=4){P=shuf(a).slice(0,10);dots();show(0);rst()}}).catch(function(){})})();
-
-/* today's best photo (same all day, new one tomorrow) */
-var day=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Dhaka"}).format(new Date());
-function potdFallback(){$("pdi").onerror=null;$("pdi").src="https://picsum.photos/seed/potd-"+day+"/900/675";$("pdt").textContent="Photo of the day";$("pdd").textContent="A new featured photo every day. Come back tomorrow for the next one.";$("pdc").textContent="Unsplash via Lorem Picsum \u00b7 "+day}
-$("pdi").onerror=potdFallback;
-fetch("https://en.wikipedia.org/api/rest_v1/feed/featured/"+day.replace(/-/g,"/")).then(function(r){return r.json()}).then(function(d){var i=d&&d.image;
-if(i&&i.thumbnail&&i.thumbnail.source){$("pdi").src=i.thumbnail.source;var t=String(i.title||"").replace(/^File:/,"").replace(/\.\w+$/,"").replace(/_/g," ");$("pdt").textContent=t||"Photo of the day";$("pdd").textContent=i.description&&i.description.text?String(i.description.text).slice(0,160):"";$("pdc").textContent="Wikipedia featured picture of the day \u00b7 "+day}else potdFallback()}).catch(potdFallback);
 })();
 </script>
 </body>
