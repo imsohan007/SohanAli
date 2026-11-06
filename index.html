@@ -103,12 +103,12 @@ function paint(){
  var p=Math.min(1,cash/goal);E.fill.style.transform="scaleX("+p+")";setT("pt",bn(Math.floor(p*100))+"% (লক্ষ্য "+fmt(goal)+")");
  ups.forEach(function(u){var c=cost(u),can=cash>=c;if(u.cc!==c||u.cl!==u.l){u.cc=c;u.cl=u.l;u.s.textContent=u.n+(u.l?" (লেভেল "+bn(u.l)+")":"");u.b.textContent=fmt(c)}if(u.can!==can){u.can=can;u.b.disabled=!can}});
  var m=p>=.9?90:p>=.75?75:p>=.5?50:p>=.25?25:0;
- if(m>milestone){milestone=m;say(rnd(MILE[m]),true)}
+ if(m>milestone){milestone=m;pend=rnd(MILE[m])}
  dirty=false;
 }
 
 /* ---------- ট্যাপ ---------- */
-var taps=0,btn=$("gtap"),stage=$("gstage"),pops=0,comboEl=$("gcombo"),tier=0;
+var pend=null,taps=0,btn=$("gtap"),stage=$("gstage"),pops=0,comboEl=$("gcombo"),tier=0;
 function tap(x,y){
  var now=Date.now();combo=(now-lastTap<500)?combo+1:1;lastTap=now;
  var mult=combo>=30?3:combo>=15?2:combo>=7?1.5:1,g=per*mult;cash+=g;dirty=true;
@@ -119,7 +119,7 @@ function tap(x,y){
   var r=stage.getBoundingClientRect(),px=x==null?r.width/2:x-r.left,py=y==null?r.height/2:y-r.top;
   e.style.left=Math.max(30,Math.min(r.width-30,px+(Math.random()*40-20)))+"px";e.style.top=Math.max(20,py-30)+"px";
   e.addEventListener("animationend",function(){e.remove();pops--});stage.appendChild(e)}
- taps++;if(taps%15===0){var r=Math.random();say(r<.45?nRoast():r<.75?gen():nTap(),true)}
+ if(pend){say(pend,true);pend=null}taps++;if(taps%15===0){var r=Math.random();say(r<.45?nRoast():r<.75?gen():nTap(),true)}
  if(cash>=goal*.9&&cash<goal&&Math.random()<.04)say(nNear(),true);
 }
 btn.addEventListener("pointerdown",function(e){e.preventDefault();btn.classList.add("p");tap(e.clientX,e.clientY)});
@@ -146,7 +146,6 @@ function loop(t){
  requestAnimationFrame(loop)
 }
 requestAnimationFrame(loop);
-setInterval(function(){if(!document.hidden&&Date.now()-lastTap>5000&&Date.now()-lastSay>5000)say(Math.random()<.4?nIdle():Math.random()<.6?nRoast():gen(),true)},6000);
 setInterval(save,3000);
 function spawn(){
  if(!document.hidden&&!stage.querySelector(".ggold")){var g=document.createElement("div");g.className="ggold";g.textContent="🪙";g.style.left=(8+Math.random()*78)+"%";g.style.top=Math.floor(Math.random()*40)+"px";
@@ -154,9 +153,6 @@ function spawn(){
   g.addEventListener("animationend",function(){g.remove()});stage.appendChild(g)}
  setTimeout(spawn,14000+Math.random()*12000)}
 setTimeout(spawn,9000);
-var POKE=["বোকাসোদা! টাকা নাই, ভাব তো আছে!", "ওই বোকাসোদা, ঘুমাচ্ছিস নাকি? সিতাকুন্ড কিন্তু ঘুমন্ত লোকদের নেয় না!", "শালা গরিব বোকাসোদা, পকেটে হাত দিয়ে দেখ, বাতাস পাবি!", "এই বোকাসোদা, অন্য কেউ ততক্ষণে পাহাড়ের চূড়ায়, তুই এখনো এখানে!", "বোকাসোদা রে, তোর ব্যালেন্স দেখে ব্যাংকের কম্পিউটার ক্র্যাশ করছে 💀", "ওরে গরিব, বন্ধুরা ট্যুরে যাচ্ছে, তুই শুধু 'যাব যাব' বলছিস!", "বোকাসোদা, এভাবে টিপলে সিতাকুন্ড না, বাড়ির মোড়ও পৌঁছাবি না!", "এই বোকাসোদা, চায়ের দোকানের বিলটাও তো বাকি, আগে ওটা শোধ কর!", "শালা গরিব, তোর স্বপ্ন সিতাকুন্ড, বাজেট সিঙ্গাড়া!", "বোকাসোদা, মা জিজ্ঞেস করবে 'কই গেছিলি?', বলিস 'আঙুলের ব্যায়াম করছিলাম'", "ওই গরিবের বাচ্চা বোকাসোদা, আঙুল নড়ছে না কেন? জং ধরছে?", "বোকাসোদা, লোকে বাইক নিয়ে ট্যুরে যায়, তুই এখনো ফোনে হেঁটে যাচ্ছিস 😂", "শোন বোকাসোদা, পাহাড় বলছে: 'আসতে চাইলে আগে ভাড়া দে'", "এই শালা গরিব, বিয়ে-শাদি না হোক, অন্তত ট্যুরটা তো হোক!", "বোকাসোদা, তোর কপালে সিতাকুন্ড লেখা আছে, কিন্তু পেন্সিলে!", "এই বোকাসোদা, বান্দরগুলোও তোর চেয়ে বেশি কামায়, কলা পায় ফ্রি!", "গরিব বোকাসোদা, এই ফাঁকে একটু টিপ দিলে কী হয়? ক্ষতি নাই তো!", "বোকাসোদা, তোর পকেট এত খালি যে প্রতিধ্বনি শোনা যায়!", "ওরে শালা গরিব, সোনার ব্যাংকও তোর নাম শুনে সোনা লুকায়া ফেলছে!", "এই বোকাসোদা, ঘাড় ঘুরায়া দেখ, গরিবি তোর পেছনে দাঁড়ায়া আছে 👀", "বোকাসোদা, হাত ফাঁকা থাকলে টাকা আসবে না, টিপ দে এখনই!", "শালা গরিব, তুই পারবি না… এইটা বললাম যাতে তুই রাগ করে প্রমাণ করিস 😏", "ওই বোকাসোদা, কেউ তোকে বিশ্বাস করে না, আমিও না, প্রমাণ কর!", "বোকাসোদা, কাজ না করে শুধু স্ক্রল করলে সিতাকুন্ড পিছায়া যায়!"],nPoke=bag(POKE),inView=true;try{new IntersectionObserver(function(en){inView=en[0].isIntersecting},{threshold:.1}).observe($("gw"))}catch(e){}
-function pokeLoop(){if(!document.hidden&&inView){say(nPoke(),true);var s=$("gsay");s.classList.remove("gshake");void s.offsetWidth;s.classList.add("gshake")}setTimeout(pokeLoop,7000+Math.random()*5000)}
-setTimeout(pokeLoop,6000);
 
 paint();
 })();
