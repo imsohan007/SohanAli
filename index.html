@@ -36,15 +36,15 @@ h1,h2,h3,h4{font-family:var(--hf);line-height:1.1;letter-spacing:-.025em;font-we
 /* hero */
 .hero{position:relative;color:#fff;overflow:hidden}
 .hero::after{content:"";position:absolute;left:0;right:0;bottom:16px;border-top:2px dashed rgba(255,255,255,.22)}
-.hg{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start}
-.hl{padding:84px 0 120px}
+.hg{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:auto 1fr;gap:0 56px;align-items:start;padding-bottom:64px}.hl{grid-column:1;grid-row:1}.hud{grid-column:1;grid-row:2}.hc{grid-column:2;grid-row:1/3}
+.hl{padding:72px 0 40px}
 .hero h1{font-size:clamp(3.4rem,9.2vw,7.2rem);font-weight:800;line-height:.92;letter-spacing:-.045em}
 .hero .rl{font-family:var(--hf);font-size:clamp(1.25rem,2.6vw,1.65rem);font-weight:600;color:var(--or2);margin-top:26px;letter-spacing:-.01em}
 .hero .sm{color:#C3CDE2;margin-top:16px;max-width:31em;font-size:1.08rem}
 .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.hc{display:flex;justify-content:flex-end}
-.hang{position:relative;width:min(100%,326px);transform-origin:50% 0;filter:drop-shadow(0 26px 28px rgba(0,0,0,.38));animation:swing 2.8s cubic-bezier(.3,.6,.4,1) .35s both;cursor:pointer;-webkit-tap-highlight-color:transparent}
-@keyframes swing{0%{transform:rotate(15deg)}18%{transform:rotate(-10deg)}36%{transform:rotate(6deg)}54%{transform:rotate(-3.5deg)}72%{transform:rotate(1.8deg)}100%{transform:rotate(0)}}
+.hc{position:relative;display:flex;flex-direction:column;align-items:flex-end}
+.hang{position:relative;width:min(100%,326px);transform-origin:50% 0;filter:drop-shadow(0 26px 28px rgba(0,0,0,.38));animation:swing var(--d,2.8s) cubic-bezier(.3,.6,.4,1) var(--dl,.35s) both;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+@keyframes swing{0%{transform:rotate(calc(var(--a,15)*1deg))}18%{transform:rotate(calc(var(--a,15)*-.667deg))}36%{transform:rotate(calc(var(--a,15)*.4deg))}54%{transform:rotate(calc(var(--a,15)*-.233deg))}72%{transform:rotate(calc(var(--a,15)*.12deg))}100%{transform:rotate(0)}}
 .cord{position:relative;z-index:2;width:3px;height:92px;margin:0 auto;background:linear-gradient(#D8B77A,#BE9A58);border-radius:2px}
 .tg{position:relative;margin-top:-22px;background:#fff;color:var(--ink);padding:46px 18px 18px;clip-path:polygon(13% 0,87% 0,100% 6%,100% 100%,0 100%,0 6%);border-radius:0 0 8px 8px}
 .tg::before{content:"";position:absolute;top:13px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--denim);box-shadow:inset 0 0 0 3px #CED6E6}
@@ -57,6 +57,21 @@ h1,h2,h3,h4{font-family:var(--hf);line-height:1.1;letter-spacing:-.025em;font-we
 .tg dt{font-size:.72rem;color:var(--mut);line-height:1.2}.tg dd{font-weight:600;font-size:.92rem;line-height:1.35;margin-top:2px}
 .bc{margin-top:6px;height:38px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px,var(--ink) 12px 13px,transparent 13px 16px,var(--ink) 16px 18px,transparent 18px 19px)}
 .bn{text-align:center;font-size:.72rem;letter-spacing:.32em;color:var(--mut);margin-top:5px}
+/* tap to earn */
+.coin{display:inline-grid;place-items:center;flex:none;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE9A3,#F5B301 60%,#C98A00);color:#6B4200;font:800 1.1rem var(--hf);box-shadow:inset 0 0 0 2px rgba(107,66,0,.35),0 2px 6px rgba(0,0,0,.3)}
+.hud{width:min(100%,430px);margin-top:0;padding:16px 18px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18)}
+.hrow{display:flex;align-items:center;gap:10px}
+.hrow b{font-family:var(--hf);font-size:1.9rem;line-height:1;letter-spacing:-.03em}
+.hrow .btn{margin-left:auto;min-height:40px;padding:0 18px;font-size:.88rem}
+.lvl{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-size:.84rem;color:#B7C3DB}.lvl span:first-child{color:#fff;font-weight:600}
+.track{height:8px;margin-top:8px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}.track i{display:block;height:100%;width:0;border-radius:99px;background:var(--or);transition:width .35s}
+.hmsg{margin-top:10px;font-size:.84rem;color:#C3CDE2;min-height:1.3em}
+.shm{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.shm a,.shm button{padding:7px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font-size:.82rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s}
+.shm a:hover,.shm button:hover{background:#fff;color:var(--ink)}
+.pop{position:absolute;z-index:5;pointer-events:none;display:flex;align-items:center;gap:5px;font-family:var(--hf);font-weight:800;font-size:1.25rem;color:#FFD560;text-shadow:0 2px 8px rgba(0,0,0,.55);animation:rise .95s ease-out forwards}
+.pop .coin{width:22px;height:22px;font-size:.72rem}
+@keyframes rise{from{opacity:1;transform:translate(-50%,0) scale(.8)}to{opacity:0;transform:translate(-50%,-80px) scale(1.2)}}
 /* sections */
 .sec{padding-top:104px}
 .sh{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;padding-top:30px;border-top:2px dashed var(--seam);margin-bottom:46px}
@@ -155,8 +170,8 @@ footer b{font-family:var(--hf);color:#fff;font-size:1.1rem;font-weight:700}
 .wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0));width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 22px -6px rgba(0,0,0,.45);z-index:40;transition:transform .15s}
 .wa:hover{transform:scale(1.07)}
 .wa svg{width:30px;height:30px}
-@media(max-width:900px){.hg,.ab,.cm,.cmw,.gl,.ptm,.pn,.sh{grid-template-columns:1fr}.sh p{justify-self:start}.hc{order:-1;justify-content:center}.hl{padding:28px 0 96px}.row{grid-template-columns:1fr;gap:14px}.sk{grid-template-columns:1fr;gap:34px}.sec{padding-top:76px}.band,.dk{margin-top:76px;padding-bottom:76px}.hd nav a:not(.cta){display:none}.ab{gap:40px}.cm,.cmw{gap:36px}.gl{gap:30px}.hang{width:min(100%,300px)}}
-@media(max-width:520px){.btn{width:100%}.acts{flex-direction:column}.fm .r3{grid-template-columns:1fr 1fr}.br span{font-size:.95rem}.w{padding:0 20px}.sheet{padding:22px}}
+@media(max-width:900px){.hg,.ab,.cm,.cmw,.gl,.ptm,.pn,.sh{grid-template-columns:1fr}.sh p{justify-self:start}.hc{order:-2;align-items:center}.hud{order:-1;margin:28px auto 0}.hg{grid-template-rows:none;padding-bottom:0}.hl,.hud,.hc{grid-column:1;grid-row:auto}.hl{padding:28px 0 96px}.row{grid-template-columns:1fr;gap:14px}.sk{grid-template-columns:1fr;gap:34px}.sec{padding-top:76px}.band,.dk{margin-top:76px;padding-bottom:76px}.hd nav a:not(.cta){display:none}.ab{gap:40px}.cm,.cmw{gap:36px}.gl{gap:30px}.hang{width:min(100%,300px)}}
+@media(max-width:520px){.btn{width:100%}.hrow .btn{width:auto}.acts{flex-direction:column}.fm .r3{grid-template-columns:1fr 1fr}.br span{font-size:.95rem}.w{padding:0 20px}.sheet{padding:22px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media print{body.pr .hd,body.pr main,body.pr footer,body.pr .wa{display:none!important}body.pr{background:#fff}body.pr #tp{display:flex;flex-wrap:wrap;gap:6px}}
 </style>
@@ -170,11 +185,11 @@ footer b{font-family:var(--hf);color:#fff;font-size:1.1rem;font-weight:700}
 <div class="hl"><h1>Sohan Ali<br>Sikder</h1><p class="rl">Inventory and Operations Executive</p>
 <p class="sm">Two years of hands-on shop, stock and team work at Apon Tech Ltd. I am looking for an inventory or operations role in a garments factory in Bangladesh.</p>
 <div class="acts"><a class="btn p" href="https://drive.google.com/file/d/16CjDf6xMueUT4dmRH0moEQVmw54vzSJg/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download CV</a><a class="btn lt" href="https://wa.me/8801729948649" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a></div></div>
-<div class="hc"><div class="hang" id="hang" title="Tap to swing"><div class="cord"></div><div class="tg">
+<div class="hc"><div class="hang" id="hang" role="button" tabindex="0" aria-label="Tap the tag to earn coins" title="Tap to earn coins"><div class="cord"></div><div class="tg">
 <div class="tp"><b id="mono">SAS</b><img id="hero" alt="Portrait of Sohan Ali Sikder" referrerpolicy="no-referrer" hidden></div>
 <div class="st-on">Open to work</div>
 <dl><div><dt>Role</dt><dd>Inventory and Operations Executive</dd></div><div><dt>Experience</dt><dd>2 years, Apon Tech Ltd.</dd></div><div><dt>Based in</dt><dd>Gazipur, Bangladesh</dd></div><div><dt>Looking for</dt><dd>Inventory or operations role in a garments factory</dd></div></dl>
-<div class="bc" aria-hidden="true"></div><div class="bn" aria-hidden="true">01729948649</div></div></div></div>
+<div class="bc" aria-hidden="true"></div><div class="bn" aria-hidden="true">01729948649</div></div></div></div><div class="hud"><div class="hrow"><span class="coin" aria-hidden="true">৳</span><b id="coins">0</b><button class="btn p" id="shr" type="button">Share</button></div><div class="lvl"><span id="lvl">Trainee</span><span id="lnext"></span></div><div class="track"><i id="lbar"></i></div><p class="hmsg" id="hmsg" role="status">Tap the tag to earn coins</p><div class="shm" id="shm" hidden><a id="sw" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a><a id="sf" href="#" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" id="sc">Copy link</button></div></div>
 </div></div></section>
 
 <section class="sec" id="about"><div class="w"><div class="sh"><h2>Reliable hands for store and stock operations</h2></div>
@@ -240,8 +255,37 @@ var COMMENT_URL="https://script.google.com/macros/s/AKfycbyNSC2BjCo5iXUbZnYTggv7
 var $=function(i){return document.getElementById(i)},store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 var im=$("hero");im.onload=function(){if(im.naturalWidth>50){im.hidden=false;$("mono").style.display="none"}};im.src="https://drive.google.com/thumbnail?id=1_4RBqCFg6kaPgEC061rJEm5G8-FrkP91&sz=w1000";
 
-/* tap the hanging tag to swing it again */
-$("hang").addEventListener("click",function(){var h=this;h.style.animation="none";void h.offsetWidth;h.style.animation=""});
+/* tap the hanging tag to earn coins */
+(function(){
+var hang=$("hang"),hc=hang.parentNode,cn=$("coins"),lv=$("lvl"),nx=$("lnext"),bar=$("lbar"),msg=$("hmsg"),sh=$("shr"),shm=$("shm");
+var L=[[0,"Trainee"],[25,"Stock Counter"],[100,"Shelf Pro"],[250,"Shop Executive"],[500,"Assistant In-Charge"],[1000,"Store Manager"]];
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var n=Math.max(0,parseInt(store.get("sas-coins"),10)||0),taps=0;
+function rank(v){var i=0;while(i+1<L.length&&v>=L[i+1][0])i++;return i}
+function paint(){var i=rank(n),u=L[i+1];cn.textContent=n.toLocaleString("en-US");lv.textContent=L[i][1];
+if(u){bar.style.width=Math.round((n-L[i][0])/(u[0]-L[i][0])*100)+"%";nx.textContent=(u[0]-n)+" to "+u[1]}else{bar.style.width="100%";nx.textContent="Top rank"}}
+function pop(x,y,t){if(RM)return;var r=hc.getBoundingClientRect(),e=document.createElement("div");e.className="pop";e.innerHTML="<span class=\"coin\" aria-hidden=\"true\">৳</span>";e.appendChild(document.createTextNode(t));
+e.style.left=(x-r.left)+"px";e.style.top=(y-r.top)+"px";hc.appendChild(e);setTimeout(function(){e.remove()},950)}
+function tap(x,y){var before=rank(n),bonus=++taps%10===0,g=bonus?5:1;n+=g;store.set("sas-coins",String(n));paint();
+var after=rank(n);msg.textContent=after>before?"Rank up: "+L[after][1]+"!":(bonus?"Bonus! +5 coins":"Keep tapping");
+pop(x,y,"+"+g);
+hang.style.setProperty("--a","8");hang.style.setProperty("--d","1.5s");hang.style.setProperty("--dl","0s");hang.style.animation="none";void hang.offsetWidth;hang.style.animation="";
+try{if(navigator.vibrate)navigator.vibrate(bonus?[12,40,12]:8)}catch(e){}}
+hang.addEventListener("click",function(e){tap(e.clientX,e.clientY)});
+hang.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();var r=hang.getBoundingClientRect();tap(r.left+r.width/2,r.top+r.height/2)}});
+function link(){return location.protocol.indexOf("http")===0?location.href.split("#")[0]:"https://sohanali.vercel.app/"}
+function text(){return "I tapped up "+n+" coins and reached "+L[rank(n)][1]+" on Sohan Ali Sikder's portfolio. Can you beat me?"}
+sh.addEventListener("click",function(){var d={title:"Sohan Ali Sikder | Inventory and Operations Executive",text:text(),url:link()};
+if(navigator.share){navigator.share(d).catch(function(){});return}
+$("sw").href="https://wa.me/?text="+encodeURIComponent(text()+" "+link());
+$("sf").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(link())+"&quote="+encodeURIComponent(text());
+shm.hidden=!shm.hidden});
+$("sc").addEventListener("click",function(){var b=this,s=text()+" "+link();
+function ok(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy link"},1600)}
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(s).then(ok,function(){window.prompt("Copy this text",s)});else window.prompt("Copy this text",s)});
+if(n>0)msg.textContent="Welcome back. Keep tapping";
+paint();
+})();
 
 /* retail tools: tabs, each with its calculators */
 var f=function(x){return isFinite(x)?x.toLocaleString("en-US",{maximumFractionDigits:2}):"—"},k=function(x){return "\u09F3"+f(x)},B=function(x){return "<b>"+x+"</b>"};
