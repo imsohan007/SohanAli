@@ -194,6 +194,48 @@ footer b{font-family:var(--hf);color:#fff;font-size:1.1rem;font-weight:700}
 @media(max-width:520px){.btn{width:100%}.hrow .btn{width:auto}.acts{flex-direction:column}.fm .r3{grid-template-columns:1fr 1fr}.br span{font-size:.95rem}.w{padding:0 20px}.sheet{padding:22px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media print{body.pr .hd,body.pr main,body.pr footer,body.pr .wa{display:none!important}body.pr{background:#fff}body.pr #tp{display:flex;flex-wrap:wrap;gap:6px}}
+
+#game .gw{max-width:560px;margin:0 auto;padding:16px;border-radius:22px;color:#f3f7ee;background:radial-gradient(circle at 50% -10%,#1f4d33,#0d1b14 62%);font-family:"Hind Siliguri",system-ui,sans-serif;position:relative;overflow:hidden;--card:#14291e;--line:#25452f;--mut:#9fb8a5;--gold:#ffc83d;--or:#ff7a2f;--red:#ff6b6b;--grn:#3ddc84;-webkit-user-select:none;user-select:none}
+#game .gw *{box-sizing:border-box}
+#game .gbar{display:flex;gap:10px}
+#game .gbox{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 6px;text-align:center}
+#game .gbox small{display:block;color:var(--mut);font-size:.74rem}
+#game .gbox b{font-size:1.3rem;color:var(--gold);font-weight:700}
+#game .gprog{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 12px;font-size:.85rem;color:var(--mut)}
+#game .gprog p{display:flex;justify-content:space-between;gap:8px}
+#game .gtrack{height:14px;border-radius:99px;background:#0a140e;overflow:hidden;margin-top:6px}
+#game .gfill{height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--grn),var(--gold));will-change:transform}
+#game .gsay{min-height:68px;margin:12px 0 4px;background:#1b3526;border:1.5px dashed var(--gold);border-radius:14px;padding:10px 14px;font-size:1.05rem;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center;line-height:1.35}
+#game .gsay.in{animation:gin .25s ease-out}
+@keyframes gin{from{transform:scale(.96);opacity:.4}to{transform:none;opacity:1}}
+#game .gstage{position:relative;display:grid;place-items:center;padding:14px 0 6px;min-height:270px}
+#game #gtap{width:230px;height:230px;border-radius:50%;border:6px solid #b8860b;background:radial-gradient(circle at 35% 30%,#fff1a8,var(--gold) 45%,#d99a00);color:#4a2f00;font:700 3rem/1.1 "Hind Siliguri",sans-serif;cursor:pointer;box-shadow:0 10px 0 #8a6200,0 22px 40px rgba(0,0,0,.5);transition:transform .07s,box-shadow .07s;touch-action:manipulation;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;will-change:transform;-webkit-tap-highlight-color:transparent}
+#game #gtap small{font-size:1rem;font-weight:600;margin-top:4px}
+#game #gtap.p{transform:translateY(8px) scale(.97);box-shadow:0 2px 0 #8a6200,0 8px 20px rgba(0,0,0,.5)}
+#game .gpop{position:absolute;pointer-events:none;font-weight:700;color:var(--gold);font-size:1.4rem;text-shadow:0 2px 4px #000;animation:gup .8s ease-out forwards;will-change:transform,opacity;z-index:3}
+@keyframes gup{from{transform:translate(-50%,0);opacity:1}to{transform:translate(-50%,-90px);opacity:0}}
+#game .gcombo{text-align:center;color:var(--or);font-weight:700;min-height:26px}
+#game .ggold{position:absolute;z-index:4;font-size:3rem;cursor:pointer;animation:gfall 4s linear forwards;filter:drop-shadow(0 0 12px var(--gold));touch-action:manipulation}
+@keyframes gfall{from{transform:translateY(0) rotate(0)}to{transform:translateY(240px) rotate(360deg)}}
+#game h3.gh{font-size:1.1rem;margin:18px 0 8px;font-weight:700;color:#f3f7ee}
+#game .gup{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 12px;margin-bottom:8px}
+#game .gup span{font-size:.85rem;color:var(--mut)}#game .gup strong{display:block;color:#f3f7ee;font-size:.98rem}
+#game .gb{border:0;border-radius:10px;padding:10px 14px;font:700 .95rem "Hind Siliguri",sans-serif;background:var(--grn);color:#052b14;cursor:pointer;white-space:nowrap;touch-action:manipulation}
+#game .gb:disabled{background:#2c4738;color:#8aa591;cursor:not-allowed}
+#game .gbank{background:linear-gradient(160deg,#1d3a8a,#122660);border:2px solid #4c6fe0;border-radius:16px;padding:14px;text-align:center}
+#game .gbank h4{font-size:1.2rem}#game .gbank p{color:#c5d3ff;font-size:.88rem;margin:4px 0 10px}
+#game #gwd{background:var(--gold);color:#3b2600;width:100%;font-size:1.1rem;padding:13px}
+#game #gbm{margin-top:10px;font-weight:600;min-height:24px;line-height:1.35}
+#game .gwin{margin-top:12px;background:var(--card);border:2px solid var(--gold);border-radius:18px;padding:18px;text-align:center}
+#game .gwin h4{color:var(--gold);font-size:1.4rem;margin-bottom:6px}#game .gwin p{margin-bottom:12px;line-height:1.5}
+#game .gwin .gb{width:100%;background:var(--gold);color:#3b2600;padding:13px;font-size:1.05rem}
+#game .gnote{text-align:center;color:var(--mut);font-size:.78rem;margin-top:14px}
+#game .gshake{animation:gsh .35s}
+@keyframes gsh{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+#game [hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){#game .gpop,#game .ggold,#game .gsay.in{animation:none}}
+
+#gi{position:fixed;inset:0;z-index:999;background:rgba(5,12,8,.88);display:grid;place-items:center;padding:20px}#gi[hidden]{display:none!important}#gi>div{background:#14291e;border:2px solid #ffc83d;border-radius:18px;padding:24px;max-width:420px;text-align:center;color:#f3f7ee;font-family:"Hind Siliguri",sans-serif}#gi h2{color:#ffc83d;font-size:1.6rem;margin-bottom:10px;font-family:"Hind Siliguri",sans-serif;letter-spacing:0}#gi p{line-height:1.6;margin-bottom:16px}#gi button{width:100%;min-height:50px;border:0;border-radius:10px;background:#ffc83d;color:#3b2600;font:700 1.1rem "Hind Siliguri",sans-serif;cursor:pointer}
 </style>
 </head>
 <body>
@@ -212,187 +254,19 @@ footer b{font-family:var(--hf);color:#fff;font-size:1.1rem;font-weight:700}
 <div class="bc" aria-hidden="true"></div><div class="bn" aria-hidden="true">01729948649</div></div></div></div><div class="hud" id="hud"><div class="bk"><span class="bkn">Sonar Bank</span><span class="bkp">Parody</span></div><div class="hrow"><span class="coin" aria-hidden="true">৳</span><div><b id="coins">0</b><span class="unit"> coins</span><small id="taka">= ৳0.00</small></div><button class="btn p" id="shr" type="button">Share</button></div><div class="lvl"><span id="lvl">Trainee</span><span id="lnext"></span></div><div class="track"><i id="lbar"></i></div><div class="fund"><span>Sitakund tour fund</span><b id="fund">৳0.00</b></div><div class="track gold"><i id="fbar"></i></div><button class="btn wd" id="wd" type="button" aria-disabled="true">Withdraw</button><div class="wdp" id="wdp" hidden><h4>Withdraw</h4><dl><div><dt>Amount</dt><dd id="wda">৳0</dd></div><div><dt>Method</dt><dd>Sonar Bank (parody)</dd></div><div><dt>Goes to</dt><dd>Sitakund tour fund</dd></div></dl><p class="fine">Parody only. No bank details are asked and no real money moves.</p><div class="wdb"><button class="btn p" id="wdc" type="button">Confirm withdrawal</button><button class="btn" id="wdx" type="button">Cancel</button></div></div><div class="rcp" id="rcp" hidden><span class="stamp">PARODY</span><h4>Sonar Bank transfer slip</h4><dl><div><dt>Slip no.</dt><dd id="rid"></dd></div><div><dt>Date</dt><dd id="rdt"></dd></div><div><dt>Amount</dt><dd id="ram"></dd></div><div><dt>Sent to</dt><dd>Sitakund tour fund</dd></div></dl><p class="fine">Not a real receipt. Nothing was paid out.</p><button class="btn" id="rcx" type="button">Close</button></div><p class="hmsg" id="hmsg" role="status">Tap the tag to earn coins</p><p class="fine">Sonar Bank is a parody bank made for fun. 1,000 coins = ৳10 only inside this game. Coins are not money and nothing is paid out.</p><div class="shm" id="shm" hidden><a id="sw" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a><a id="sf" href="#" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" id="sc">Copy link</button></div></div>
 </div></div></section>
 
-<section class="sec" id="game"><div class="w"><div class="sh"><h2>টাকা আয় করুন, সিতাকুন্ড টুরের জন্য!</h2><p>টাকা কামান আর সিতাকুন্ড যান। টিপাটিপি করুন, আপগ্রেড কিনুন, তারপর সোনার ব্যাংক থেকে উইথড্র। (শুধুই মজার গেম, আসল টাকা নয়)</p></div>
-<iframe id="gf" title="সিতাকুন্ড টুর টিপাটিপি গেম" style="width:100%;height:1250px;border:0;border-radius:18px;display:block;max-width:560px;margin:0 auto" srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;bn&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
-&lt;meta name=&quot;color-scheme&quot; content=&quot;dark&quot;&gt;
-&lt;title&gt;টাকা কামান আর সিতাকুন্ড যান&lt;/title&gt;
-&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;style&gt;
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{--bg:#0d1b14;--card:#14291e;--line:#25452f;--ink:#f3f7ee;--mut:#9fb8a5;--gold:#ffc83d;--or:#ff7a2f;--red:#ff5d5d;--grn:#3ddc84;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html,body{height:auto}body{position:relative}
-body{font-family:&quot;Hind Siliguri&quot;,system-ui,sans-serif;background:radial-gradient(circle at 50% -10%,#1f4d33,var(--bg) 60%);color:var(--ink);overflow-x:hidden;user-select:none;-webkit-user-select:none}
-.w{max-width:560px;margin:0 auto;padding:14px 16px 40px}
-header{text-align:center;padding:8px 0 4px}
-h1{font-size:1.7rem;line-height:1.15;font-weight:700}
-h1 span{color:var(--gold)}
-.sub{color:var(--mut);font-size:.95rem;margin-top:4px}
-.bar{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
-.box{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-align:center}
-.box small{display:block;color:var(--mut);font-size:.75rem}
-.box b{font-size:1.4rem;color:var(--gold)}
-.prog{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
-.track{height:14px;border-radius:99px;background:#0a140e;overflow:hidden;margin-top:6px}
-.fill{height:100%;width:0;background:linear-gradient(90deg,var(--grn),var(--gold));transition:width .2s}
-.prog p{font-size:.85rem;color:var(--mut);display:flex;justify-content:space-between}
-.say{min-height:64px;margin:14px 0 6px;background:#1b3526;border:1.5px dashed var(--gold);border-radius:14px;padding:10px 14px;font-size:1.05rem;font-weight:600;text-align:center;display:flex;align-items:center;justify-content:center}
-.stage{position:relative;display:grid;place-items:center;padding:10px 0 4px}
-#tap{width:230px;height:230px;border-radius:50%;border:6px solid #b8860b;background:radial-gradient(circle at 35% 30%,#fff1a8,var(--gold) 45%,#d99a00);color:#4a2f00;font:700 3.4rem/1 &quot;Hind Siliguri&quot;,sans-serif;cursor:pointer;box-shadow:0 10px 0 #8a6200,0 22px 40px rgba(0,0,0,.5);transition:transform .06s,box-shadow .06s;display:grid;place-items:center;text-align:center;touch-action:manipulation}
-#tap small{display:block;font-size:1rem;font-weight:600;margin-top:4px}
-#tap:active,#tap.p{transform:translateY(8px) scale(.97);box-shadow:0 2px 0 #8a6200,0 8px 20px rgba(0,0,0,.5)}
-.pop{position:absolute;pointer-events:none;font-weight:700;color:var(--gold);font-size:1.5rem;animation:up .8s ease-out forwards;text-shadow:0 2px 4px #000}
-@keyframes up{to{transform:translateY(-90px);opacity:0}}
-.combo{text-align:center;color:var(--or);font-weight:700;height:26px;margin-top:6px}
-.gold{position:absolute;z-index:20;font-size:3rem;cursor:pointer;animation:fl 4s linear forwards;filter:drop-shadow(0 0 12px var(--gold))}
-@keyframes fl{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(320px) rotate(360deg)}}
-h2{font-size:1.15rem;margin:22px 0 8px}
-.up{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px}
-.up div{font-size:.88rem;color:var(--mut)}.up strong{display:block;color:var(--ink);font-size:1rem}
-button.b{border:0;border-radius:10px;padding:10px 14px;font:700 .95rem &quot;Hind Siliguri&quot;,sans-serif;background:var(--grn);color:#052b14;cursor:pointer;white-space:nowrap}
-button.b:disabled{background:#2c4738;color:#76927d;cursor:not-allowed}
-.bank{background:linear-gradient(160deg,#1d3a8a,#122660);border:2px solid #4c6fe0;border-radius:16px;padding:14px;text-align:center}
-.bank h3{font-size:1.2rem}.bank p{color:#c5d3ff;font-size:.9rem;margin:4px 0 10px}
-.bank .b{background:var(--gold);color:#3b2600;width:100%;font-size:1.1rem;padding:13px}
-#bankmsg{margin-top:10px;font-weight:600;min-height:24px}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;display:grid;place-items:center;padding:20px}
-.ov .m{background:var(--card);border:2px solid var(--gold);border-radius:18px;padding:22px;max-width:420px;text-align:center}
-.ov h2{margin:0 0 10px;font-size:1.5rem;color:var(--gold)}
-.ov p{margin-bottom:16px;line-height:1.5}
-.ov .b{width:100%;background:var(--gold);color:#3b2600;font-size:1.1rem;padding:13px}
-#win{background:var(--card);border:2px solid var(--gold);border-radius:18px;padding:18px;text-align:center}#win h2{color:var(--gold);margin:0 0 8px}#win p{margin-bottom:12px}#win .b{width:100%;background:var(--gold);color:#3b2600;padding:13px;font-size:1.05rem}
-.shake{animation:sh .35s}
-@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-footer{text-align:center;color:var(--mut);font-size:.8rem;margin-top:26px}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div class=&quot;w&quot; id=&quot;app&quot;&gt;
-&lt;header&gt;
-&lt;h1&gt;টাকা আয় করুন, &lt;span&gt;সিতাকুন্ড টুরের&lt;/span&gt; জন্য!&lt;/h1&gt;
-&lt;p class=&quot;sub&quot;&gt;টাকা কামান আর সিতাকুন্ড যান 🏔️&lt;/p&gt;
-&lt;/header&gt;
-
-&lt;div class=&quot;bar&quot;&gt;
-&lt;div class=&quot;box&quot;&gt;&lt;small&gt;পকেটে আছে&lt;/small&gt;&lt;b id=&quot;cash&quot;&gt;৳০&lt;/b&gt;&lt;/div&gt;
-&lt;div class=&quot;box&quot;&gt;&lt;small&gt;প্রতি টিপে&lt;/small&gt;&lt;b id=&quot;per&quot;&gt;৳১&lt;/b&gt;&lt;/div&gt;
-&lt;div class=&quot;box&quot;&gt;&lt;small&gt;অটো/সেকেন্ড&lt;/small&gt;&lt;b id=&quot;aps&quot;&gt;৳০&lt;/b&gt;&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;prog&quot;&gt;&lt;p&gt;&lt;span&gt;🚌 সিতাকুন্ড ফান্ড&lt;/span&gt;&lt;span id=&quot;pt&quot;&gt;০%&lt;/span&gt;&lt;/p&gt;&lt;div class=&quot;track&quot;&gt;&lt;div class=&quot;fill&quot; id=&quot;fill&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;say&quot; id=&quot;say&quot;&gt;টিপ দে বোকাসোদা, টিপ দে! 👇&lt;/div&gt;
-
-&lt;div class=&quot;stage&quot;&gt;
-&lt;button id=&quot;tap&quot; aria-label=&quot;টিপাটিপি করুন&quot;&gt;টিপাটিপি&lt;small&gt;টিপ টিপ টিপ!&lt;/small&gt;&lt;/button&gt;
-&lt;/div&gt;
-&lt;div class=&quot;combo&quot; id=&quot;combo&quot;&gt;&lt;/div&gt;
-
-&lt;h2&gt;🛒 আপগ্রেড কিনুন&lt;/h2&gt;
-&lt;div id=&quot;ups&quot;&gt;&lt;/div&gt;
-
-&lt;h2&gt;🏦 ব্যাংক&lt;/h2&gt;
-&lt;div class=&quot;bank&quot;&gt;
-&lt;h3&gt;সোনার ব্যাংক&lt;/h3&gt;
-&lt;p&gt;আপনার কষ্টের টাকা, আমাদের হাতে (নিরাপদ… মনে হয়)&lt;/p&gt;
-&lt;button class=&quot;b&quot; id=&quot;wd&quot;&gt;💸 টাকা উইথড্র করুন&lt;/button&gt;
-&lt;div id=&quot;bankmsg&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;footer&gt;সিতাকুন্ড যাওয়ার টাকা জমলেই কেবল উইথড্র হবে। ধৈর্য ধরুন, গরিব হওয়া অপরাধ না… কিন্তু টিপাটিপি না করা অপরাধ।&lt;/footer&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;ov&quot; id=&quot;intro&quot; hidden&gt;&lt;div class=&quot;m&quot;&gt;
-&lt;h2&gt;আসো বাচ্চারা! 👶&lt;/h2&gt;
-&lt;p&gt;&lt;b&gt;সিতাকুন্ড টুরের জন্য টাকা কামাই।&lt;/b&gt;&lt;br&gt;টিপে টিপে টাকা বানাও, সোনার ব্যাংকে জমাও, তারপর পাহাড়ে ওঠো। কেউ পারলে বাবাকে বলবে না যে এটা গেম।&lt;/p&gt;
-&lt;button class=&quot;b&quot; id=&quot;go&quot;&gt;শুরু করি, ইনশাআল্লাহ 🚀&lt;/button&gt;
-&lt;/div&gt;&lt;/div&gt;
-
-&lt;div id=&quot;win&quot; class=&quot;m&quot; hidden style=&quot;margin-top:14px&quot;&gt;
-&lt;h2&gt;🎉 সিতাকুন্ড কনফার্ম!&lt;/h2&gt;
-&lt;p id=&quot;winp&quot;&gt;সোনার ব্যাংক টাকা ছাড়ল! এখন বাজেট শেষ করার আগে অন্তত একটা ছবি তুলিস।&lt;/p&gt;
-&lt;button class=&quot;b&quot; id=&quot;again&quot;&gt;আবার কামাই (আরেক টুর) 🔁&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-(function(){
-var GOAL=5000,cash=0,per=1,aps=0,combo=0,lastTap=0,total=0,won=false;
-var $=function(i){return document.getElementById(i)};
-function bn(n){return String(n).replace(/\d/g,function(d){return &quot;০১২৩৪৫৬৭৮৯&quot;[d]})}
-function fmt(n){return &quot;৳&quot;+bn(Math.floor(n))}
-var ups=[
- {n:&quot;চায়ের দোকানে পার্ট-টাইম&quot;,d:&quot;প্রতি টিপে +১&quot;,c:30,t:&quot;per&quot;,v:1,k:1.5},
- {n:&quot;ফেসবুকে ফালতু পোস্ট বিক্রি&quot;,d:&quot;প্রতি টিপে +৩&quot;,c:150,t:&quot;per&quot;,v:3,k:1.6},
- {n:&quot;ছোট ভাই (বেগার খাটে)&quot;,d:&quot;অটো +১/সেকেন্ড&quot;,c:80,t:&quot;aps&quot;,v:1,k:1.5},
- {n:&quot;চাঁদাবাজ বন্ধু&quot;,d:&quot;অটো +৫/সেকেন্ড&quot;,c:400,t:&quot;aps&quot;,v:5,k:1.6},
- {n:&quot;রিকশা চালানো (ফুল-টাইম)&quot;,d:&quot;অটো +২০/সেকেন্ড&quot;,c:1500,t:&quot;aps&quot;,v:20,k:1.7}
-];
-ups.forEach(function(u){u.l=0});
-var tapLines=[&quot;টিপ টিপ! গরিবের হাতে কামাই!&quot;,&quot;আরো জোরে টিপ, শালা গরিব!&quot;,&quot;বোকাসোদা, এভাবে হবে না, স্পিড বাড়া!&quot;,&quot;আঙুল ভাঙবে? ভাঙুক, সিতাকুন্ড তো যাবি!&quot;,&quot;মা বলেছিল পড়াশোনা কর, তুই টিপছিস 😂&quot;,&quot;এই টাকায় তো একটা চা-ও হবে না!&quot;,&quot;পাহাড় ডাকছে, তুই টিপছিস, পারফেক্ট!&quot;,&quot;বেকার হলেও তুই ফোকাসড, সালাম!&quot;,&quot;ভাই, বাজেট কম, স্বপ্ন বড়!&quot;,&quot;টিপাটিপি করলে গরিবও রাজা!&quot;,&quot;সিতাকুন্ডের বান্দর তোকে মিস করছে 🐒&quot;,&quot;ভাইরে, এত টিপলে স্ক্রিন বলবে &#x27;ব্যথা পাইছি&#x27;&quot;,&quot;বোকাসোদা, ফোন চার্জ আছে তো?&quot;,&quot;এই গতিতে ২০৪৫ এ পৌঁছাবি সিতাকুন্ড!&quot;,&quot;কামাই করা কঠিন, খরচ করা সহজ, জীবন এমনই&quot;,&quot;চন্দ্রনাথ পাহাড় বলছে: আগে টাকা আন!&quot;,&quot;টিপ দে, ভাই, ভাড়ার টাকা কম পড়ছে!&quot;,&quot;গরিবের ঘোড়ারোগ, আর টিপাটিপির যোগ!&quot;];
-var idle=[&quot;কিরে গরিব, থেমে গেলি কেন?&quot;,&quot;ঘুমাইছিস নাকি বোকাসোদা?&quot;,&quot;টিপ দে! সিতাকুন্ড তোর বাপের না, কিন্তু টাকা লাগবে!&quot;,&quot;বন্ধুরা ছবি দিচ্ছে, তুই বসে আছিস!&quot;,&quot;চল চল, কামাইয়ের সময় আড্ডার না!&quot;];
-var bankFail=[&quot;সোনার ব্যাংক: ভাই, ব্যালেন্স দেখে হাসি আসছে 😂&quot;,&quot;দুঃখিত, আপনার একাউন্টে শুধু আশা আছে, টাকা নাই।&quot;,&quot;ম্যানেজার বললো: আগে সিতাকুন্ডের টাকা জমা, তারপর উইথড্র!&quot;,&quot;ATM বললো: ফকির কি আমার কাছে আসছে?&quot;,&quot;সার্ভার ডাউন… আসলে তোর টাকাই ডাউন।&quot;,&quot;আপনার চাহিদা পাঠানো হয়েছে… হাসির বিভাগে।&quot;,&quot;ব্যাংক কর্মকর্তা অজ্ঞান হয়ে গেছেন, কারণ: আপনার ব্যালেন্স।&quot;,&quot;শালা গরিব, আরেকটু টিপ, তারপর আসিস!&quot;,&quot;এই টাকা দিয়ে শুধু ঝালমুড়ি হবে, পাহাড় না!&quot;];
-function say(t){$(&quot;say&quot;).textContent=t}
-function rnd(a){return a[Math.floor(Math.random()*a.length)]}
-function cost(u){return Math.floor(u.c*Math.pow(u.k,u.l))}
-function render(){
- $(&quot;cash&quot;).textContent=fmt(cash);$(&quot;per&quot;).textContent=fmt(per);$(&quot;aps&quot;).textContent=fmt(aps);
- var p=Math.min(100,cash/GOAL*100);$(&quot;fill&quot;).style.width=p+&quot;%&quot;;$(&quot;pt&quot;).textContent=bn(Math.floor(p))+&quot;% (লক্ষ্য &quot;+fmt(GOAL)+&quot;)&quot;;
- var h=&quot;&quot;;ups.forEach(function(u,i){var c=cost(u);h+=&#x27;&lt;div class=&quot;up&quot;&gt;&lt;div&gt;&lt;strong&gt;&#x27;+u.n+(u.l?&#x27; (লেভেল &#x27;+bn(u.l)+&#x27;)&#x27;:&#x27;&#x27;)+&#x27;&lt;/strong&gt;&#x27;+u.d+&#x27;&lt;/div&gt;&lt;button class=&quot;b&quot; data-i=&quot;&#x27;+i+&#x27;&quot; &#x27;+(cash&lt;c?&#x27;disabled&#x27;:&#x27;&#x27;)+&#x27;&gt;&#x27;+fmt(c)+&#x27;&lt;/button&gt;&lt;/div&gt;&#x27;});
- if($(&quot;ups&quot;).dataset.h!==h){$(&quot;ups&quot;).innerHTML=h;$(&quot;ups&quot;).dataset.h=h}
-}
-function earn(n){cash+=n;total+=n}
-function tap(e){
- var now=Date.now();
- combo=(now-lastTap&lt;450)?combo+1:1;lastTap=now;
- var mult=combo&gt;=30?3:combo&gt;=15?2:combo&gt;=7?1.5:1;
- var g=per*mult;earn(g);
- var el=document.createElement(&quot;span&quot;);el.className=&quot;pop&quot;;el.textContent=&quot;+&quot;+bn(Math.round(g*10)/10);
- el.style.left=(40+Math.random()*50)+&quot;%&quot;;el.style.top=&quot;30%&quot;;$(&quot;tap&quot;).parentNode.appendChild(el);setTimeout(function(){el.remove()},800);
- $(&quot;combo&quot;).textContent=combo&gt;=7?&quot;🔥 কম্বো ×&quot;+bn(combo)+&quot; — &quot;+(mult)+&quot;x টাকা!&quot;:&quot;&quot;;
- if(combo%5===1||Math.random()&lt;.12)say(rnd(tapLines));
- if(navigator.vibrate)try{navigator.vibrate(8)}catch(x){}
- render();
-}
-var t=$(&quot;tap&quot;);
-t.addEventListener(&quot;pointerdown&quot;,function(e){e.preventDefault();t.classList.add(&quot;p&quot;);tap()});
-[&quot;pointerup&quot;,&quot;pointerleave&quot;,&quot;pointercancel&quot;].forEach(function(ev){t.addEventListener(ev,function(){t.classList.remove(&quot;p&quot;)})});
-t.addEventListener(&quot;keydown&quot;,function(e){if(e.key===&quot; &quot;||e.key===&quot;Enter&quot;){e.preventDefault();tap()}});
-$(&quot;ups&quot;).addEventListener(&quot;click&quot;,function(e){
- var b=e.target.closest(&quot;button&quot;);if(!b)return;var u=ups[b.dataset.i],c=cost(u);if(cash&lt;c)return;
- cash-=c;u.l++;if(u.t===&quot;per&quot;)per+=u.v;else aps+=u.v;
- say(rnd([&quot;কিনে ফেললি? বোকাসোদা, ভালো করলি!&quot;,&quot;আপগ্রেড হয়েছে! গরিবের ব্যবসা ফুলে উঠছে!&quot;,&quot;এই বিনিয়োগে বিল গেটসও হাততালি দিত 👏&quot;]));render();
-});
-$(&quot;wd&quot;).addEventListener(&quot;click&quot;,function(){
- var m=$(&quot;bankmsg&quot;);
- if(cash&gt;=GOAL){
-  cash-=GOAL;m.style.color=&quot;var(--grn)&quot;;m.textContent=&quot;✅ সোনার ব্যাংক টাকা দিল! অবিশ্বাস্য!&quot;;
-  $(&quot;win&quot;).hidden=false;won=true;try{$(&quot;win&quot;).scrollIntoView({block:&quot;center&quot;,behavior:&quot;smooth&quot;})}catch(x){}render();
- }else{
-  m.style.color=&quot;var(--red)&quot;;m.textContent=rnd(bankFail)+&quot; (আরো &quot;+fmt(GOAL-cash)+&quot; লাগবে)&quot;;
-  $(&quot;app&quot;).classList.remove(&quot;shake&quot;);void $(&quot;app&quot;).offsetWidth;$(&quot;app&quot;).classList.add(&quot;shake&quot;);
- }
-});
-$(&quot;again&quot;).addEventListener(&quot;click&quot;,function(){$(&quot;win&quot;).hidden=true;GOAL=Math.floor(GOAL*1.5);say(&quot;নতুন টার্গেট &quot;+fmt(GOAL)+&quot;! এবার কক্সবাজার ভাইবস 😎&quot;);render()});
-$(&quot;go&quot;).addEventListener(&quot;click&quot;,function(){$(&quot;intro&quot;).hidden=true;say(&quot;আসো বাচ্চারা, সিতাকুন্ড টুরের জন্য টাকা কামাই!&quot;)});
-setInterval(function(){if(aps&gt;0){earn(aps/10);render()}},100);
-setInterval(function(){if(Date.now()-lastTap&gt;5000&amp;&amp;$(&quot;intro&quot;).hidden)say(rnd(idle))},6000);
-setInterval(function(){
- if(Date.now()-lastTap&gt;450&amp;&amp;combo){combo=0;$(&quot;combo&quot;).textContent=&quot;&quot;}
-},300);
-setInterval(function(){
- if(!$(&quot;intro&quot;).hidden||document.querySelector(&quot;.gold&quot;))return;
- var g=document.createElement(&quot;div&quot;);g.className=&quot;gold&quot;;g.textContent=&quot;🪙&quot;;g.style.left=(10+Math.random()*75)+&quot;vw&quot;;g.style.top=(260+Math.random()*350)+&quot;px&quot;;
- g.addEventListener(&quot;pointerdown&quot;,function(){var b=Math.max(50,per*20+aps*10);earn(b);say(&quot;🪙 গোল্ডেন কয়েন! +&quot;+fmt(b)+&quot; — চোখ ভালোই তোর!&quot;);g.remove();render()});
- document.body.appendChild(g);setTimeout(function(){g.remove()},4000);
-},20000);
-render();
-})();
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-"></iframe></div></section>
+<section class="sec" id="game"><div class="w"><div class="sh"><h2>টাকা আয় করুন, সিতাকুন্ড টুরের জন্য!</h2><p>টাকা কামান আর সিতাকুন্ড যান। টিপাটিপি করুন, আপগ্রেড কিনুন, তারপর সোনার ব্যাংক থেকে উইথড্র। (শুধুই মজার গেম, আসল টাকা নয়)</p></div><div class="gw" id="gw">
+<div class="gbar"><div class="gbox"><small>পকেটে আছে</small><b id="gcash">৳০</b></div><div class="gbox"><small>প্রতি টিপে</small><b id="gper">৳১</b></div><div class="gbox"><small>অটো/সেকেন্ড</small><b id="gaps">৳০</b></div></div>
+<div class="gprog"><p><span>🚌 সিতাকুন্ড ফান্ড</span><span id="gpt">০%</span></p><div class="gtrack"><div class="gfill" id="gfill"></div></div></div>
+<div class="gsay" id="gsay" role="status">টিপ দে বোকাসোদা, টিপ দে! 👇</div>
+<div class="gstage" id="gstage"><button id="gtap" type="button" aria-label="টিপাটিপি করুন">টিপাটিপি<small>টিপ টিপ টিপ!</small></button></div>
+<div class="gcombo" id="gcombo"></div>
+<h3 class="gh">🛒 আপগ্রেড কিনুন</h3><div id="gups"></div>
+<h3 class="gh">🏦 ব্যাংক</h3>
+<div class="gbank" id="gbank"><h4>সোনার ব্যাংক</h4><p>আপনার কষ্টের টাকা, আমাদের হাতে (নিরাপদ… মনে হয়)</p><button class="gb" id="gwd" type="button">💸 টাকা উইথড্র করুন</button><div id="gbm" role="status"></div></div>
+<div class="gwin" id="gwin" hidden><h4>🎉 সিতাকুন্ড কনফার্ম!</h4><p id="gwinp"></p><button class="gb" id="gagain" type="button">আবার কামাই (আরেক টুর) 🔁</button></div>
+<p class="gnote">শুধুই মজার গেম, আসল টাকা নয়। গরিব হওয়া অপরাধ না… কিন্তু টিপাটিপি না করা অপরাধ।</p>
+</div>
+</div></section>
 
 <section class="sec" id="about"><div class="w"><div class="sh"><h2>Reliable hands for store and stock operations</h2></div>
 <div class="ab"><div><p class="big">I am a dedicated professional with hands-on experience in inventory handling, stock management, team coordination and daily operations.</p><p class="sub">I want to apply these skills in a reputable garments factory, support smooth operations and grow with the organization.</p></div>
@@ -649,9 +523,113 @@ store.set("sas-lc",String(Date.now()));cms.className="ms ok";cms.textContent="Th
 list.querySelectorAll(".em").forEach(function(x){x.remove()});list.insertBefore(item(n,"just now",c),list.firstChild);setTimeout(loadC,2500)}).catch(function(){cms.className="ms er";cms.textContent="Could not post. Please try again."}).then(function(){$("sb").disabled=false})});
 })();
 </script>
-<style>#gi{position:fixed;inset:0;z-index:999;background:rgba(5,12,8,.88);display:grid;place-items:center;padding:20px}#gi[hidden]{display:none}#gi div{background:#14291e;border:2px solid #ffc83d;border-radius:18px;padding:24px;max-width:420px;text-align:center;color:#f3f7ee;font-family:"Hind Siliguri",sans-serif}#gi h2{color:#ffc83d;font-size:1.6rem;margin-bottom:10px}#gi p{line-height:1.6;margin-bottom:16px}#gi button{width:100%;min-height:50px;border:0;border-radius:10px;background:#ffc83d;color:#3b2600;font:700 1.1rem "Hind Siliguri",sans-serif;cursor:pointer}</style>
-<div id="gi" role="dialog" aria-modal="true"><div><h2>আসো বাচ্চারা! 👶</h2><p><b>সিতাকুন্ড টুরের জন্য টাকা কামাই।</b><br>টিপে টিপে টাকা বানাও, সোনার ব্যাংকে জমাও, তারপর পাহাড়ে ওঠো। নিচে পোর্টফোলিও আছে, পরে দেখিস।</p><button id="gib" type="button">শুরু করি, ইনশাআল্লাহ 🚀</button></div></div>
-<script>(function(){var f=document.getElementById("gf");function r(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+"px"}catch(e){}}setInterval(r,400);f.addEventListener("load",r);
-document.getElementById("gib").onclick=function(){document.getElementById("gi").hidden=true;var s=document.getElementById("game");if(s)s.scrollIntoView({behavior:"smooth"})}})();</script>
+<div id="gi" role="dialog" aria-modal="true" aria-labelledby="git"><div><h2 id="git">আসো বাচ্চারা! 👶</h2><p><b>সিতাকুন্ড টুরের জন্য টাকা কামাই।</b><br>টিপে টিপে টাকা বানাও, সোনার ব্যাংকে জমাও, তারপর পাহাড়ে ওঠো। নিচে পোর্টফোলিও আছে, পরে দেখিস।</p><button id="gib" type="button">শুরু করি, ইনশাআল্লাহ 🚀</button></div></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var KEY="sk-game-v2";
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({cash:cash,goal:goal,ul:ups.map(function(u){return u.l}),tours:tours}))}catch(e){}}
+var S=load(),goal=S.goal||5000,cash=S.cash||0,tours=S.tours||0,per=1,aps=0,combo=0,lastTap=0,lastSay=0,dirty=true,milestone=0;
+function bn(n){return String(n).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}
+function fmt(n){return "৳"+bn(Math.floor(n).toLocaleString("en-US"))}
+function bag(a){var q=[];return function(){if(!q.length){q=a.slice();for(var i=q.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=q[i];q[i]=q[j];q[j]=t}}return q.pop()}}
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+
+/* ---------- ডায়ালগ ভান্ডার ---------- */
+var PRE=["ওরে গরিব,","শোন বোকাসোদা,","ভাই রে,","আরে শালা গরিব,","মামা,","দোস্ত,","ওস্তাদ,","বস,","এই যে মহাপুরুষ,","হে ভবিষ্যতের সিতাকুন্ড-যাত্রী,","ও গরিবের বাচ্চা,","ভাতিজা,","","","",""];
+var CORE=["আঙুল চালা, পকেট ভরা!","এই গতিতে চন্দ্রনাথ পাহাড় নিজেই তোর কাছে আসবে","টিপ দিলে টাকা, না দিলে ট্যাকা নাই","বাজেট কম, স্বপ্ন বড়, আঙুল সুপারফাস্ট","সিতাকুন্ডের ঝর্ণাও তোর টিপ শুনে হাসছে","মা বলেছিল পড়াশোনা কর, তুই টিপছিস, তবু গর্বিত","এই টাকায় চা-ও হয় না, পাহাড় তো দূরের কথা","এই টাকায় ঝালমুড়িও হয় না","বাসভাড়া জমাতে জমাতে বুড়ো হয়ে যাবি","পাহাড়ে ওঠার আগে আঙুল ওঠানামা করা","ফোন চার্জ আছে তো, নাকি আগেই শহীদ?","বান্দরগুলো তোর জন্য কলা রেখে দিয়েছে","ছবি তোলার জন্য হলেও টাকা জমা","বন্ধুরা ইনস্টাগ্রামে পাহাড়ে, তুই ফোনে টিপাটিপিতে","জীবন কঠিন, টিপাটিপি আরো কঠিন","গরিবের ঘোড়ারোগ আর টিপাটিপির যোগ","ব্যাংক ম্যানেজার বলছে, আজ তুই ফোকাসড","এই স্পিডে উসাইন বোল্টও লজ্জা পাবে","আঙুল বলছে: ভাই, আমারও ছুটি লাগে","টিপ টিপ বৃষ্টি না, টিপ টিপ টাকা","পাহাড় ডাকছে, ব্যাংক হাসছে, তুই টিপ দে","বাপ জিজ্ঞেস করলে বলিস, এটা বিনিয়োগ","সেলফি তোলার আগে ব্যালেন্স তোল","রিকশাওয়ালাও এর চেয়ে বেশি কামায়","স্ক্রিন বলছে: ভাই আস্তে, ব্যথা লাগে","মাসের শেষ, পকেট ফাঁকা, আশা অনেক","তোর অধ্যবসায় দেখে ব্যাংকের এসি ঠান্ডা হয়ে গেল","পাহাড়ের হাওয়া খেতে হলে আগে টাকার হাওয়া তোল","দুনিয়া বলছে অলস, আঙুল বলছে: আমি রেডি","সোনার ব্যাংকে ঢুকতে সোনার মতো ধৈর্য লাগে","ফোকাস! বিড়ালের ভিডিও পরে দেখিস","পকেটে শূন্য, মনে সিতাকুন্ড, আঙুলে বিদ্যুৎ","কাঁধে ব্যাগ, মনে রাগ, হাতে টিপাটিপি","চন্দ্রনাথ বলছে: আগে টাকা আন, তারপর আশীর্বাদ","আজকের টিপ কালকের ঝর্ণার পানি","টাকা গাছে ধরে না, আঙুলে ধরে","দূরে সিতাকুন্ড দেখা যাচ্ছে (একটু ঝাপসা)","তুই রাজা, শুধু প্রজা আর পকেট নাই","এত টিপলে কিডনি বিক্রির দরকার পড়বে না","পাহাড়ে উঠবি, আগে এই গেমে ওঠ","লোকে বলে বেকার, আমি বলি ফুল-টাইম ইনভেস্টর","এই গেম খেলে কেউ গরিব হয়নি, কারণ আগেই হয়েছে","গাইড বলেছে ভাড়া লাগবে, তোর পকেট বলেছে: কে আপনি?","টুরের ব্যাগে নাস্তা আগে, টাকা পরে (দুটোই নাই)","টাকা কামাই করা সহজ, শুধু আঙুলটা শক্ত রাখিস"];
+var SUF=["😂","🔥","👀","🏔️","💸","🐒","🚌","😎","","","",""];
+var TAP=["টিপ টিপ! গরিবের হাতে কামাই!","আরো জোরে টিপ, শালা গরিব!","স্পিড বাড়া বোকাসোদা, পাহাড় পালাচ্ছে!","আঙুল ভাঙবে? ভাঙুক, সিতাকুন্ড তো যাবি!","মা বলেছিল পড়াশোনা কর, তুই টিপছিস 😂","পাহাড় ডাকছে, তুই টিপছিস, পারফেক্ট!","বেকার হলেও তুই ফোকাসড, সালাম!","টিপাটিপি করলে গরিবও রাজা!","সিতাকুন্ডের বান্দর তোকে মিস করছে 🐒","এত টিপলে স্ক্রিন বলবে 'ব্যথা পাইছি'","এই গতিতে ২০৪৫ এ পৌঁছাবি সিতাকুন্ড!","চন্দ্রনাথ বলছে: আগে টাকা আন!","ভাড়ার টাকা কম পড়ছে, টিপ দে ভাই!","গরিবের ঘোড়ারোগ আর টিপাটিপির যোগ!","টাকা নাই তো কী হইছে, আঙুল তো আছে!","আজকে টিপ কালকে ট্রিপ!","বাজেট কম, উৎসাহ বেশি, সালাম!","পাহাড়ের চূড়ায় তোর নাম লেখা, আপাতত পেন্সিলে!","এক টিপে এক কদম, সিতাকুন্ড আর কত দূর?","বাবা-মা ভাবছে পড়ছিস, তুই কামাচ্ছিস!","ক্যাশ ঢুকছে, আনন্দ ঢুকছে!","থামিস না, থামলেই বাসা থেকে ডাক আসবে!","ঝর্ণার পানিতে পা ডুবাবি, আগে আঙুল ডুবা!","রাজার মতো টিপ, ফকিরের মতো সঞ্চয়!"];
+var COMBO=["🔥 কম্বো চলছে! আগুন লাগিয়ে দে!","⚡ বিদ্যুৎ স্পিড! বোকাসোদা হইয়াও এত ফাস্ট!","🚀 রকেট মোড! আঙুলে জেট লাগাইছিস নাকি?","😱 থামিস না, ব্যাংক ম্যানেজার ঘামছে!","👑 কম্বো কিং! গরিব হইয়াও রাজা!"];
+var UP=["কিনে ফেললি? বোকাসোদা, ভালো করলি!","আপগ্রেড হয়েছে! গরিবের ব্যবসা ফুলে উঠছে!","এই বিনিয়োগে ওয়ারেন বাফেটও হাততালি দিত 👏","দাম দেখে চোখ কপালে, তবু কিনলি, সাহস আছে!","ব্যবসা বড় হচ্ছে, খালি অহংকার করিস না!","টাকা খরচ করে টাকা কামাচ্ছিস, ম্যাজিক!","সিতাকুন্ড একধাপ কাছে, পকেট দুধাপ দূরে 😂"];
+var IDLE=["কিরে গরিব, থেমে গেলি কেন?","ঘুমাইছিস নাকি বোকাসোদা?","সিতাকুন্ড তোর বাপের না, কিন্তু টাকা লাগবে!","বন্ধুরা ছবি দিচ্ছে, তুই বসে আছিস!","চল চল, কামাইয়ের সময় আড্ডার না!","ব্যাংকের কেরানি বলছে: ভাই, ব্যালেন্সটা কাঁদছে","ফোনে অন্য কিছু দেখছিস নাকি? ধরা পড়লি!","টিপ না দিলে পাহাড় তোর স্বপ্নে আসবে না","পকেট ফাঁকা, আঙুল ফাঁকা, কপাল ফাঁকা, কিছু তো কর!","এক মিনিট ঘুমালে একটা বাস মিস, ওঠ!"];
+var GOLD=["🪙 গোল্ডেন কয়েন! চোখ তো ভালোই তোর!","🪙 লটারি লাগছে! গরিবের কপাল ঝলমল!","🪙 সোনা পাইছিস, ব্যাংক পাগল হয়ে গেল!","🪙 ঈগলের চোখ! এই কয়েন তোরই ছিল!"];
+var FAIL=["সোনার ব্যাংক: ভাই, ব্যালেন্স দেখে হাসি আসছে 😂","দুঃখিত, আপনার একাউন্টে শুধু আশা আছে, টাকা নাই।","ম্যানেজার বললো: আগে সিতাকুন্ডের টাকা জমা, তারপর উইথড্র!","ATM বললো: ফকির কি আমার কাছে আসছে?","সার্ভার ডাউন… আসলে তোর টাকাই ডাউন।","আপনার চাহিদা পাঠানো হয়েছে… হাসির বিভাগে।","ব্যাংক কর্মকর্তা অজ্ঞান, কারণ: আপনার ব্যালেন্স।","শালা গরিব, আরেকটু টিপ, তারপর আসিস!","এই টাকা দিয়ে শুধু ঝালমুড়ি হবে, পাহাড় না!","কাউন্টারের লোক বললো: ভাই, ভিক্ষুকরাও এর চেয়ে বেশি জমায়।","সোনার ব্যাংকের সিসিটিভিও তোর ব্যালেন্স দেখে চোখ বন্ধ করছে।","আপনার টাকা এখনো পথে… কারণ পথে নামেইনি।","স্যার, এটা ব্যাংক, সহানুভূতি কেন্দ্র না!","পাসবুক খুলে দেখলাম: শূন্য, তারপর আরেকটা শূন্য।","সোনার ব্যাংক: গরিবদের জন্য আমাদের আলাদা লাইন নাই, লাইনে দাঁড়া।"];
+var NEAR=["প্রায় হয়ে গেছে রে! আর একটু টিপ, বাজেট কান্না করছে!","সোনার ব্যাংকের ম্যানেজার ঘামছে, আর একটু!","ঘ্রাণ পাচ্ছি, সিতাকুন্ডের হাওয়া! শেষ টিপগুলো দে!","আরেকটু, গরিবের বাচ্চা, পাহাড় দেখা যাচ্ছে!"];
+var MILE={25:["২৫% হইছে! পাহাড়ের পায়ের গোড়ায় পৌঁছালি 🥾","প্রথম ধাপ শেষ! গরিব হয়েও তুই আগাচ্ছিস!"],50:["অর্ধেক! এখন শুধু আরেক অর্ধেক বাকি, মানে আধা গরিব!","৫০%! বন্ধুদের বল, সিট রাখতে!"],75:["৭৫%! বাসের টিকিটের গন্ধ পাচ্ছি 🚌","তিন-চতুর্থাংশ! থামলে মার খাবি!"],90:["৯০%! সোনার ব্যাংক তার সোনা গুনছে, তুই আরেকটু!","আর একটু বাকি! পাহাড় নিজেই হাত নাড়ছে!"]};
+var WIN=["সোনার ব্যাংক টাকা ছাড়ল! ব্যাগ গুছা, বান্দরদের জন্য কলা কিনিস।","উইথড্র সফল! এখন বাজেট শেষ করার আগে অন্তত একটা ছবি তুলিস।","টাকা এসে গেছে! বিশ্বাস কর, ম্যানেজারও অবাক।","গরিব থেকে ট্যুরিস্ট! সিতাকুন্ড তোর অপেক্ষায়!"];
+var nPre=bag(PRE),nCore=bag(CORE),nSuf=bag(SUF),nTap=bag(TAP),nCombo=bag(COMBO),nUp=bag(UP),nIdle=bag(IDLE),nGold=bag(GOLD),nFail=bag(FAIL),nNear=bag(NEAR),nWin=bag(WIN);
+function gen(){return (nPre()+" "+nCore()+" "+nSuf()).replace(/^\s+|\s+$/g,"").replace(/\s{2,}/g," ")}
+function say(t,force){var n=Date.now();if(!force&&n-lastSay<700)return;lastSay=n;var e=$("gsay");e.textContent=t;e.classList.remove("in");void e.offsetWidth;e.classList.add("in")}
+
+/* ---------- আপগ্রেড ---------- */
+var ups=[
+{n:"চায়ের দোকানে পার্ট-টাইম",d:"প্রতি টিপে +১",c:30,t:"p",v:1,k:1.5,l:0},
+{n:"ফেসবুকে ফালতু পোস্ট বিক্রি",d:"প্রতি টিপে +৩",c:150,t:"p",v:3,k:1.6,l:0},
+{n:"ছোট ভাই (বেগার খাটে)",d:"অটো +১/সেকেন্ড",c:80,t:"a",v:1,k:1.5,l:0},
+{n:"চাঁদাবাজ বন্ধু",d:"অটো +৫/সেকেন্ড",c:400,t:"a",v:5,k:1.6,l:0},
+{n:"রিকশা চালানো (ফুল-টাইম)",d:"অটো +২০/সেকেন্ড",c:1500,t:"a",v:20,k:1.7,l:0},
+{n:"সরকারি চাকরির আশায় বসে থাকা",d:"অটো +৭০/সেকেন্ড",c:6000,t:"a",v:70,k:1.8,l:0}];
+if(S.ul)ups.forEach(function(u,i){u.l=S.ul[i]||0;if(u.t==="p")per+=u.v*u.l;else aps+=u.v*u.l});
+function cost(u){return Math.floor(u.c*Math.pow(u.k,u.l))}
+var list=$("gups");
+ups.forEach(function(u,i){var r=document.createElement("div");r.className="gup";r.innerHTML="<div><strong></strong><span>"+u.d+"</span></div><button class=\"gb\" type=\"button\"></button>";u.el=r;u.s=r.querySelector("strong");u.b=r.querySelector("button");u.b.onclick=function(){buy(i)};list.appendChild(r)});
+function buy(i){var u=ups[i],c=cost(u);if(cash<c)return;cash-=c;u.l++;if(u.t==="p")per+=u.v;else aps+=u.v;say(nUp(),true);dirty=true;u.cc=-1;save()}
+
+/* ---------- UI আপডেট (প্রতি ফ্রেমে একবার, শুধু dirty হলে) ---------- */
+var E={cash:$("gcash"),per:$("gper"),aps:$("gaps"),pt:$("gpt"),fill:$("gfill")},last={};
+function setT(k,v){if(last[k]!==v){last[k]=v;E[k].textContent=v}}
+function paint(){
+ setT("cash",fmt(cash));setT("per",fmt(per));setT("aps",fmt(aps));
+ var p=Math.min(1,cash/goal);E.fill.style.transform="scaleX("+p+")";setT("pt",bn(Math.floor(p*100))+"% (লক্ষ্য "+fmt(goal)+")");
+ ups.forEach(function(u){var c=cost(u),can=cash>=c;if(u.cc!==c||u.cl!==u.l){u.cc=c;u.cl=u.l;u.s.textContent=u.n+(u.l?" (লেভেল "+bn(u.l)+")":"");u.b.textContent=fmt(c)}if(u.can!==can){u.can=can;u.b.disabled=!can}});
+ var m=p>=.9?90:p>=.75?75:p>=.5?50:p>=.25?25:0;
+ if(m>milestone){milestone=m;say(rnd(MILE[m]),true)}
+ dirty=false;
+}
+
+/* ---------- ট্যাপ ---------- */
+var btn=$("gtap"),stage=$("gstage"),pops=0,comboEl=$("gcombo"),tier=0;
+function tap(x,y){
+ var now=Date.now();combo=(now-lastTap<500)?combo+1:1;lastTap=now;
+ var mult=combo>=30?3:combo>=15?2:combo>=7?1.5:1,g=per*mult;cash+=g;dirty=true;
+ var t=mult>1?(combo>=30?3:combo>=15?2:1):0;
+ if(t>tier)say(nCombo(),true);tier=t;
+ comboEl.textContent=combo>=7?"🔥 কম্বো ×"+bn(combo)+" · "+bn(mult)+"x টাকা!":"";
+ if(pops<10){pops++;var e=document.createElement("span");e.className="gpop";e.textContent="+"+bn(Math.round(g*10)/10);
+  var r=stage.getBoundingClientRect(),px=x==null?r.width/2:x-r.left,py=y==null?r.height/2:y-r.top;
+  e.style.left=Math.max(30,Math.min(r.width-30,px+(Math.random()*40-20)))+"px";e.style.top=Math.max(20,py-30)+"px";
+  e.addEventListener("animationend",function(){e.remove();pops--});stage.appendChild(e)}
+ if(Math.random()<.55)say(Math.random()<.65?gen():nTap());
+ if(cash>=goal*.9&&cash<goal&&Math.random()<.04)say(nNear(),true);
+}
+btn.addEventListener("pointerdown",function(e){e.preventDefault();btn.classList.add("p");tap(e.clientX,e.clientY)});
+["pointerup","pointerleave","pointercancel"].forEach(function(n){btn.addEventListener(n,function(){btn.classList.remove("p")})});
+btn.addEventListener("keydown",function(e){if((e.key===" "||e.key==="Enter")&&!e.repeat){e.preventDefault();btn.classList.add("p");tap()}});
+btn.addEventListener("keyup",function(){btn.classList.remove("p")});
+
+/* ---------- ব্যাংক ---------- */
+$("gwd").onclick=function(){
+ var m=$("gbm");
+ if(cash>=goal){cash-=goal;tours++;m.style.color="#3ddc84";m.textContent="✅ সোনার ব্যাংক টাকা দিল! অবিশ্বাস্য!";
+  $("gwinp").textContent=nWin();$("gwin").hidden=false;try{$("gwin").scrollIntoView({block:"center",behavior:"smooth"})}catch(x){}dirty=true;save()}
+ else{m.style.color="#ff6b6b";m.textContent=nFail()+" (আরো "+fmt(goal-cash)+" লাগবে)";var b=$("gbank");b.classList.remove("gshake");void b.offsetWidth;b.classList.add("gshake")}
+};
+$("gagain").onclick=function(){$("gwin").hidden=true;goal=Math.floor(goal*1.5);milestone=0;$("gbm").textContent="";say("নতুন টার্গেট "+fmt(goal)+"! এবার কক্সবাজার ভাইবস 😎",true);dirty=true;save()};
+
+/* ---------- মেইন লুপ ---------- */
+var prev=performance.now(),acc=0,vis=true;
+function loop(t){
+ var dt=Math.min(.25,(t-prev)/1000);prev=t;
+ if(aps>0){cash+=aps*dt;acc+=dt;if(acc>=.1){acc=0;dirty=true}}
+ if(combo&&Date.now()-lastTap>500){combo=0;tier=0;comboEl.textContent=""}
+ if(dirty)paint();
+ requestAnimationFrame(loop)
+}
+requestAnimationFrame(loop);
+setInterval(function(){if(!document.hidden&&Date.now()-lastTap>5000&&Date.now()-lastSay>5000)say(Math.random()<.5?nIdle():gen(),true)},6000);
+setInterval(save,3000);
+function spawn(){
+ if(!document.hidden&&!stage.querySelector(".ggold")){var g=document.createElement("div");g.className="ggold";g.textContent="🪙";g.style.left=(8+Math.random()*78)+"%";g.style.top=Math.floor(Math.random()*40)+"px";
+  g.addEventListener("pointerdown",function(e){e.preventDefault();var b=Math.max(50,per*20+aps*10);cash+=b;say(nGold()+" +"+fmt(b),true);g.remove();dirty=true});
+  g.addEventListener("animationend",function(){g.remove()});stage.appendChild(g)}
+ setTimeout(spawn,14000+Math.random()*12000)}
+setTimeout(spawn,9000);
+paint();
+})();
+
+</script>
+<script>document.getElementById("gib").onclick=function(){document.getElementById("gi").hidden=true;var s=document.getElementById("game");if(s&&s.scrollIntoView)s.scrollIntoView({behavior:"smooth"})}</script>
 </body>
 </html>
