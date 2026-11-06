@@ -119,7 +119,7 @@ function tap(x,y){
   var r=stage.getBoundingClientRect(),px=x==null?r.width/2:x-r.left,py=y==null?r.height/2:y-r.top;
   e.style.left=Math.max(30,Math.min(r.width-30,px+(Math.random()*40-20)))+"px";e.style.top=Math.max(20,py-30)+"px";
   e.addEventListener("animationend",function(){e.remove();pops--});stage.appendChild(e)}
- taps++;if(taps%5===0)say(Math.random()<.65?gen():nTap(),true);
+ taps++;if(taps%15===0)say(Math.random()<.65?gen():nTap(),true);
  if(cash>=goal*.9&&cash<goal&&Math.random()<.04)say(nNear(),true);
 }
 btn.addEventListener("pointerdown",function(e){e.preventDefault();btn.classList.add("p");tap(e.clientX,e.clientY)});
